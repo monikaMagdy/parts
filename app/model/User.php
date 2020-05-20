@@ -1,6 +1,8 @@
 <?php
-  require_once(__ROOT__ . "model/Model.php");
+ require_once(__ROOT__ . "model/Model.php");
  require_once(__ROOT__ ."db/dbh.php");
+ include_once("database.php");
+
 ?>
 
 <?php
@@ -19,8 +21,8 @@ class User extends Model
  function __construct($ID,$FullName="",$username="",$email="",$password="",$Age="",$phoneNumber="",$Role="")
   {
     $this->ID = $ID;
-	    $this->db = $this->connect();
-
+    $d1= Database::GetInstance();
+    $d1->GetConnection();
     if(""===$FullName)
     {
       $this->readUser($ID);
@@ -104,13 +106,11 @@ class User extends Model
   function readUser($ID)
   {
   	$user=" SELECT * FROM user where ID=".$ID;
-  	$db = $this->connect();
-
-    $result = $db->query($user);
-
+    $d1= Database::GetInstance();
+    $result = mysqli_query($d1->GetConnection(), $user);
     if ($result->num_rows == 1)
     {
-        $row = $db->fetchRow();
+        $row=mysqli_fetch_array($result);
         $this->FullName = $row["FullName"];
 		    $_SESSION["FullName"]=$row["FullName"];
 		    $this->username=$row["username"];
@@ -143,22 +143,22 @@ class User extends Model
 		}
 		else
 		{
-            echo "ERROR: Could not able to execute $editUser. " . $conn->error;
+            echo "ERROR: Could not able to execute $editUser. " ;
     }
 
 	}
 
 	function Model_deleteUser()
 	{
-     $db=$db->GetInstance();
 		$deleteUser="DELETE FROM user WHERE ID=$this->ID;";
-		if($this->db->query($deleteUser)===true)
-		{
+		$d1= Database::GetInstance();
+    $result = mysqli_query($d1->GetConnection(), $deleteUser);
+    if($deleteUser){
 			 echo "deletet successfully.";
 		}
 		else
 		{
-            echo "ERROR: Could not able to execute $sql. " . $conn->error;
+            echo "ERROR: Could not able to execute $sql. " ;
         }
 	}
 

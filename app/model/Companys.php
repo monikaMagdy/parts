@@ -1,6 +1,8 @@
 <?php
   require_once(__ROOT__ . "model/Model.php");
   require_once(__ROOT__ . "model/Company.php");
+  include_once("database.php");
+
 ?>
 <?php
 
@@ -9,12 +11,13 @@ class Companys extends Model
 	private $companys;
 	function __construct()
 	 {
+        $d1= Database::GetInstance();
+        $d1->GetConnection();
 		$this->fillArray();
 	}
 
 	function fillArray() {
 		$this->companys = array();
-		$this->db = $this->connect();
 		$result = $this->readCompanys();
 		while ($row = $result->fetch_assoc()) {
 			array_push($this->companys, new Company($row["LocalCompanyID"]));
@@ -39,7 +42,8 @@ function readCompanys()
 	{
 		$sql = "SELECT * FROM localcompany";
 
-		$result = $this->db->query($sql);
+        $d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $sql);
 		if ($result->num_rows > 0){
 			return $result;
 		}
@@ -65,13 +69,15 @@ function readCompanys()
 		'$RegisterSupplierNumber',
 		'$CommercialRecord'
 		)";
-		if($this->db->query($sql) === true)
-		{
+	 	$d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $sql);
+
+		if ($sql){
 			echo "Records inserted successfully.";
 			$this->fillArray();
 		} 
 		else{
-			echo "ERROR: Could not able to execute $sql. " . $conn->error;
+			echo "ERROR: Could not able to execute $sql. " ;
 		}
 	}	
 }

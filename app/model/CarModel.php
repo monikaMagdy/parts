@@ -1,5 +1,6 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
+include_once("database.php");
 
 class Car extends Model
 {
@@ -13,8 +14,9 @@ class Car extends Model
 	function __construct($CarID, $CarName="",$CarModel="",$CarYear="",$imgName="")
 	{
 		$this->CarID = $CarID;
-		$this->db = $this->connect();
-
+		
+        $d1= Database::GetInstance();
+        $d1->GetConnection();
 		if(""===$CarName)
 		{
 			$this->readCar($CarID);
@@ -72,11 +74,12 @@ class Car extends Model
 	function readCar($CarID)
 	{
 		$sql = "SELECT * FROM car where CarID=".$CarID;
-		$db = $this->connect();
-		$result = $db->query($sql);
-		if ($result->num_rows == 1){
-			$row = $db->fetchRow();
 
+	    $d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $sql);
+		if ($result->num_rows == 1)
+		{
+			$row=mysqli_fetch_array($result);
 			$this->CarName = $row["CarName"];
 			$this->CarModel = $row["CarModel"];
 			$this->CarYear = $row["CarYear"];
@@ -95,22 +98,25 @@ class Car extends Model
 	{
 		$edit = "UPDATE `car` SET CarName='$CarName',CarModel='$CarModel',CarYear='$CarYear' where CarID=$this->CarID" ;
 
-		if($this->db->query($edit) === true)
+        $d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $edit);
+		if($edit)
 		{
 			echo "updated successfully.";
 			$this->readCar($this->CarID);
 		} 
 		else
 		{
-			echo "ERROR: Could not able to execute $sql. " . $conn->error;
+			echo "ERROR: Could not able to execute $sql. " ;
 		}
 	}
 
 	function deleteCar($CarID)
 	{
 		$sqlCar="DELETE FROM car WHERE CarID=$this->CarID";
-		
-		if($this->db->query($sqlCar) === true)
+		$d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $sqlCar);
+		if($sqlCar)
 		{
 			$sqlSP="DELETE FROM sparepart INNER JOIN car on sparepart.CarID=car.CarID";
 			echo "deleted successfully.";
@@ -118,22 +124,8 @@ class Car extends Model
 		} 
 		else
 		{
-			echo "ERROR: Could not able to execute $sqlCar. " . $conn->error;
+			echo "ERROR: Could not able to execute $sqlCar. " ;
 		}
 	}
-
-	/*function imageCar($imgName)
-	{
-		$sql="INSERT INTO image (name)values ($imgName)";
-		if($this->db->query($sql) === true)
-		{
-			echo "added successfully.";
-		} 
-		else
-		{
-			echo "ERROR: Could not able to execute $sql. " . $conn->error;
-		}
-		
-	}*/
-}
+ }
 ?>
