@@ -49,8 +49,6 @@ class CompanyController extends Controller
 
 	public function Con_delete($LocalCompanyID)
 	{
-		 echo "<script>alert('are you sure to dlete compnay ?');
-		 </script>";
 		$this->model->getCompany($LocalCompanyID)->deleteCompany();
 	}
 }

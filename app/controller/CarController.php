@@ -14,14 +14,14 @@ class CarController extends Controller
 
 
 		//validation
-		// if(empty($_REQUEST['CarName']) || empty($_REQUEST['CarModel'])|| empty($_REQUEST['CarYear'])||$_REQUEST['imgName'])	
-	    // {
-		//  echo "<script>alert('Please Fill The empty space');
-		//  </script>";
-	    // }
-	    // else{
+		 if(empty($_REQUEST['CarName']) || empty($_REQUEST['CarModel'])|| empty($_REQUEST['CarYear'])||$_REQUEST['imgName'])	
+	   {
+		  echo "<script>alert('Please Fill The empty space');
+		  </script>";
+	     }
+	    else
 		$this->model->addcar($CarName, $CarModel,$CarYear,$imgName);
-		//}
+		
 	}
 
 	public function editCar($CarID)
@@ -31,12 +31,12 @@ class CarController extends Controller
 		$CarYear = $_REQUEST['CarYear'];
 
 		//validation
-		// if(empty($_REQUEST['CarName']) || empty($_REQUEST['CarModel'])|| empty($_REQUEST['CarYear']))	
-	    // {
-		//  echo "<script>alert('Please Fill The empty space');
-		//  </script>";
-	    // }
-	    // else
+		if(empty($_REQUEST['CarName']) || empty($_REQUEST['CarModel'])|| empty($_REQUEST['CarYear']))	
+	     {
+		  echo "<script>alert('Please Fill The empty space');
+		  </script>";
+	     }
+	     else
 		$this->model->getCar($CarID)->Model_editCar($CarName,$CarModel,$CarYear);
 	}
 

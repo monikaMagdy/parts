@@ -10,16 +10,43 @@ class UserController extends controller
 	//Manger
 	public function Con_insertUser()
 	{
-		
 
 		$FullName = $_REQUEST['FullName'];
-		$username = $_REQUEST['username'];
-		$email=$_REQUEST['email'];
-		$hashed_password = hash('sha512', $_REQUEST['password']);
-		$Age = $_REQUEST['Age'];
-		$phoneNumber = $_REQUEST['phoneNumber'];
-		$Role=$_REQUEST['Role'];
+		if (!preg_match("/^[a-zA-Z ]*$/",$FullName)) 
+		{
+ 			echo "<script>alert('Only letters and white space allowed');
+		 		</script>";
+		}
 
+		$username = $_REQUEST['username'];
+
+		$email=$_REQUEST['email'];
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
+		{
+ 			echo "<script>alert('Invalid email format, @ is a must');
+		 		</script>";
+		}
+
+		$hashed_password = hash('sha512', $_REQUEST['password']);
+
+		$Age = $_REQUEST['Age'];
+		
+		if(filter_var($Age, FILTER_VALIDATE_INT))
+		{
+			echo"<script>alert('you have to enter Numeric Value');
+		 		</script>";
+		}
+		$phoneNumber = $_REQUEST['phoneNumber'];
+		if (filter_var($phoneNumber, FILTER_VALIDATE_INT))
+		{
+			echo"<script>alert('you have to enter Numeric Value');
+		 		</script>";
+		}
+		$Role=$_REQUEST['Role'];
+		/*if ($Role="Manger"||$Role="Employee")
+		{
+
+		}*/
 		if (empty( $_REQUEST['FullName'])||empty($_REQUEST['username'])||empty($_REQUEST['email'])||empty($_REQUEST['password'])||empty($_REQUEST['Age'])||empty($_REQUEST['phoneNumber'])||empty($_REQUEST['Role']))
 		{
 				echo "<script>alert('Please Fill The empty space');
@@ -36,18 +63,18 @@ class UserController extends controller
 		$FullName = $_REQUEST['FullName'];
 		$username=$_REQUEST['username'];
 		$email=$_REQUEST['email'];
-		$password = hash('sha512', $_REQUEST['password']);
+		//$password = hash('sha512', $_REQUEST['password']);
 		$Age = $_REQUEST['Age'];
 		$phoneNumber = $_REQUEST['phoneNumber'];
 		$Role=$_REQUEST['Role'];
 		
-		if (empty( $_REQUEST['FullName'])||empty($_REQUEST['username'])||empty($_REQUEST['email'])||empty($_REQUEST['password'])||empty($_REQUEST['Age'])||empty($_REQUEST['phoneNumber'])||empty($_REQUEST['Role']))
+		if (empty( $_REQUEST['FullName'])||empty($_REQUEST['username'])||empty($_REQUEST['email'])||/*empty($_REQUEST['password'])||*/empty($_REQUEST['Age'])||empty($_REQUEST['phoneNumber'])||empty($_REQUEST['Role']))
 		{
 		echo "<script>alert('Please Fill The empty space');
 		 </script>";
 		}
 		else 
-		$this->model->Model_editUser($FullName,$username,$email,$password,$Age,$phoneNumber,$Role);
+		$this->model->Model_editUser($FullName,$username,$email/*,$password*/,$Age,$phoneNumber,$Role);
 	}
 	
 	public function Con_deleteUser()
