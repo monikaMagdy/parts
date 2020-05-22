@@ -7,44 +7,72 @@ class CompanyController extends Controller
 	public function Con_addCompany()
 	{
 		$CompanyName			=$_REQUEST['CompanyName'];
+		if (!preg_match("/^[a-zA-Z ]*$/",$FullName)) 
+		{
+ 			echo "<script>alert('Company Name must be Only letters and white space allowed');
+		 		</script>";
+		}
 		$email					=$_REQUEST['email'];
+		{
+ 			echo "<script>alert('Invalid email format, @ is a must');
+		 		</script>";
+		}
 		$phoneNumber			=$_REQUEST['phoneNumber'];
+		if(!preg_match('#^[0-9]+$#', $PartNumber))
+		{
+			echo"<script>alert('you have to enter Numeric Value in Phone Number');
+		 		</script>";
+		}
 		$RegisterSupplierNumber =$_REQUEST['RegisterSupplierNumber'];
+		if(!preg_match('#^[0-9]+$#', $PartNumber))
+		{
+			echo"<script>alert('you have to enter Numeric Value in Register supplier Number');
+		 		</script>";
+		}
 		$CommercialRecord		=$_REQUEST['CommercialRecord'];
-
-		//validation
-		/*if(empty($_REQUEST['CompanyName']) || empty($_REQUEST['email'])|| empty($_REQUEST['phoneNumber'])||empty($_REQUEST['RegisterSupplierNumber'])||empty($_REQUEST['CommercialRecord']))	
-	    {
-	    	if (!preg_match("/^['@']*$/",$_REQUEST['email'])
-		 echo "<script>alert('Please Fill The empty space');
-		 </script>";
-	    }
-		else*/
+		if(!preg_match('#^[0-9]+$#', $PartNumber))
+		{
+			echo"<script>alert('you have to enter Numeric Value in Commercial Record');
+		 		</script>";
+		}
+		else
 		$this->model->addcompany($CompanyName, $email, $phoneNumber, $RegisterSupplierNumber, $CommercialRecord);
 	}
 
 	public function Con_editCompany($LocalCompanyID)
 	{
-		$CompanyName			= $_REQUEST['CompanyName'];
-		$email 					= $_REQUEST['email'];
-        $phoneNumber	 		= $_REQUEST['phoneNumber'];
-		$RegisterSupplierNumber = $_REQUEST['RegisterSupplierNumber'];
-		$CommercialRecord 		= $_REQUEST['CommercialRecord'];
-
-		//validation
-		/*if(empty($_REQUEST['CompanyName']) || empty($_REQUEST['email'])|| empty($_REQUEST['phoneNumber'])||empty($_REQUEST['RegisterSupplierNumber'])||empty($_REQUEST['CommercialRecord']))	
-	    {
-		 echo "<script>alert('Please Fill The empty space');
-		 </script>";
-	    }
-	    else*/
-		$this->model->getCompany($LocalCompanyID)->Model_editCompany(
-		$CompanyName,
-		$email,
-		$phoneNumber,
-		$RegisterSupplierNumber,
-		$CommercialRecord
-		);
+		$CompanyName			=$_REQUEST['CompanyName'];
+		if (!preg_match("/^[a-zA-Z ]*$/",$FullName)) 
+		{
+ 			echo "<script>alert('Company Name must be Only letters and white space allowed');
+		 		</script>";
+		}
+		$email					=$_REQUEST['email'];
+		{
+ 			echo "<script>alert('Invalid email format, @ is a must');
+		 		</script>";
+		}
+		$phoneNumber			=$_REQUEST['phoneNumber'];
+		if(!preg_match('#^[0-9]+$#', $PartNumber))
+		{
+			echo"<script>alert('you have to enter Numeric Value in Phone Number');
+		 		</script>";
+		}
+		$RegisterSupplierNumber =$_REQUEST['RegisterSupplierNumber'];
+		if(!preg_match('#^[0-9]+$#', $PartNumber))
+		{
+			echo"<script>alert('you have to enter Numeric Value in Register supplier Number');
+		 		</script>";
+		}
+		$CommercialRecord		=$_REQUEST['CommercialRecord'];
+		if(!preg_match('#^[0-9]+$#', $PartNumber))
+		{
+			echo"<script>alert('you have to enter Numeric Value in Commercial Record');
+		 		</script>";
+		}
+		
+	    else
+		$this->model->getCompany($LocalCompanyID)->Model_editCompany($CompanyName,$email,$phoneNumber,$RegisterSupplierNumber,$CommercialRecord);
 	}
 
 	public function Con_delete($LocalCompanyID)

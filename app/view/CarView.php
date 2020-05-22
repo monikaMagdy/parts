@@ -168,7 +168,7 @@ body{
 		<br>
 		<div class="form-group">
 			<div>
-				<input type="text" class="form-control" required="required" name="imgName"  id="imgName" placeholder="Imge Name"/>
+				<input type="file" class="form-control" required="required" name="imgName"  id="imgName" placeholder="Imge Name"/>
 			</div>
 		</div>
 		<br>
