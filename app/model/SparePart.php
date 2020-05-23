@@ -182,11 +182,11 @@ else
 	function Model_decreseQty( $PartNumber, $partQuantity)
 	{
 		
-	$edit = "UPDATE `sparepart` SET partQuantity=$this->partQuantity - $partQuantity' where  PartNumber=$this->PartNumber";
+	$sql = "UPDATE `sparepart` SET partQuantity=$this->partQuantity - $partQuantity where  PartNumber=$this->PartNumber";
 		if($this->db->query($sql) === true)
 		{
 			echo "updated successfully.";
-			$this->readCar($this->CarID);
+			$this->readSparePart($this->PartNumber);
 		} 
 		else
 		{
@@ -196,20 +196,19 @@ else
 	function Model_IncQty( $PartNumber,$partQuantity)
 	{
 		
-	$inc = "UPDATE `sparepart` SET partQuantity=$this->partQuantity + $partQuantity' where  PartNumber=$this->PartNumber";
+	$inc = "UPDATE `sparepart` SET partQuantity=$this->partQuantity + $partQuantity where  PartNumber=$this->PartNumber";
 		if($this->db->query($inc) === true)
 		{
 			echo "updated successfully.";
-			$this->readCar($this->CarID);
+			$this->readSparePart($this->PartNumber);
 		} 
 		else
 		{
 			echo "ERROR: Could not able to execute $inc. " . $conn->error;
 		}
 	}
-
 	
-	function addSparePart($PartNumber,$PartName,$carName,$partCountry,$partPrice,$partQuantity,$image,$CarID,$user_ID,$LocalCompanyID)
+	function addSparePart($PartNumber,$PartName,$carName,$partCountry,$partPrice,$partQuantity,$image,$CarID,$user_ID)
 	{
 		$sql="INSERT INTO `sparepart`
 		(
@@ -221,7 +220,7 @@ else
 		partQuantity,
 		image,
 		CarID,
-		user_ID,
+		user_ID
 		)
 	 	VALUES 
 	 	(
@@ -232,8 +231,8 @@ else
 	 	'$partPrice',
 	 	'$partQuantity',
 		'$image',
-	    '$CarID',
-		'".$_SESSION['ID']."'
+	    ".$_GET['id'].",
+		".$_SESSION['ID']."
 		 
 
 	 	)";

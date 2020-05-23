@@ -14,22 +14,12 @@ $view = new ViewSparePart($controller, $model);
   {
   	switch($_GET['action'])
  	{
- 		case 'add':
-			 echo $view->addSparePart();
-		 break;
- 		case 'addAction':
- 			$controller->Con_addSparePart($_GET["id"]);
- 			break;
-		case 'edit':
-			echo $view->viewEditSparePart($_GET["id"]);
+ 		
+		case'Import':
+			 echo $controller->import($_GET['id'],$_POST['Qty']);
 		break;
-		case 'editAction':
-			$controller->editSparePart($_GET['id']);
-		break;
-		case'delete':
-			$controller->delete($_GET['id']);
-		
-	
+		case'Export':
+				 echo $controller->export($_GET['id'],$_POST["Qty"]);
  	}
  }
  else

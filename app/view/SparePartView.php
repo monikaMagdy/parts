@@ -39,35 +39,35 @@ class ViewSparePart extends View
 		  <link href="css/agency.min.css" rel="stylesheet">
 		</head>
 		<br><br>
-		<div class="col-lg-12 text-center" >
-		<button type="submit" class="btn btn-warning" name="Add" id="Add" onclick=\'location.href="SparePart.php?action=add&id=undefined"\'>Add new spare part</button><br><br></div>';
+		<div class="col-lg-12 text-center" " >';
 
 					foreach ($this->model->getSpareParts() as $SparePart) {
 						$str.='
-						
-					<h2 class="text-uppercase" name="hidden_CarID" text-center >'.$SparePart->getcarName() .'</h2>
+						<button type="submit" class="btn btn-warning" name="Add"  id="Add" onclick=\'location.href="SparePart.php?action=add&CarID='.$SparePart->getCarID().'&id=undefind"\'>Add new spare part</button><br><br></div>
+
+					<h2 class="text-uppercase" style= "margin-left: 590px" name="hidden_CarID" text-center >'.$SparePart->getcarName() .' </h2>
 
                     
 					<div class="col-md-4">
 		
-						<input type="hidden" name="hidden_PartNumber"  valule="'.$SparePart->getPartNumber() .'">
+						<input type="hidden" name="hidden_PartNumber"  value="'.$SparePart->getPartNumber() .'">
 							<div class="products">
 					
-							<img src="img/'.$SparePart->getimage() .' "class="img-responsive" style= "margin-left: 50px"/>
+							<img src="img/'.$SparePart->getimage() .' "class="img-responsive" style= "margin-left: 530px""/><br><br>
 			
 							<input type="hidden" name="hidden_CarName" value="'.$SparePart->getcarName() .'" class="form-group col-md-3" /><br>
 		
-							<input type="text" style= "margin-left: 222px" name="quantity" value="1" class="form-group col-md-7" /><br><br>
-
-							<div class="btn-group btn-group-lg">
+							
+							
+							<div class="btn-group btn-group-lg" style= "margin-left: 550px">
 					   <button type="submit" class="btn btn-warning" name="Edit" id="Edit" onclick=\'location.href="SparePart.php?action=edit&id='.$SparePart->getPartNumber() .'"\'>Edit</button>
-					   <button type="submit" class="btn btn-warning" name="Delete" id="Delete" onclick=\'location.href="SparePart.php?action=delete&id='.$SparePart->getPartNumber() .'"\'>Delete Part</button>
+					   <button type="submit" class="btn btn-warning" name="Delete" id="Delete" onclick=\'location.href="SparePart.php?action=delete&id='.$SparePart->getPartNumber() .'"\'>Delete</button>
 	                          </div><br><br>
 		
 							<input type="hidden" name="hidden_name" value="'.$SparePart->getPartName() .'" />
 		
 							<input type="hidden" name="hidden_price" value="'.$SparePart->getpartPrice() .'" />
-						<ul class="list-group list-group-horizontal-sm">
+						<ul class="list-group list-group-horizontal-sm" style= "margin-left: 300px">
 						<li class="list-group-item" name="partName">PartName: '.$SparePart->getPartName() .'</li>
 						<li class="list-group-item" name="partNumber">PartNumber: '.$SparePart->getPartNumber() .'</li>
 						<li class="list-group-item" name="hidden_price">PartPrice:'.$SparePart->getpartPrice() .'</li>
@@ -75,12 +75,18 @@ class ViewSparePart extends View
 						<li class="list-group-item" name="quantity">PartQuantity:'.$SparePart->getpartQuantity() .'</li>
 						</ul>					
 						<br> 
+						<form action="Transactions.php?action=Import&id='.$SparePart->getPartNumber().'" method="post">
+						<input type="text" style= "margin-left: 580px" name="Qty" value="1" class="form-group col-md-4"/>
 						<div class="btn-group btn-group-lg">
-						<button type="submit" class="btn btn-warning" name="Export" id="Export">Export</button>
-						<button type="submit" class="btn btn-warning" name="Import" id="Import">Import</button></div>
-					<br><br>
+						<button type="submit" style= "margin-left: 600px" class="btn btn-warning" name="Import" id="Import" >Import</button>
+					</form></div><br><br>';
+				// 	<form action="Transactions.php?action=Export&id='.$SparePart->getPartNumber().'" method="post" >
+				// 	<input type="text" style= "margin-left: 730px" name="Qty" value="1" class="form-group col-md-4"  
+				// 	<div class="btn-group btn-group-lg">
+				// 	<button type="submit" style= "margin-left: 750px" class="btn btn-warning " name="Export" id="Export" >Export</button></div>
+				// <br><br></form>
 		
-					</div>';
+					'</div>';
 				}
 		return $str;
     }  
@@ -192,7 +198,7 @@ class ViewSparePart extends View
 <body>
 <div class="signup-form">
 
-<form action="SparePart.php?action=addAction&id=0" method="post">
+<form action="SparePart.php?action=addAction&id='.$_GET['CarID'].'" method="post">
 
 	<h2>Add Spare Parts</h2>
 		<p class="hint-text">Spare Parts Infromation</p>
@@ -236,12 +242,7 @@ class ViewSparePart extends View
 			</div>
 		</div>
 		<br>
-		<div class="form-group">
-			<div>
-				<input type="text" class="form-control" name="CarID" placeholder="Enter Car ID"/>
-			</div>
-		</div>
-<br>
+
 		<div class="form-group">
 			<div class="form-group">
 				<button type="submit" class="btn btn-warning" name="Add" id="Add">Add</button>
@@ -250,6 +251,7 @@ class ViewSparePart extends View
 		</form>';
 		return $str;
 	}
+
 
 	public function viewEditSparePart($id)
 	{

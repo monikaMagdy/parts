@@ -10,7 +10,7 @@ class SparePartController extends Controller
 	// 	$this->model->getSparePart($PartNumber)-> Model_IncQty($partQuantity);
 	
 	// }
-	public function Con_addSparePart()
+	public function Con_addSparePart($CarID)
 	{
 		$PartNumber=$_REQUEST['PartNumber'];
 		$PartName=$_REQUEST['PartName'];
@@ -19,7 +19,6 @@ class SparePartController extends Controller
 		$partPrice=$_REQUEST['partPrice'];
 		$partQuantity=$_REQUEST['partQuantity'];
 		$image=$_REQUEST['image'];
-		$CarID=$_REQUEST['CarID'];
 		$user_ID=$_SESSION['ID'];
 		
 
@@ -61,5 +60,18 @@ class SparePartController extends Controller
 	    // else
 		$this->model->getSparePart($PartNumber)->deleteSparePart($PartNumber);
 	}
+	public function import($PartNumber, $partQuantity)
+	{
+		// $partQuantity=$_['Qty'];
+		$this->model->getSparePart($PartNumber)->Model_IncQty($PartNumber, $partQuantity);
+	}
+	public function export($PartNumber, $partQuantity)
+	{
+		//$partQuantity=$_REQUEST['partQuantity'];
+		$this->model->getSparePart($PartNumber)->Model_decreseQty($PartNumber, $partQuantity);
+	}
+
+	
+
 }
 ?>
