@@ -1,5 +1,6 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
+include_once("database.php");
 
 class SparePart extends Model
 {
@@ -16,19 +17,23 @@ class SparePart extends Model
 	function __construct($PartNumber,$PartName="",$partCountry="",$carName="",$partPrice="",$partQuantity="",$image="",$CarID="",$user_ID="")
 	{
 		$this->PartNumber = $PartNumber;
-		$this->db = $this->connect();
-    if (""===$PartName) {
-        $this->readSparePart($PartNumber);
-    } else {
-        $this->PartName = $PartName;
-        $this->partCountry = $partCountry;
-        $this->carName = $carName;
-        $this->partPrice = $partPrice;
-        $this->partQuantity = $partQuantity;
-        $this->image = $image;
-		$this->CarID=$CarID;
-		$this->user_ID=$user_ID;
-    }
+        $d1= Database::GetInstance();
+        $d1->GetConnection();
+    	if (""===$PartName) 
+	    {
+	        $this->readSparePart($PartNumber);
+	    } 
+	    else 
+	    {
+	        $this->PartName = $PartName;
+	        $this->partCountry = $partCountry;
+	        $this->carName = $carName;
+	        $this->partPrice = $partPrice;
+	        $this->partQuantity = $partQuantity;
+	        $this->image = $image;
+			$this->CarID=$CarID;
+			$this->user_ID=$user_ID;
+	    }
 	}
 
 	function getPartNumber() 
@@ -112,10 +117,10 @@ class SparePart extends Model
 	function readSparePart($PartNumber)
 	{
 		$sql = "SELECT * FROM `sparepart` WHERE PartNumber=".$PartNumber;
-		$db = $this->connect();
-		$result = $db->query($sql);
+        $d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $sql);
 		if ($result->num_rows == 1){
-			$row = $db->fetchRow();
+			$row=mysqli_fetch_array($result);
 
 			$this->PartName = $row['PartName'];
 			$this->partCountry = $row['partCountry'];
@@ -162,15 +167,14 @@ else
 	{
 		$sql="DELETE FROM sparepart WHERE PartNumber=$this->PartNumber";
 		
-		if($this->db->query($sql) === true)
-		{
-			//$sqlSP="delete from sparepart where id=$this->CarID;";;
-			//echo "deleted successfully.";
+        $d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $sql);
+		if($sql){
 			echo"Deleted the spare parts of this car successfully.";
 		} 
 		else
 		{
-			echo "ERROR: Could not able to execute $sql. " . $conn->error;
+			echo "ERROR: Could not able to execute $sql. " ;
 		}
 	}
 	
@@ -182,29 +186,33 @@ else
 	function Model_decreseQty( $PartNumber, $partQuantity)
 	{
 		
-	$sql = "UPDATE `sparepart` SET partQuantity=$this->partQuantity - $partQuantity where  PartNumber=$this->PartNumber";
-		if($this->db->query($sql) === true)
+	$edit = "UPDATE `sparepart` SET partQuantity=$this->partQuantity - $partQuantity' where  PartNumber=$this->PartNumber";
+    $d1= Database::GetInstance();
+    $result = mysqli_query($d1->GetConnection(), $edit);
+		
+		if($edit)
 		{
 			echo "updated successfully.";
 			$this->readSparePart($this->PartNumber);
 		} 
 		else
 		{
-			echo "ERROR: Could not able to execute $sql. " . $conn->error;
+			echo "ERROR: Could not able to execute $edit. " ;
 		}
 	}
 	function Model_IncQty( $PartNumber,$partQuantity)
 	{
 		
-	$inc = "UPDATE `sparepart` SET partQuantity=$this->partQuantity + $partQuantity where  PartNumber=$this->PartNumber";
-		if($this->db->query($inc) === true)
-		{
+	$inc = "UPDATE `sparepart` SET partQuantity=$this->partQuantity + $partQuantity' where  PartNumber=$this->PartNumber";
+        $d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $inc);
+		if($inc){
 			echo "updated successfully.";
 			$this->readSparePart($this->PartNumber);
 		} 
 		else
 		{
-			echo "ERROR: Could not able to execute $inc. " . $conn->error;
+			echo "ERROR: Could not able to execute $inc. " ;
 		}
 	}
 	
@@ -231,13 +239,14 @@ else
 	 	'$partPrice',
 	 	'$partQuantity',
 		'$image',
-	    ".$_GET['id'].",
-		".$_SESSION['ID']."
+	    '$CarID',
+		'$user_ID'
 		 
 
 	 	)";
-		if($this->db->query($sql) === true)
-		{
+		$d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $sql);
+		if($result){
 			echo "Records inserted successfully.";
 		} 
 		else

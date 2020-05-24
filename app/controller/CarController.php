@@ -8,18 +8,21 @@ class CarController extends Controller
 	{
 
 		$CarName=$_REQUEST['CarName'];
+		if (!preg_match("/^[a-zA-Z ]*$/",$CarName)) 
+		{
+ 			echo "<script>alert('Only letters and white space allowed');
+		 		</script>";
+		}
+
 		$CarModel=$_REQUEST['CarModel'];
-		$CarYear=$_REQUEST['CarYear'];
+
 		$imgName=$_REQUEST['imgName'];
-
-
-		//validation
-		 if(empty($_REQUEST['CarName']) || empty($_REQUEST['CarModel'])|| empty($_REQUEST['CarYear'])||$_REQUEST['imgName'])	
-	   {
-		  echo "<script>alert('Please Fill The empty space');
-		  </script>";
-	     }
-	    else
+		$CarYear=$_REQUEST['CarYear'];
+		if(!preg_match('#^[0-9]+$#', $CarYear))
+		{
+			echo"<script>alert('you have to enter Numeric Value in the CarYear');
+		 		</script>";
+		}else
 		$this->model->addcar($CarName, $CarModel,$CarYear,$imgName);
 		
 	}
@@ -27,15 +30,27 @@ class CarController extends Controller
 	public function editCar($CarID)
 	 {
 	 	$CarName = $_REQUEST['CarName'];
-		$CarModel = $_REQUEST['CarModel'];
-		$CarYear = $_REQUEST['CarYear'];
+	 	if (!preg_match("/^[a-zA-Z ]*$/",$CarName)) 
+		{
+ 			echo "<script>alert('Only letters and white space allowed');
+		 		</script>";
+		}
 
-		//validation
-		if(empty($_REQUEST['CarName']) || empty($_REQUEST['CarModel'])|| empty($_REQUEST['CarYear']))	
-	     {
-		  echo "<script>alert('Please Fill The empty space');
-		  </script>";
-	     }
+		$CarModel = $_REQUEST['CarModel'];
+
+		$CarYear = $_REQUEST['CarYear'];
+			if(filter_var($CarYear, FILTER_VALIDATE_INT))
+		{
+			echo"<script>alert('you have to enter Numeric Value in the Car year');
+		 		</script>";
+		}
+		$imgName=$_REQUEST['imgName'];
+		if($imgName!="jpg" && $imgName!="png"&& $imgName!="gpeg" )
+		{
+			echo"<script>alert('you have to enter image that is jpg or png');
+		 		</script>";
+		}
+
 	     else
 		$this->model->getCar($CarID)->Model_editCar($CarName,$CarModel,$CarYear);
 	}

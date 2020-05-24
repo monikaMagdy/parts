@@ -31,22 +31,25 @@ class UserController extends controller
 
 		$Age = $_REQUEST['Age'];
 		
-		if(filter_var($Age, FILTER_VALIDATE_INT))
+		if(!preg_match('#^[0-9]+$#', $Age))
 		{
-			echo"<script>alert('you have to enter Numeric Value');
+			echo"<script>alert('you have to enter Numeric Value for the Age');
 		 		</script>";
 		}
 		$phoneNumber = $_REQUEST['phoneNumber'];
-		if (filter_var($phoneNumber, FILTER_VALIDATE_INT))
+		if(!preg_match('#^[0-9]+$#', $phoneNumber))
+
 		{
-			echo"<script>alert('you have to enter Numeric Value');
+			echo"<script>alert('you have to enter Numeric Value for the phone number');
 		 		</script>";
 		}
 		$Role=$_REQUEST['Role'];
-		/*if ($Role="Manger"||$Role="Employee")
-		{
+		// if (!$Role="Manger"||$Role="Employee")
+		// {
+		// 	echo"<script>alert('Please enter the role of the register If Manager Or Employee');
+		//  		</script>";
 
-		}*/
+		// }
 		if (empty( $_REQUEST['FullName'])||empty($_REQUEST['username'])||empty($_REQUEST['email'])||empty($_REQUEST['password'])||empty($_REQUEST['Age'])||empty($_REQUEST['phoneNumber'])||empty($_REQUEST['Role']))
 		{
 				echo "<script>alert('Please Fill The empty space');

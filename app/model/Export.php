@@ -1,5 +1,7 @@
 <?php
   require_once(__ROOT__ . "model/Model.php");
+  include_once("database.php");
+
 ?>
 
 <?php
@@ -17,7 +19,8 @@ class Export extends Model
  function __construct($ExportID,$companyID="",$CarID="",$PartNumber="",$PartName="",$Quantity="",$itemPrice="",$TotalCost="")
   {
     $this->ExportID = $ExportID;
-      $this->db = $this->connect();
+    $d1= Database::GetInstance();
+    $d1->GetConnection()
 
     if(""===$ExportID)
     {
@@ -103,12 +106,12 @@ class Export extends Model
   {
     $Export=" SELECT * FROM export where ExportID=".$ExportID;
     $db = $this->connect();
-
-    $result = $db->query($Export);
+    $d1= Database::GetInstance();
+    $result = mysqli_query($d1->GetConnection(), $Export);
 
     if ($result->num_rows == 1)
     {
-        $row = $db->fetchRow();
+        $row=mysqli_fetch_array($result);
         $this->companyID=$row["localCompanyID"];
         $this->CarID = $row["CarID"];
         $this->PartNumber=$row["PartNumber"];
@@ -132,28 +135,31 @@ class Export extends Model
   function Model_editExport($companyID,$CarID,$PartNumber,$PartName,$Quantity,$itemPrice,$TotalCost)
   {
     $editExport="UPDATE `export` SET `localCompanyID`='$companyID',`CarID`='$CarID',`PartNumber`='$PartNumber',`PartName`='$PartName',`Quantity`='$Quantity',`itemPrice`='$itemPrice',`TotalCost`='$TotalCost' WHERE ExportID=$this->ExportID; ";
-    if($this->db->query($editExport)===true)
+    $d1= Database::GetInstance();
+    $result = mysqli_query($d1->GetConnection(), $editExport);
+    if($editExport)
     {
       echo"updated successfully.";
       $this->readExport($this->ExportID);
     }
     else
     {
-            echo "ERROR: Could not able to execute $editExport. " . $conn->error;
-      }
+            echo "ERROR: Could not able to execute $editExport. " ;
+    }
   }
 
   function Model_deleteExport()
   {       
     $deleteExport="DELETE FROM export WHERE  ExportID=$this->ExportID ;";
-    if($this->db->query($deleteExport)===true)
-    {
+    $d1= Database::GetInstance();
+    $result = mysqli_query($d1->GetConnection(), $deleteExport);
+    if($deleteExport){
        echo "deletet successfully.";
     }
     else
     {
-            echo "ERROR: Could not able to execute $deleteExport. " . $conn->error;
-        }
+            echo "ERROR: Could not able to execute $deleteExport. " ;
+    }
   }
 
   //fadel edit employee henas

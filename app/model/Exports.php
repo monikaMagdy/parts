@@ -1,6 +1,7 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
 require_once(__ROOT__ . "model/Export.php");
+include_once("database.php");
 
 class Exports extends Model 
 {
@@ -8,17 +9,18 @@ class Exports extends Model
 	private $Parts;
 	function __construct() 
 	{
+        $d1= Database::GetInstance();
+        $d1->GetConnection();
 		$this->fillArray();
 	}
 
 	function fillArray() 
 	{
 		$this->Exports = array();
-		$this->db = $this->connect();
 		$result = $this->readExport();
 		while ($row = $result->fetch_assoc())
 		{
-			array_push($this->Exports, new Export($row['ExportID'],$row["companyID"],$row["CarID"],$row["PartNumber"],$row["PartName"],$row["Quantity"],$row["itemPrice"],$row["TotalCost"]));
+			array_push($this->Exports, new Export($row['ExportID'],$row["localCompanyID"],$row["CarID"],$row["PartNumber"],$row["PartName"],$row["Quantity"],$row["itemPrice"],$row["TotalCost"]));
 		}
 	}
 
@@ -44,8 +46,9 @@ class Exports extends Model
 	{
 		$sql = "SELECT * FROM export";
 
-		$result = $this->db->query($sql);
-		if ($result->num_rows > 0){
+        $d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $sql);
+		if ($result->num_rows > -1){
 			return $result;
 		}
 		else {
@@ -75,13 +78,14 @@ class Exports extends Model
 		  '$itemPrice',
 		   '$TotalCost'
 		)";
-		if($this->db->query($sql) === true)
-		{
+	 	$d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $sql);
+		if ($sql){
 			echo "Record was successfully added<br>";
 			$this->fillArray();
 		} 
 		else{
-			echo "ERROR: Could not able to execute $sql. " . $conn->error;
+			echo "ERROR: Could not able to execute $sql. " ;
 		}
 	}
 }

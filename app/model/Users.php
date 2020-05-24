@@ -1,19 +1,22 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
 require_once(__ROOT__ . "model/User.php");
+include_once("database.php");
+
 //"ID`, `FullName`, `username`, `email`, `password`, `Age`, `phoneNumber`, `Role`"
 class Users extends Model 
 {
 	private $Users;
 	function __construct() 
 	{
+        $d1= Database::GetInstance();
+        $d1->GetConnection();
 		$this->fillArray();
 	}
 
 	function fillArray() 
 	{
 		$this->Users = array();
-		$this->db = $this->connect();
 		$result = $this->readUsers();
 		while ($row = $result->fetch_assoc())
 		{
@@ -43,8 +46,9 @@ function getUsers() {
 	{
 		$sql = "SELECT * FROM user";
 
-		$result = $this->db->query($sql);
-		if ($result->num_rows >0){
+        $d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $sql);
+		if ($result->num_rows >-1){
 			return $result;
 		}
 		else {
@@ -74,13 +78,14 @@ function getUsers() {
 		 '$phoneNumber',
 		 '$Role'
 		)";
-		if($this->db->query($sql) === true)
-		{
+	 	$d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $sql);
+		if ($sql){
 			echo "Records inserted successfully.";
 			$this->fillArray();
 		} 
 		else{
-			echo "ERROR: Could not able to execute $sql. " . $conn->error;
+			echo "ERROR: Could not able to execute $sql. " ;
 		}
 	}
 }

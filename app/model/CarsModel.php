@@ -1,6 +1,7 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
 require_once(__ROOT__ . "model/CarModel.php");
+include_once("database.php");
 
 class Cars extends Model 
 {
@@ -8,13 +9,14 @@ class Cars extends Model
 	
 	function __construct()
 	{
-		$this->fillArray();
+       $d1= Database::GetInstance();
+       $d1->GetConnection();
+	   $this->fillArray();
 	}
 
 	function fillArray() 
 	{
 		$this->Cars = array();
-		$this->db = $this->connect();
 		$result = $this->readCars();
 		while ($row = $result->fetch_assoc()) 
 		{
@@ -40,8 +42,9 @@ class Cars extends Model
 	function readCars()
 	{
 		$cars="SELECT * FROM `car`";
-		
-		$result=$this->db->query($cars);
+		$d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $cars);
+
 		if ($result->num_rows > -1){
 			return $result;
 		}
@@ -66,7 +69,9 @@ class Cars extends Model
 	 	'$CarModel',
 	 	'$CarYear',
 	 	'$imgName')";
-		if($this->db->query($sql) === true)
+	 	$d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $sql);
+		if ($sql)
 		{
 			echo "Records inserted successfully.";
 			$this->fillArray();

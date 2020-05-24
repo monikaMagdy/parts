@@ -1,5 +1,6 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
+include_once("database.php");
 
 class Company extends Model
 {
@@ -13,8 +14,8 @@ class Company extends Model
 	function __construct($LocalCompanyID, $CompanyName="",$email="",$phoneNumber="",$RegisterSupplierNumber="",$CommercialRecord="")
 	{
 		$this->LocalCompanyID = $LocalCompanyID;
-		$this->db = $this->connect();
-
+        $d1= Database::GetInstance();
+        $d1->GetConnection();
 		if(""===$CompanyName)
 		{
 			$this->readCompany($LocalCompanyID);
@@ -79,10 +80,10 @@ class Company extends Model
 	function readCompany($LocalCompanyID)
 	{
 		$sql = "SELECT * FROM localcompany where LocalCompanyID=".$LocalCompanyID;
-		$db = $this->connect();
-		$result = $db->query($sql);
+        $d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $sql);
 		if ($result->num_rows == 1){
-			$row = $db->fetchRow();
+			$row=mysqli_fetch_array($result);
 
 			$this->CompanyName =$row["CompanyName"];
 			$this->email =$row["email"];
@@ -110,21 +111,27 @@ class Company extends Model
 		`CommercialRecord`='$CommercialRecord' 
 		where 
 		LocalCompanyID=$this->LocalCompanyID;";
-		if($this->db->query($sql) === true){
+		$d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $sql);
+
+		if($sql){
 			echo "updated successfully.";
 			$this->readCompany($this->LocalCompanyID);
 		} else{
-			echo "ERROR: Could not able to execute $sql. " . $conn->error;
+			echo "ERROR: Could not able to execute $sql. " ;
 		}
 	}
 
 	function deleteCompany()
 	{
 		$sql="DELETE FROM localcompany where LocalCompanyID=$this->LocalCompanyID;";
-		if($this->db->query($sql) === true){
+		$d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $sql);
+
+		if($sql){
 			echo "deleted successfully.";
 		} else{
-			echo "ERROR: Could not able to execute $sql. " . $conn->error;
+			echo "ERROR: Could not able to execute $sql. " ;
 		}
 	}
 }
