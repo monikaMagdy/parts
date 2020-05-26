@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2020 at 11:19 PM
+-- Generation Time: May 27, 2020 at 01:01 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.1.32
 
@@ -45,7 +45,25 @@ INSERT INTO `car` (`CarID`, `CarName`, `CarModel`, `CarYear`, `imgName`) VALUES
 (2, 'Mercedes', '70121948', 2015, 'mercedes.jpg'),
 (3, 'Ivicon', 'euro-cargo', 2014, '02-thumbnail-.jpg'),
 (4, 'volvo', 'v-b7r', 2015, 'volvo.jpg'),
-(5, 'Man', 'cope', 2020, '01-thumbnail-.jpg');
+(5, 'Man', 'cope', 2020, '01-thumbnail-.jpg'),
+(18, 'Piguet', 'truck ergo cargo', 2020, '03-thumbnail+.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `id` int(255) NOT NULL,
+  `companyID` int(11) NOT NULL,
+  `partNumber` int(255) NOT NULL,
+  `PartName` varchar(255) NOT NULL,
+  `PartPrice` int(255) NOT NULL,
+  `partQuantity` int(255) NOT NULL,
+  `timStamp` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
+  `totalPrice` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -58,11 +76,18 @@ CREATE TABLE `export` (
   `LocalCompanyID` int(255) NOT NULL,
   `CarID` int(255) NOT NULL,
   `PartNumber` int(255) NOT NULL,
-  `PartName` int(255) NOT NULL,
+  `PartName` varchar(255) NOT NULL,
   `Quantity` int(255) NOT NULL,
   `ItemPrice` int(255) NOT NULL,
   `TotalPrice` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `export`
+--
+
+INSERT INTO `export` (`ExportID`, `LocalCompanyID`, `CarID`, `PartNumber`, `PartName`, `Quantity`, `ItemPrice`, `TotalPrice`) VALUES
+(1, 26, 1, 2850040, '0', 20, 100, 2000);
 
 -- --------------------------------------------------------
 
@@ -139,14 +164,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID`, `FullName`, `username`, `email`, `password`, `Age`, `phoneNumber`, `Role`) VALUES
-(1, 'amal', 'Monica1702399', 'monica1702399@miuegypt.edu.eg', 'b2f30a8213d3ec0b844ad88d42df516a74d18437be7cb32bab249f92bfbe0e0528a9b51cf259dbb45c49de66c2eaa229a2ce5fb0fcc654eaef2a97c4e33ef786', 60, 1234567890, 'Manger'),
-(21, 'Gad', 'andrewGad', 'Gad@123', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', 22, 2147483647, 'Manger'),
+(1, 'amal', 'Monica1702399', 'monica1702399@miuegypt.edu.eg', 'b2f30a8213d3ec0b844ad88d42df516a74d18437be7cb32bab249f92bfbe0e0528a9b51cf259dbb45c49de66c2eaa229a2ce5fb0fcc654eaef2a97c4e33ef786', 60, 1234567890, 'Employee'),
 (22, 'Gad', 'andrewGad', 'Gad@123', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', 22, 2147483647, 'Manger'),
-(23, 'Madonna', 'MadonnaSaid', 'm@123', '3627909a29c31381a071ec27f7c9ca97726182aed29a7ddd2e54353322cfb30abb9e3a6df2ac2c20fe23436311d678564d0c8d305930575f60e2d3d048184d79', 22, 123456789, 'Manger'),
-(24, 'monica', 'Monica1702399', 'monica1702399@miuegypt.edu.eg', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', 22, 2147483647, 'Manger'),
-(25, 'user', 'username', 'user@gmail', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', 23, 2147483647, 'Employe'),
-(26, 'Essam', 'userEssam', 'Essam@123', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', 23, 2147483647, 'Manger'),
-(27, 'rola ebrahim william', 'rola', 'rola@123', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db', 22, 2147483647, 'Employe');
+(23, 'Madonna', 'MadonnaSaid', 'm@123', '3627909a29c31381a071ec27f7c9ca97726182aed29a7ddd2e54353322cfb30abb9e3a6df2ac2c20fe23436311d678564d0c8d305930575f60e2d3d048184d79', 22, 123456789, 'employee'),
+(24, 'monica', 'Monica1702399', 'monica1702399@miuegypt.edu.eg', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', 43, 1277199403, 'Manger'),
+(25, 'user', 'username', 'user@gmail', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', 23, 2147483647, 'Manger'),
+(41, '13', '13', '123', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', 0, 0, 'Manger');
 
 --
 -- Indexes for dumped tables
@@ -157,6 +180,14 @@ INSERT INTO `user` (`ID`, `FullName`, `username`, `email`, `password`, `Age`, `p
 --
 ALTER TABLE `car`
   ADD PRIMARY KEY (`CarID`);
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `partNumber` (`partNumber`),
+  ADD KEY `companyID` (`companyID`);
 
 --
 -- Indexes for table `export`
@@ -194,7 +225,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `car`
 --
 ALTER TABLE `car`
-  MODIFY `CarID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `CarID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `localcompany`
@@ -206,11 +237,18 @@ ALTER TABLE `localcompany`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`partNumber`) REFERENCES `sparepart` (`PartNumber`),
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`companyID`) REFERENCES `localcompany` (`LocalCompanyID`);
 
 --
 -- Constraints for table `export`
