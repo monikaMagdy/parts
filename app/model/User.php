@@ -1,11 +1,7 @@
 <?php
  require_once(__ROOT__ . "model/Model.php");
  require_once(__ROOT__ ."db/dbh.php");
- include_once("database.php");
-
-?>
-
-<?php
+require_once(__ROOT__ ."db/database.php");
 
 class User extends Model 
 {
