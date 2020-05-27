@@ -2,17 +2,20 @@
 require_once(__ROOT__ . "model/Model.php");
 include_once("database.php");
 
-class Car extends Model
+class Cart extends Model
 {
 	private $id;
+	private $companyID;
 	private $partNumber;
 	private $PartName;
 	private $PartPrice;
 	private $partQuantity;
+	private $timStamp;
 	private $totalPrice;
 	
+	
 
-	function __construct($id, $partNumber="",$PartName="",$PartPrice="",$partQuantity="",$totalPrice="")
+	function __construct($id, $companyID="", $partNumber="",$PartName="",$PartPrice="",$partQuantity="",$timStamp="",$totalPrice="")
 	{
 		$this->id = $id;
 		
@@ -24,15 +27,25 @@ class Car extends Model
 		}
 		else
 		{
+			$this->companyID = $companyID;
 			$this->partNumber = $partNumber;
 			$this->PartName = $PartName;
 			$this->PartPrice = $PartPrice;
 			$this->partQuantity = $partQuantity;
+			$this->timStamp = $timStamp;
 			$this->totalPrice = $totalPrice;
 			
 		}
 	}
 
+	function getcompanyID() 
+	{
+		return $this->companyID;
+	}	
+	function setcompanyID($companyID)
+	{
+		return $this->companyID = $companyID;
+	}
 	function getpartNumber() 
 	{
 		return $this->partNumber;
@@ -68,6 +81,14 @@ class Car extends Model
 	{
 		return $this->partQuantity = $partQuantity;
 	}
+	function gettimStamp() 
+	{
+		return $this->timStamp;
+	}	
+	function settimStamp($timStamp)
+	{
+		return $this->timStamp = $timStamp;
+	}
 	function gettotalPrice() 
 	{
 		return $this->totalPrice;
@@ -90,21 +111,54 @@ class Car extends Model
 		if ($result->num_rows == 1)
 		{
 			$row=mysqli_fetch_array($result);
+			$this->companyID = $row["partNumber"];
 			$this->partNumber = $row["partNumber"];
 			$this->PartName = $row["PartName"];
 			$this->PartPrice = $row["PartPrice"];
 			$this->partQuantity=$row["partQuantity"];
+			$this->timStamp=$row["timStamp"];
 			$this->totalPrice=$row["totalPrice"];
 		}
 		else 
 		{
+			$this->companyID = "";
 			$this->partNumber = "";
 			$this->PartName = "";
 			$this->PartPrice= "";
 			$this->partQuantity="";
+			$this->timStamp = "";
 			$this->totalPrice="";
 		}	
 	}
+	function CalculatePartPrice($partNumber,$partQuantity){
+		$sql="UPDATE `cart` SET totalPrice=$this->partQuantity*$PartPrice where PartNumber=$this->PartNumber ";
+		$d1= Database::GetInstance();
+		$result = mysqli_query($d1->GetConnection(), $sql);
+			
+			if($sql)
+			{
+				echo "updated successfully.";
+				$this->readCart($this->id);
+			} 
+			else
+			{
+				echo "ERROR: Could not able to execute $sql. " ;
+			}
+		}
+	
+    function CalculateTax($partNumber, $partQuantity)
+    {
+        $sql="UPDATE `cart` SET totalPrice=$totalPrice+$this->partQuantity*$PartPrice*0.14 where PartNumber=$this->PartNumber";
+        $d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $sql);
+            
+        if ($sql) {
+            echo "updated successfully.";
+            $this->readCart($this->id);
+        } else {
+            echo "ERROR: Could not able to execute $sql. " ;
+        }
+    }
 
 
 	function deleteCart($id){

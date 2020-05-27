@@ -185,7 +185,7 @@ else
 	function Model_decreseQty( $PartNumber, $partQuantity)
 	{
 		
-	$edit = "UPDATE `sparepart` SET partQuantity=$this->partQuantity - $partQuantity' where  PartNumber=$this->PartNumber";
+	$edit = "UPDATE `sparepart` SET partQuantity=$this->partQuantity - $partQuantity where  PartNumber=$this->PartNumber";
     $d1= Database::GetInstance();
     $result = mysqli_query($d1->GetConnection(), $edit);
 		
@@ -202,7 +202,7 @@ else
 	function Model_IncQty( $PartNumber,$partQuantity)
 	{
 		
-	$inc = "UPDATE `sparepart` SET partQuantity=$this->partQuantity + $partQuantity' where  PartNumber=$this->PartNumber";
+	$inc = "UPDATE `sparepart` SET partQuantity=$this->partQuantity + $partQuantity where  PartNumber=$this->PartNumber";
         $d1= Database::GetInstance();
         $result = mysqli_query($d1->GetConnection(), $inc);
 		if($inc){

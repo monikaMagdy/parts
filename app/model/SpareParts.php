@@ -1,7 +1,7 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
 require_once(__ROOT__ . "model/SparePart.php");
-include_once("database.php");
+//include_once("database.php");
 
 class SpareParts extends Model 
 {

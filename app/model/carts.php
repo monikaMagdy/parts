@@ -51,7 +51,7 @@ class Carts extends Model
 	}
 	function add_to_Cart($companyID, $partNumber , $PartName, $PartPrice, $partQuantity, $timStamp, $totalPrice )
 	{
-		$sql="INSERT INTO `cart`(`companyID` ,`partNumber`, `PartName`, `PartPrice`, `partQuantity`, `timStamp`, `totalPrice`) VALUES ($partNumber,$PartName,$PartPrice,$partQuantity,$timStamp,$totalPrice)";
+		$sql="INSERT INTO `cart`(`companyID` ,`partNumber`, `PartName`, `PartPrice`, `partQuantity`, `timStamp`, `totalPrice`) VALUES ($companyID,$partNumber,$PartName,$PartPrice,$partQuantity,$timStamp,$totalPrice)";
 		$d1= Database::GetInstance();
         $result = mysqli_query($d1->GetConnection(), $sql);
 

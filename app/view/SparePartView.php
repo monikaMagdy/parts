@@ -79,6 +79,7 @@ class ViewSparePart extends View
 						<input type="text" style= "margin-left: 580px" name="Qty" value="1" class="form-group col-md-4"/>
 						<div class="btn-group btn-group-lg">
 						<button type="submit" style= "margin-left: 600px" class="btn btn-warning" name="Import" id="Import" >Import</button>
+
 					</form></div><br><br>';
 				// 	<form action="Transactions.php?action=Export&id='.$SparePart->getPartNumber().'" method="post" >
 				// 	<input type="text" style= "margin-left: 730px" name="Qty" value="1" class="form-group col-md-4"  
