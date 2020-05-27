@@ -3,7 +3,7 @@
     { 
         session_start(); 
     } 
-require_once("../app/db/Dbh.php");
+require_once("../app/db/database.php");
 abstract class Model
 {
     protected $db;

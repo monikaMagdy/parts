@@ -1,7 +1,6 @@
 <?php
   require_once(__ROOT__ . "model/Model.php");
-  include_once("database.php");
-
+require_once(__ROOT__ ."db/database.php");
 ?>
 
 <?php

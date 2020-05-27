@@ -1,7 +1,7 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
 require_once(__ROOT__ . "model/User.php");
-include_once("database.php");
+require_once(__ROOT__ ."db/database.php");
 
 //"ID`, `FullName`, `username`, `email`, `password`, `Age`, `phoneNumber`, `Role`"
 class Users extends Model 

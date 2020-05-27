@@ -41,32 +41,32 @@ class ViewSparePart extends View
 		<br><br>
 		<div class="col-lg-12 text-center" " >';
 
-					foreach ($this->model->getSpareParts() as $SparePart) {
-						$str.='
-						<button type="submit" class="btn btn-warning" name="Add"  id="Add" onclick=\'location.href="SparePart.php?action=add&CarID='.$SparePart->getCarID().'&id=undefind"\'>Add new spare part</button><br><br></div>
+		foreach ($this->model->getSpareParts() as $SparePart) 
+		{
+			$str.='<button type="submit" class="btn btn-warning" name="Add"  id="Add" onclick=\'location.href="SparePart.php?action=add&CarID='.$SparePart->getCarID().'&id=undefind"\'>Add new spare part</button><br><br></div>
 
 					<h2 class="text-uppercase" style= "margin-left: 590px" name="hidden_CarID" text-center >'.$SparePart->getcarName() .' </h2>
 
                     
 					<div class="col-md-4">
 		
-						<input type="hidden" name="hidden_PartNumber"  value="'.$SparePart->getPartNumber() .'">
-							<div class="products">
+					<input type="hidden" name="hidden_PartNumber"  value="'.$SparePart->getPartNumber() .'">
+					<div class="products">
 					
-							<img src="img/'.$SparePart->getimage() .' "class="img-responsive" style= "margin-left: 530px""/><br><br>
+					<img src="img/'.$SparePart->getimage() .' "class="img-responsive" style= "margin-left: 530px""/><br><br>
 			
-							<input type="hidden" name="hidden_CarName" value="'.$SparePart->getcarName() .'" class="form-group col-md-3" /><br>
+					<input type="hidden" name="hidden_CarName" value="'.$SparePart->getcarName() .'" class="form-group col-md-3" /><br>
 		
 							
 							
-							<div class="btn-group btn-group-lg" style= "margin-left: 550px">
-					   <button type="submit" class="btn btn-warning" name="Edit" id="Edit" onclick=\'location.href="SparePart.php?action=edit&id='.$SparePart->getPartNumber() .'"\'>Edit</button>
-					   <button type="submit" class="btn btn-warning" name="Delete" id="Delete" onclick=\'location.href="SparePart.php?action=delete&id='.$SparePart->getPartNumber() .'"\'>Delete</button>
-	                          </div><br><br>
+					<div class="btn-group btn-group-lg" style= "margin-left: 550px">
+					<button type="submit" class="btn btn-warning" name="Edit" id="Edit" onclick=\'location.href="SparePart.php?action=edit&id='.$SparePart->getPartNumber() .'"\'>Edit</button>
+					<button type="submit" class="btn btn-warning" name="Delete" id="Delete" onclick=\'location.href="SparePart.php?action=delete&id='.$SparePart->getPartNumber() .'"\'>Delete</button>
+	                </div><br><br>
 		
-							<input type="hidden" name="hidden_name" value="'.$SparePart->getPartName() .'" />
+					<input type="hidden" name="hidden_name" value="'.$SparePart->getPartName() .'" />
 		
-							<input type="hidden" name="hidden_price" value="'.$SparePart->getpartPrice() .'" />
+					<input type="hidden" name="hidden_price" value="'.$SparePart->getpartPrice() .'" />
 						<ul class="list-group list-group-horizontal-sm" style= "margin-left: 300px">
 						<li class="list-group-item" name="partName">PartName: '.$SparePart->getPartName() .'</li>
 						<li class="list-group-item" name="partNumber">PartNumber: '.$SparePart->getPartNumber() .'</li>
