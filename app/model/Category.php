@@ -2,7 +2,7 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
 
-public class Category 
+class Category extends Model 
 {
 	private $categoryID;
 	private $categoryName;
