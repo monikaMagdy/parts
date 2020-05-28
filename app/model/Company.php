@@ -1,5 +1,5 @@
 <?php
-require_once(__ROOT__ . "model/Model.php")
+require_once(__ROOT__ . "model/Model.php");
 require_once(__ROOT__ ."db/database.php");
 class Company extends Model
 {

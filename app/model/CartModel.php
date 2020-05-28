@@ -1,6 +1,6 @@
 <?php
 require_once(__ROOT__ . "model/Model.php");
-include_once("database.php");
+require_once(__ROOT__ ."db/database.php");
 
 class Cart extends Model
 {
@@ -23,7 +23,7 @@ class Cart extends Model
         $d1->GetConnection();
 		if(""===$partNumber)
 		{
-			$this->readCar($id);
+			$this->readCart($id);
 		}
 		else
 		{

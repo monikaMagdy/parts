@@ -19,7 +19,7 @@ class Export extends Model
   {
     $this->ExportID = $ExportID;
     $d1= Database::GetInstance();
-    $d1->GetConnection()
+    $d1->GetConnection();
 
     if(""===$ExportID)
     {

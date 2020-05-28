@@ -15,11 +15,11 @@ class Carts extends Model
 
 	function fillArray()
 	{
-		$this->cart=array();
-		$result =$this->readCart();
-		while($row =$result->fetch_assoc())
+		$this->carts=array();
+		$result =$this->readCarts();
+		while ($row = $result->fetch_assoc()) 
 		{
-			array_push($this->cart,new cart($row["id"]) );
+			array_push($this->carts,new Cart($row["id"]) );
 		}
 	}
 	function getCarts()
@@ -31,7 +31,7 @@ class Carts extends Model
 	{
 		foreach ($this->carts as $cart) 
 		{
-			if($id == $cart->getId())
+			if($id == $cart->getid())
 			{
 				return $cart;
 			}
@@ -39,19 +39,35 @@ class Carts extends Model
 	}
 	function readCarts()
 	{
-		$sql="SELECT * FROM `cart`";
+		$sql="SELECT * FROM cart";
 		 $d1= Database::GetInstance();
         $result = mysqli_query($d1->GetConnection(), $sql);
-		if ($result->num_rows > 0){
+		if ($result->num_rows >-1){
 			return $result;
 		}
 		else {
 			return false;
 		}
 	}
-	function add_to_Cart($companyID, $partNumber , $PartName, $PartPrice, $partQuantity, $timStamp, $totalPrice )
+	function add_to_Cart( $partNumber , $PartName, $PartPrice, $partQuantity )
 	{
-		$sql="INSERT INTO `cart`(`companyID` ,`partNumber`, `PartName`, `PartPrice`, `partQuantity`, `timStamp`, `totalPrice`) VALUES ($companyID,$partNumber,$PartName,$PartPrice,$partQuantity,$timStamp,$totalPrice)";
+		$timStamp="12:21";
+		$Qtyprice="UPDATE `cart` SET PartPrice=partQuantity*$PartPrice where PartNumber=PartNumber ";
+		if ($Qtyprice)
+		{
+			echo "Qtyprice done";
+		}
+		else { echo "Qtyprice failed";}
+		$tax="UPDATE `cart` SET totalPrice=partQuantity*$PartPrice*0.14 where PartNumber=PartNumber";
+		if ($tax)
+		{
+			echo "tax done";
+		}
+		else 
+		{
+			echo "tax done";
+		}
+		$sql="INSERT INTO `cart`(`partNumber`, `PartName`, `PartPrice`, `partQuantity`, `timStamp`, `totalPrice`) VALUES ($partNumber,$PartName,$Qtyprice,$partQuantity,$tax)";
 		$d1= Database::GetInstance();
         $result = mysqli_query($d1->GetConnection(), $sql);
 

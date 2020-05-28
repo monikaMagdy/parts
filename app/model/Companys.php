@@ -15,14 +15,17 @@ class Companys extends Model
 		$this->fillArray();
 	}
 
-	function fillArray() {
+	function fillArray() 
+	{
 		$this->companys = array();
 		$result = $this->readCompanys();
-		while ($row = $result->fetch_assoc()) {
+		while ($row = $result->fetch_assoc()) 
+		{
 			array_push($this->companys, new Company($row["LocalCompanyID"]));
 		}
 	}
-function getCompanys() {
+	function getCompanys() 
+	{
 		$this->fillArray();  
 		return $this->companys;
 	}
