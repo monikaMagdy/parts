@@ -6,14 +6,9 @@ require_once(__ROOT__ . "model/CartModel.php");
 
 class CartController extends Controller
 {	
-	 function Con_addCart()
-	{
-		$partNumber=$_REQUEST['hidden_PartNumber'];
-		$PartName=$_REQUEST['hidden_partName'];
-		$PartPrice=$_REQUEST['hidden_PartPrice'];
-		$partQuantity=$_REQUEST['Qty'];
-		
-		$this->model->add_to_Cart($partNumber, $PartName,$PartPrice,$partQuantity);
+	 function Con_addCart($partNumber,$partQuantity)
+	{	
+		$this->model->add_to_Cart($partNumber,$partQuantity);
 		
 	}
 

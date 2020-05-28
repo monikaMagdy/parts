@@ -61,28 +61,23 @@ $str.='
 		  			 <img src="img/'.$SparePart->getimage() .' "class="card-img-top" hight="250"/><br><br><hr>
 		  			 <div class="card-body p-1">
 		  			 
-		  			 	<h5 class="card-title text-center text-info" name="partName">PartName: '.$SparePart->getPartName() .'</h5>
-						<h5 class="card-title text-center text-info" name="partNumber">PartNumber: '.$SparePart->getPartNumber() .'</h5>
+		  			 	<h5 class="card-title text-center text-secondary" name="partName">PartName: '.$SparePart->getPartName() .'</h5>
+						<h5 class="card-title text-center text-secondary" name="partNumber">PartNumber: '.$SparePart->getPartNumber() .'</h5>
 						
-						<h5 class="card-title text-center text-info" name="partCountry">Country: '.$SparePart->getpartCountry() .'</h5>
-						<h5 class="card-title text-center text-info" name="quantity">PartQuantity:'.$SparePart->getpartQuantity() .'</h5>
-						<h5 class="card-title text-center text-danger" name="hidden_price">PartPrice:'.$SparePart->getpartPrice() .' LE</h5>
+						<h5 class="card-title text-center text-secondary" name="partCountry">Country: '.$SparePart->getpartCountry() .'</h5>
+						<h5 class="card-title text-center text-secondary" name="quantity">PartQuantity:'.$SparePart->getpartQuantity() .'</h5>
+						<h5 class="card-title text-center text-warning" name="hidden_price">PartPrice:'.$SparePart->getpartPrice() .' LE</h5>
 
 		  			 </div>
-		  			 <form action="Transactions.php?action=Import='.$SparePart->getPartNumber().'" method="post">
+		  			 <form action="Transactions.php?action=Import&id='.$SparePart->getPartNumber().'" method="post">
 		  			 <div class="card-footer p-1">
 		  			 	
 						<input type="text"  name="Qty" value="1"><br><br>
-						<button type="submit"  class="btn btn-info btn-block" name="Import" id="Import" >Import</button><br>
+						<button type="submit"  class="btn btn-warning btn-block" name="Import" id="Import" >Import</button><br>
 					</form>
-
-					<form action="Transactions.php?action=cart&id='.$SparePart->getPartNumber().'" method="post">
-					 <input type="hidden" id="hidden_PartNumber" name="hidden_PartNumber"'.$SparePart->getPartNumber() .'>
-					 <input type="hidden" id="hidden_partName" name="hidden_partName"'.$SparePart->getPartName() .'>
-					
-					 <input type="hidden" name="hidden_PartPrice"'.$SparePart->getpartPrice() .' >
+					<form action="Cart.php?action=cart&partNumber='.$SparePart->getPartNumber().'" method="post">
 					 <input type="text" id="Qty" name="Qty" value="1"><br><br>
-						<button type="submit"  class="btn btn-info btn-block" name="cart" id="cart" ><i class ="fas fa-cart-plus"></i>&nbsp;&nbsp;Add to Cart</button><br>
+						<button type="submit"  class="btn btn-warning btn-block" name="cart" id="cart"><i class ="fas fa-cart-plus"></i>&nbsp;&nbsp;Add to Cart</button><br>
 						</form>
 		  			 </div>
 		  			 
