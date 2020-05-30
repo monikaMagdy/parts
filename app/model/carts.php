@@ -23,7 +23,7 @@ class Carts extends Model
 	{
 		return $this->totalPriceWithTax;
 	}
-
+//sum of
 	function fillArray()
 	{
 		
@@ -32,11 +32,12 @@ class Carts extends Model
 		$sum=0;
 		while ($row = $result->fetch_assoc()) 
 		{
-			$sum+=$row["PartPrice"]+$row["PartPrice"]*$row["partQuantity"];
+			$sum+=$row["PartPrice"]*$row["partQuantity"];
 			array_push($this->carts,new Cart($row["id"]) );
 		}
-		$this->totalPriceWithTax=$sum;
+		$this->totalPrice=$sum;
 	}
+	//tax 
 	function fillArray2()
 	{
 		
@@ -45,10 +46,11 @@ class Carts extends Model
 		$sum=0;
 		while ($row = $result->fetch_assoc()) 
 		{
-			$sum+=$row["PartPrice"]*$row["partQuantity"]*0.14;
+			$sum+=$row["PartPrice"]*$row["partQuantity"];
+			$tax=$sum+($sum*0.14);
 			array_push($this->carts,new Cart($row["id"]) );
 		}
-		$this->totalPrice=$sum;
+		$this->totalPriceWithTax=$tax;
 	}
 
 	function getCarts()
