@@ -48,15 +48,6 @@ class ViewCart extends View
        <table id="items">
         <tr >
             <td>
-              ExportID:  
-            </td>
-            <td>
-             companyID:
-            </td>
-            <td>
-              carID:
-            </td>
-            <td>
               PartNumber :
             </td>
             <td>
@@ -72,21 +63,21 @@ class ViewCart extends View
               TotalPrice:
             </td>
             <td>
-              Date
-            </td>
+              Total Price with taxis:
+          </td>
+           
             </tr>';
      foreach ($this->model-> getCarts() as $cart) 
     {
       $str.="<tr>";
-       $str.="<td ><label name='companyID'>".$cart->getid() ."</label>  </td> ";
-      $str.="<td ><label name='companyID'>".$cart->getcompanyID() ."</label>  </td> ";
-      $str.="<td ><label name='Time Stamp'>".$cart->gettimStamp() ."</label></td> ";
       $str.="<td ><label name='PartNumber'>".$cart->getpartNumber()."</label></td> ";
       $str.="<td ><label name='PartName'>".$cart->getPartName()."</label></td> ";
       $str.="<td ><label name='Quantity'>".$cart->getpartQuantity()."</label></td> ";
       $str.="<td ><label name='itemPrice'>".$cart->getPartPrice()."</label></td> ";
-      $str.="<td ><label name='TotalCost'>".$cart->gettotalPrice()."</label></td> ";
-     /* $str.="<td>
+      $str.="<td ><label name='TotalCost'>".$this->model->gettotalPrice()."</label></td> ";
+      $str.="<td ><label name='TotalCost'>".$this->model->gettotalPriceWithTax()."</label></td> ";
+
+      /* $str.="<td>
       <a href='exportIndex.php?action=delete&id=".$export->getExportID()."'>Delete</a>
       </td>
       ";*/
@@ -111,6 +102,10 @@ class ViewCart extends View
  </form>";
 
       return $str;
+    }
+
+    function add_to_Cart(){
+
     }
   }
   ?>

@@ -89,14 +89,7 @@ class Cart extends Model
 	{
 		return $this->timStamp = $timStamp;
 	}
-	function gettotalPrice() 
-	{
-		return $this->totalPrice;
-	}	
-	function settotalPrice($totalPrice)
-	{
-		return $this->totalPrice = $totalPrice;
-	}
+
 	function getid()
 	{
 		return $this->id;
@@ -117,7 +110,7 @@ class Cart extends Model
 			$this->PartPrice = $row["PartPrice"];
 			$this->partQuantity=$row["partQuantity"];
 			$this->timStamp=$row["timStamp"];
-			$this->totalPrice=$row["totalPrice"];
+			//$this->totalPrice=$row["totalPrice"];
 		}
 		else 
 		{
@@ -130,8 +123,13 @@ class Cart extends Model
 			$this->totalPrice="";
 		}	
 	}
-	function CalculatePartPrice($partNumber,$partQuantity){
-		$sql="UPDATE `cart` SET totalPrice=$this->partQuantity*$PartPrice where PartNumber=$this->PartNumber ";
+
+function add_to_Cart($partNumber,$partQuantity){
+	$sql= 
+	"INSERT INTO `cart` (partNumber,partQuantity,PartPrice,PartName) 
+	SELECT partNumber,partQuantity,PartPrice,PartName 
+	FROM `sparepart`
+	where partNumber=$this->partNumber AND partQuantity=$this->partQuantity";
 		$d1= Database::GetInstance();
 		$result = mysqli_query($d1->GetConnection(), $sql);
 			
@@ -144,21 +142,37 @@ class Cart extends Model
 			{
 				echo "ERROR: Could not able to execute $sql. " ;
 			}
-		}
+}
+
+	// function CalculatePartPrice($partNumber,$partQuantity){
+	// 	$sql="UPDATE `cart` SET totalPrice=$this->partQuantity*$PartPrice where PartNumber=$this->PartNumber ";
+	// 	$d1= Database::GetInstance();
+	// 	$result = mysqli_query($d1->GetConnection(), $sql);
+			
+	// 		if($sql)
+	// 		{
+	// 			echo "updated successfully.";
+	// 			$this->readCart($this->id);
+	// 		} 
+	// 		else
+	// 		{
+	// 			echo "ERROR: Could not able to execute $sql. " ;
+	// 		}
+	// 	}
 	
-    function CalculateTax($partNumber, $partQuantity)
-    {
-        $sql="UPDATE `cart` SET totalPrice=$totalPrice+$this->partQuantity*$PartPrice*0.14 where PartNumber=$this->PartNumber";
-        $d1= Database::GetInstance();
-        $result = mysqli_query($d1->GetConnection(), $sql);
+    // function CalculateTax($partNumber, $partQuantity)
+    // {
+    //     $sql="UPDATE `cart` SET totalPrice=$totalPrice+$this->partQuantity*$PartPrice*0.14 where PartNumber=$this->PartNumber";
+    //     $d1= Database::GetInstance();
+    //     $result = mysqli_query($d1->GetConnection(), $sql);
             
-        if ($sql) {
-            echo "updated successfully.";
-            $this->readCart($this->id);
-        } else {
-            echo "ERROR: Could not able to execute $sql. " ;
-        }
-    }
+    //     if ($sql) {
+    //         echo "updated successfully.";
+    //         $this->readCart($this->id);
+    //     } else {
+    //         echo "ERROR: Could not able to execute $sql. " ;
+    //     }
+   // }
 
 
 	function deleteCart($id){
