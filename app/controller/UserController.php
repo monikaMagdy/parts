@@ -86,25 +86,6 @@ class UserController extends controller
 		$this->model->Model_deleteUser();
 	}
 
-	//Employee
-/*	public function Con_insertEmployee() 
-	{
-		$EmployName = $_REQUEST['EmployName'];
-		$UserName = $_REQUEST['UserName'];
-		$Email=$_REQUEST['Email'];
-		$SocialID=$_REQUEST['SocailID'];
-		$age = $_REQUEST['age'];
-		$phoneNumber = $_REQUEST['phoneNumber'];
-		$address=$_REQUEST['address'];
-		
-		if (empty($EmployName)||empty($UserName)||empty($Email)||empty($SocailID)||empty($age)||empty($phoneNumber)||empty($address))
-		{
-		echo "<script>alert('Please Fill The empty space');
-		 </script>";
-		}
-		else 
-
-		$this->model->insertEmployee($EmployName,$UserName,$Email,$SocialID,$age,$phone);
-	}*/
+	
 }
 ?>

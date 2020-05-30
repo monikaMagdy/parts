@@ -11,6 +11,7 @@ class ViewSparePart extends View
 		<html lang="en">
 		
 		<head>
+		
 		<style>
 		body{
 				color: #fff;
@@ -58,7 +59,7 @@ $str.='
 		  	$str.='<div class="col-sm-6 col-md-4 col-lg-3 mb-2">
 		  			<div class="card-deck">
 		  			 <div class="card p-2 border-seconadry mb-2">
-		  			 <img src="img/'.$SparePart->getimage() .' "class="card-img-top" hight="250"/><br><br><hr>
+		  			 <img src="img/'.$SparePart->getimage() .' "class="card-img-top" hight="250"/><b1r><br><hr>
 		  			 <div class="card-body p-1">
 		  			 
 		  			 	<h5 class="card-title text-center text-info" name="partName">PartName: '.$SparePart->getPartName() .'</h5>
