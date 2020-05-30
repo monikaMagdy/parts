@@ -12,6 +12,7 @@ $view = new ViewCart($controller, $model);
 */
 
 if (isset($_GET['action']) && !empty($_GET['action']))
+
  {
 	switch($_GET['action'])
 	{

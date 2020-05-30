@@ -56,13 +56,7 @@ class ViewUser extends View
            				<button type='submit' class='btn btn-warning' name='Edit' id='Edit' onclick=\"location.href='index.php?action=edit'\">Edit User</button>
            			</div>
            		</div>";
-		$str.="<br><br>
-				<div class='portfolio-caption'>
-           			<div class='btn-group btn-group-lg'>
-           				<button type='submit' class='btn btn-warning' name='delete' id='delete' onclick=\"location.href='index.php?action=delete'\">Delete User</button>
-           			</div>
-           		</div>";
-		$str.="<br><br>
+				$str.="<br><br>
 				<div class='portfolio-caption'>
 		           <div class='btn-group btn-group-lg'>
         			   <button type='submit' class='btn btn-warning' name='Show' id='Show' onclick=\"location.href='registerForm.php?action=show'\">View Users</button>
@@ -132,7 +126,15 @@ $str='<!DOCTYPE html>
         $str.="<td>".$User->getEmail()."</td> ";
        	$str.="<td>".$User->getPhoneNumber()."</td> ";
         $str.="<td>".$User->getRole() ."</td> ";
+        $str.="<td><br><br>
+				<div class='portfolio-caption'>
+           			<div class='btn-group btn-group-lg'>
+           				<button type='submit' class='btn btn-warning' name='delete' id='delete' onclick=\"location.href='index.php?action=delete&id=".$User->getID()."\">Delete User</button>
+           			</div>
+           		</div></td>";
+
         $str.="</tr>";
+
     }
       $str.="</table>
       <br>
