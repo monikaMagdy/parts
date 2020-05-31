@@ -8,13 +8,7 @@ class ExportController extends controller
 	{
 		//session_start();
 		
-		$newArr = array( $CompanyID, $CarID, $PartNumber, $PartName, $Quantity, $itemPrice, $TotalCost);
-		if(isset($_SESSION['currExport']) && $_SESSION['currExport'] != ''){
-			array_push($_SESSION['currExport'], $newArr);
-		}else{
-			$_SESSION['currExport'] = array($newArr);
-		}
-		/*
+	
 		$CompanyID=$_REQUEST['companyID'];
 		$CarID = $_REQUEST['CarID'];
 		$PartNumber=$_REQUEST['PartNumber'];
@@ -28,8 +22,8 @@ class ExportController extends controller
 		 echo "<script>alert('Please Fill The empty space');
 		 </script>";
 	    }
-		*/
-		//$this->model->Model_insertExport($CompanyID,$CarID,$PartNumber,$PartName, $Quantity, $itemPrice, $TotalCost);
+		
+		$this->model->Model_insertExport($CompanyID,$CarID,$PartNumber,$PartName, $Quantity, $itemPrice, $TotalCost);
 	}
 
 	public function Con_submitExport(){

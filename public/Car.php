@@ -28,11 +28,11 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 		break;
 		case 'editAction':
 			$controller->editCar($_GET['id']);
-			 $view->output();
+			$view->output();
 			break;
 		case'delete':
 			$controller->delete($_GET['id']);
-			echo $view->output();
+			echo header("location:Car.php");
 	}
 
 }

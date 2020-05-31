@@ -124,7 +124,8 @@ class Cart extends Model
 		}	
 	}
 
-function add_to_Cart($partNumber,$partQuantity){
+function add_to_Cart($partNumber,$partQuantity)
+{
 	$sql= 
 	"INSERT INTO `cart` (partNumber,partQuantity,PartPrice,PartName) 
 	SELECT partNumber,partQuantity,PartPrice,PartName 
@@ -173,9 +174,8 @@ function add_to_Cart($partNumber,$partQuantity){
     //         echo "ERROR: Could not able to execute $sql. " ;
     //     }
    // }
-
-
-	function deleteCart($id){
+	function deleteCart()
+	{
 	$sql="DELETE FROM cart where id=$this->id;";
 	$d1= Database::GetInstance();
 	$result = mysqli_query($d1->GetConnection(), $sql);

@@ -44,9 +44,8 @@ class ViewCart extends View
           <h3 class="section-subheading text-muted">Add to Cart</h3>
         </div>
       </div>
-      
-       <table id="items">
-        <tr >
+    
+      <table id="items">
             <td>
               PartNumber :
             </td>
@@ -54,58 +53,71 @@ class ViewCart extends View
               PartName :
             </td>
             <td>
-              quantity:
+              Quantity:
             </td>
             <td>
               ItemPrice:
             </td>
+            <!---
             <td>
-              TotalPrice:
+              total Parts:
             </td>
             <td>
-              Total Price with taxis:
-          </td>
+              Total Price:
+          </td>----->
            
             </tr>';
-     foreach ($this->model-> getCarts() as $cart) 
+     foreach ($this->model->getCarts() as $cart) 
     {
       $str.="<tr>";
       $str.="<td ><label name='PartNumber'>".$cart->getpartNumber()."</label></td> ";
       $str.="<td ><label name='PartName'>".$cart->getPartName()."</label></td> ";
       $str.="<td ><label name='Quantity'>".$cart->getpartQuantity()."</label></td> ";
-      $str.="<td ><label name='itemPrice'>".$cart->getPartPrice()."</label></td> ";
-      $str.="<td ><label name='TotalCost'>".$this->model->gettotalPrice()."</label></td> ";
-      $str.="<td ><label name='TotalCost'>".$this->model->gettotalPriceWithTax()."</label></td> ";
-
-      /* $str.="<td>
-      <a href='exportIndex.php?action=delete&id=".$export->getExportID()."'>Delete</a>
-      </td>
-      ";*/
+      $str.="<td ><label name='itemPrice'>".$cart->getPartPrice()."</label></td>";
+      $str.="
+      <td>
+      <div class='portfolio-caption'>
+              <div class='btn-group btn-group-lg'>
+                <button type='submit' class='btn btn-warning'
+                 name='delete' id='delete' 
+                 onclick=\"location.href='Cart.php?action=delete&cartID=".$cart->getid()."'\">
+                Delete</button>
+              </div>
+            </div>";
+      $str.="</tr>";
     }
-      $str.='
+      $str.="
+      <tr>
+      <td>total Parts:</td> <td></td><td>".$this->model->gettotalPrice()."</td><td></td>
+      </tr>
+      <tr>
+       <td>Total Price: </td><td></td><td>".$this->model->gettotalPriceWithTax()."</td><td></td>
+      </tr>
+     
       </table>
      
      
             </div>
           </div>
         </div>
-      </div>
-      
-
-      ';
-      $str.="<form method='post' action='exportIndex.php'>
+      </div> 
+      <div class='portfolio-caption'>
+              <div class='btn-group btn-group-lg'>
+                <button type='submit' class='btn btn-warning'
+                 name='submit' id='submit' 
+                 onclick=\"location.href='exportIndex.php?action=export'\">
+                submit</button>
+              </div>
+            </div>";
+      $str.="<form method='post' action='cart.php'>
       <div class='container'>
         <div class='row-2'>
           <div class='col-lg-3 mx-auto'>
        <div class='modal-body'>
-        <button id= 'back' class='btn btn-primary btn-xl text-uppercase'' name= 'back' type='submit'> back            </button>
+        <button id= 'back' class='btn btn-primary btn-xl text-uppercase'' name= 'back' type='submit'> back</button>
  </form>";
 
       return $str;
-    }
-
-    function add_to_Cart(){
-
     }
   }
   ?>

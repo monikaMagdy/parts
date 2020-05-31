@@ -121,7 +121,7 @@ class Company extends Model
 		}
 	}
 
-	function deleteCompany()
+	function deleteCompany($LocalCompanyID)
 	{
 		$sql="DELETE FROM localcompany where LocalCompanyID=$this->LocalCompanyID;";
 		$d1= Database::GetInstance();

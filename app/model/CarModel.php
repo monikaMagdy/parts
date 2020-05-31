@@ -95,7 +95,7 @@ class Car extends Model
 
 	function Model_editCar($CarName,$CarModel,$CarYear)
 	{
-		$edit = "UPDATE `car` SET CarName='$CarName',CarModel='$CarModel',CarYear='$CarYear' where CarID=$this->CarID" ;
+		$edit = "UPDATE `car` SET CarName='$CarName',CarModel='$CarModel',CarYear='$CarYear' where CarID=$this->CarID;" ;
 
         $d1= Database::GetInstance();
         $result = mysqli_query($d1->GetConnection(), $edit);
@@ -106,7 +106,7 @@ class Car extends Model
 		} 
 		else
 		{
-			echo "ERROR: Could not able to execute $sql. " ;
+			echo "ERROR: Could not able to execute $edit. " ;
 		}
 	}
 

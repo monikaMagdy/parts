@@ -12,18 +12,18 @@ $view = new ViewCart($controller, $model);
 */
 
 if (isset($_GET['action']) && !empty($_GET['action']))
-
  {
 	switch($_GET['action'])
 	{
-		
-	case 'cart':
-		echo $controller->Con_addCart($_GET['partNumber'],$_POST['Qty']);
+		case'cart':
+			 $controller->Con_addCart($_GET['partNumber'],$_POST['Qty']);
 		echo $view->output();
-   break;
-
+		break;
+		case 'delete':
+			$controller->delete($_GET['cartID']);
+			echo $view->output();
+			break;
 	}
-
 }
 else
 	echo $view->output();
