@@ -8,6 +8,7 @@ class Export extends Model
 {
   private $ExportID;
   private $companyID;
+  private $compnayName;
   private $CarID;
   private $PartNumber;
   private $PartName;    
@@ -15,7 +16,7 @@ class Export extends Model
   private $itemPrice;
   private $TotalCost;
 
- function __construct($ExportID,$companyID="",$CarID="",$PartNumber="",$PartName="",$Quantity="",$itemPrice="",$TotalCost="")
+ function __construct($ExportID,$companyID="",$compnayName="",$CarID="",$PartNumber="",$PartName="",$Quantity="",$itemPrice="",$TotalCost="")
   {
     $this->ExportID = $ExportID;
     $d1= Database::GetInstance();
@@ -28,6 +29,7 @@ class Export extends Model
     else
     {
       $this->companyID=$companyID;
+      $this->companyName=$compnayName;
       $this->CarID = $CarID;
       $this->PartNumber=$PartNumber;
       $this->PartName=$PartName;
@@ -44,6 +46,14 @@ class Export extends Model
   function setCompanyID($companyID)
   {
     return $this->companyID = $companyID;
+  }
+  function getCompanyName()
+  {
+    return $this->CompanyName;
+  }
+  function setcompnayName($compnayName)
+  {
+    return $this->compnayName = $compnayName;
   }
   function getCarID()
   {
@@ -112,6 +122,7 @@ class Export extends Model
     {
         $row=mysqli_fetch_array($result);
         $this->companyID=$row["localCompanyID"];
+        $this->companyName=$row['companyName'];
         $this->CarID = $row["CarID"];
         $this->PartNumber=$row["PartNumber"];
         $this->PartName=$row["PartName"];
@@ -122,6 +133,7 @@ class Export extends Model
     else 
     {
       $this->companyID="";
+      $this->companyName="";
       $this->CarID="";
       $this->PartNumber="";
       $this->PartName="";

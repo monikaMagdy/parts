@@ -14,7 +14,7 @@ if (isset($_GET['action']) && !empty($_GET['action'])){
  	switch($_GET['action'])
 	{
 		case'export':
-			$controller->Con_insertExport();
+			$controller->Con_insertExport($CompanyID,$companyName,$PartNumber,$PartName, $Quantity, $itemPrice, $totalPrice);
 			break;
 		case 'edit':
 			echo $view->ViewExportEdit($_GET['id']);

@@ -75,7 +75,8 @@ class ViewCart extends View
             
      foreach ($this->model->getCarts() as $cart) 
     {
-      $str.="<tr>";
+      $str.="<form action='exportIndex.php?action=export' method='post'>
+      <tr>";
       /*$str.="<td><select name='company'>";
       $company =$mysqli->query("SELECT * FROM company;");
       while($row ->fetech_assoc ())
@@ -101,7 +102,9 @@ class ViewCart extends View
             </div>";
       $str.="</tr>";
     }
+    
       $str.="
+
       <tr>
       <td><label name='totalParts'>total Parts:</td> <td></td><td>".$this->model->gettotalPrice()."</td><td></td>
       </tr>
@@ -110,6 +113,14 @@ class ViewCart extends View
       </tr>
      
       </table>
+      <div class='portfolio-caption'>
+              <div class='btn-group btn-group-lg'>
+                <button type='submit' class='btn btn-warning'
+                 name='submit' id='submit' >
+                Export</button>
+              </div>
+            </div>
+            </form>
      
      
             </div>
@@ -118,7 +129,7 @@ class ViewCart extends View
       </div> ";
     
 
-       $str.=" <form action='exportIndex.php?action=export' method='post'>
+       $str.=" 
        <div class='portfolio-caption'>
               <div class='btn-group btn-group-lg'>
                 <button type='submit' class='btn btn-warning'

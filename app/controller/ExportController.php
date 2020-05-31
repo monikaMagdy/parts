@@ -4,33 +4,10 @@ require_once(__ROOT__ . "controller/Controller.php");
 
 class ExportController extends controller
 {
-	public function Con_insertExport()
+	public function Con_insertExport($CompanyID,$companyName,$PartNumber,$PartName, $Quantity, $itemPrice, $totalPrice)
 	{
-		$CompanyID=$_REQUEST['companyID'];
-		$CarID = $_REQUEST['CarID'];
-		$PartNumber=$_REQUEST['PartNumber'];
-		$PartName=$_REQUEST['PartName'];
-		$Quantity = $_REQUEST['Quantity'];
-		$itemPrice = $_REQUEST['itemPrice'];
-		$totalPrice = $_REQUEST['totalPrice'];
-
-		if(empty($_REQUEST['companyID']) || empty($_REQUEST['CarID'])|| empty($_REQUEST['PartNumber'])||empty($_REQUEST['PartName'])||empty($_REQUEST['Quantity'])||empty($_REQUEST['itemPrice'])||empty($_REQUEST['totalPrice']))	
-	    {
-		 echo "<script>alert('Please Fill The empty space');
-		 </script>";
-	    }
 		
-		$this->model->Model_insertExport($CompanyID,$CarID,$PartNumber,$PartName, $Quantity, $itemPrice, $totalPrice);
-	}
-
-	public function Con_submitExport(){
-		if(isset($_SESSION['currExport']) && $_SESSION['currExport'] != ''){
-			$currArray = $_SESSION["currExport"];
-			for($i = 0 ; $i < sizeof($currArray) ; $i++){
-				$this->model->Model_insertExport($currArray[$i][0],$currArray[$i][1],$currArray[$i][2],$currArray[$i][3], $currArray[$i][4], $currArray[$i][5], $currArray[$i][6]);
-			}
-			$_SESSION['currExport'] = "";
-		}
+		$this->model->Model_insertExport($CompanyID,$companyName,$PartNumber,$PartName, $Quantity, $itemPrice, $totalPrice);
 	}
 
 	public function Con_editExport($idExport) 

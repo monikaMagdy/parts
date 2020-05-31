@@ -55,12 +55,16 @@ class Exports extends Model
 		}
 	}
 
-	function Model_insertExport($companyID,$CarID,$PartNumber,$PartName, $Quantity, $itemPrice, $TotalCost)
+	function Model_insertExport($companyID,$companyName,$PartNumber,$PartName,$Quantity,$itemPrice,$TotalCost)
 	{
+		$company="SELECT LocalCompanyID , CompanyName FROM localcompany where LocalCompanyID=$companyID;";
+		$d1= Database::GetInstance();
+		$result1 = mysqli_query($d1->GetConnection(), $company);
+		$row1=mysqli_fetch_array($result1);
 		$sql = "INSERT INTO export 
 		(
 		localCompanyID,
-		CarID,
+		companyName,
 		PartNumber,
 		PartName,
 		Quantity,
@@ -69,19 +73,18 @@ class Exports extends Model
 		)
 		VALUES
 		(
-		 '$companyID',
-		 '$CarID',
-		 '$PartNumber',
-		 '$PartName',
-		 '$Quantity',
-		  '$itemPrice',
-		   '$TotalCost'
+		'$companyID',
+		'$companyName',
+		'$PartNumber',
+		'$PartName',
+		'$Quantity',
+		'$itemPrice',
+		'$TotalCost'
 		)";
-	 	$d1= Database::GetInstance();
-        $result = mysqli_query($d1->GetConnection(), $sql);
+		 $d1= Database::GetInstance();
+		$result = mysqli_query($d1->GetConnection(), $sql);
 		if ($sql){
-			echo "Record was successfully added<br>";
-			$this->fillArray();
+			echo "<br>Record was successfully added<br>";
 		} 
 		else{
 			echo "ERROR: Could not able to execute $sql. " ;
