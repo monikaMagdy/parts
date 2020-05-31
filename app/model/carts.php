@@ -12,7 +12,7 @@ class Carts extends Model
 	{
        $d1= Database::GetInstance();
        $d1->GetConnection();
-	   $this->fillArray2();
+	   $this->fillArray();
 	}
 	function gettotalPrice() 
 	{
@@ -25,7 +25,7 @@ class Carts extends Model
 
 
 	//tax 
-	function fillArray2()
+	function fillArray()
 	{
 		
 		$this->carts=array();
@@ -33,17 +33,18 @@ class Carts extends Model
 		$sum=0;
 		while ($row = $result->fetch_assoc()) 
 		{
-			$temp+=$row["PartPrice"]*$row["partQuantity"];
-			$sum=$temp+($temp*0.14);
+			$sum+=$row["PartPrice"]*$row["partQuantity"];
+			$tax=$sum+($sum*0.14);
 			array_push($this->carts,new Cart($row["id"]) );
 		}
-		$this->totalPriceWithTax=$sum;
+		$this->totalPrice=$sum;
+		$this->totalPriceWithTax=$tax;
 
 	}
 
 	function getCarts()
 	{
-		$this->fillArray2();
+		$this->fillArray();
 		return $this->carts;
 	}
 	function getcart($id)
@@ -61,7 +62,7 @@ class Carts extends Model
 		$sql="SELECT * FROM cart";
 		 $d1= Database::GetInstance();
         $result = mysqli_query($d1->GetConnection(), $sql);
-		if ($result->num_rows >0){
+		if ($result->num_rows >-1){
 			return $result;
 		}
 		else {

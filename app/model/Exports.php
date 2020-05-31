@@ -19,7 +19,7 @@ class Exports extends Model
 		$result = $this->readExport();
 		while ($row = $result->fetch_assoc())
 		{
-			array_push($this->Exports, new Export($row['ExportID'],$row["localCompanyID"],$row["CarID"],$row["PartNumber"],$row["PartName"],$row["Quantity"],$row["itemPrice"],$row["TotalCost"]));
+			array_push($this->Exports, new Export($row['ExportID']));
 		}
 	}
 

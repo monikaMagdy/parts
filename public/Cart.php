@@ -7,9 +7,7 @@ include"menu.php";
 $model = new carts();
 $controller = new CartController($model);
 $view = new ViewCart($controller, $model);
-//
-/*/
-*/
+
 
 if (isset($_GET['action']) && !empty($_GET['action']))
  {

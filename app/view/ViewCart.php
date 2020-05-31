@@ -43,33 +43,48 @@ class ViewCart extends View
           <h2 class="section-heading text-uppercase">Your cart</h2>
           <h3 class="section-subheading text-muted">Add to Cart</h3>
         </div>
-      </div>
-    
-      <table id="items">
+      </div>';
+  
+      $str.='<table id="items">
+      <tr>
+       
             <td>
-              PartNumber :
+              PartNumber 
             </td>
             <td>
-              PartName :
+              PartName 
             </td>
             <td>
-              Quantity:
+              Quantity
             </td>
             <td>
-              ItemPrice:
+              ItemPrice
+            </td>
+            <td> 
+              Delete Cart
             </td>
             <!---
             <td>
-              total Parts:
+              total Parts
             </td>
             <td>
-              Total Price:
+              Total Price
           </td>----->
            
             </tr>';
+            
      foreach ($this->model->getCarts() as $cart) 
     {
       $str.="<tr>";
+      /*$str.="<td><select name='company'>";
+      $company =$mysqli->query("SELECT * FROM company;");
+      while($row ->fetech_assoc ())
+      {
+        
+        echo"<option name='companyName' value='".$row['CompanyName']."'></option>";
+      }
+  $str.="<td></td>";*/
+      $str.='</select></td>';
       $str.="<td ><label name='PartNumber'>".$cart->getpartNumber()."</label></td> ";
       $str.="<td ><label name='PartName'>".$cart->getPartName()."</label></td> ";
       $str.="<td ><label name='Quantity'>".$cart->getpartQuantity()."</label></td> ";
@@ -88,10 +103,10 @@ class ViewCart extends View
     }
       $str.="
       <tr>
-      <td>total Parts:</td> <td></td><td>".$this->model->gettotalPrice()."</td><td></td>
+      <td><label name='totalParts'>total Parts:</td> <td></td><td>".$this->model->gettotalPrice()."</td><td></td>
       </tr>
       <tr>
-       <td>Total Price: </td><td></td><td>".$this->model->gettotalPriceWithTax()."</td><td></td>
+       <td><labe name='totalPrice'>Total Price: </td><td></td><td>".$this->model->gettotalPriceWithTax()."</td><td></td>
       </tr>
      
       </table>
@@ -100,15 +115,18 @@ class ViewCart extends View
             </div>
           </div>
         </div>
-      </div> 
-      <div class='portfolio-caption'>
+      </div> ";
+    
+
+       $str.=" <form action='exportIndex.php?action=export' method='post'>
+       <div class='portfolio-caption'>
               <div class='btn-group btn-group-lg'>
                 <button type='submit' class='btn btn-warning'
-                 name='submit' id='submit' 
-                 onclick=\"location.href='exportIndex.php?action=export'\">
-                submit</button>
+                 name='submit' id='submit' >
+                Export</button>
               </div>
-            </div>";
+            </div>
+            </form>";
       $str.="<form method='post' action='cart.php'>
       <div class='container'>
         <div class='row-2'>

@@ -101,7 +101,7 @@ class ViewExport extends View
     .delete {
       display: none;
     }</style>
-		<form action='' method='post'>
+	
      <table id='items'>
         <tr >
             <td>

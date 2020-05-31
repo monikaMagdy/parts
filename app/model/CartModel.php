@@ -10,12 +10,12 @@ class Cart extends Model
 	private $PartName;
 	private $PartPrice;
 	private $partQuantity;
-	private $timStamp;
-	private $totalPrice;
+	//private $totalParts;
+	//private $totalPrice;
 	
 	
 
-	function __construct($id, $companyID="", $partNumber="",$PartName="",$PartPrice="",$partQuantity="",$timStamp="",$totalPrice="")
+	function __construct($id, $companyID="", $partNumber="",$PartName="",$PartPrice="",$partQuantity=""/*,$totalParts="",$totalPrice=""*/)
 	{
 		$this->id = $id;
 		
@@ -32,8 +32,8 @@ class Cart extends Model
 			$this->PartName = $PartName;
 			$this->PartPrice = $PartPrice;
 			$this->partQuantity = $partQuantity;
-			$this->timStamp = $timStamp;
-			$this->totalPrice = $totalPrice;
+			/*$this->totalParts = $totalParts;
+			$this->totalPrice = $totalPrice;*/
 			
 		}
 	}
@@ -81,14 +81,14 @@ class Cart extends Model
 	{
 		return $this->partQuantity = $partQuantity;
 	}
-	function gettimStamp() 
+	/*function gettotalParts() 
 	{
-		return $this->timStamp;
+		return $this->totalParts;
 	}	
-	function settimStamp($timStamp)
+	function settotalParts($totalParts)
 	{
-		return $this->timStamp = $timStamp;
-	}
+		return $this->totalParts = $totalParts;
+	}*/
 
 	function getid()
 	{
@@ -109,8 +109,7 @@ class Cart extends Model
 			$this->PartName = $row["PartName"];
 			$this->PartPrice = $row["PartPrice"];
 			$this->partQuantity=$row["partQuantity"];
-			$this->timStamp=$row["timStamp"];
-			//$this->totalPrice=$row["totalPrice"];
+		
 		}
 		else 
 		{
@@ -119,8 +118,7 @@ class Cart extends Model
 			$this->PartName = "";
 			$this->PartPrice= "";
 			$this->partQuantity="";
-			$this->timStamp = "";
-			$this->totalPrice="";
+		
 		}	
 	}
 
@@ -144,36 +142,6 @@ function add_to_Cart($partNumber,$partQuantity)
 				echo "ERROR: Could not able to execute $sql. " ;
 			}
 }
-
-	// function CalculatePartPrice($partNumber,$partQuantity){
-	// 	$sql="UPDATE `cart` SET totalPrice=$this->partQuantity*$PartPrice where PartNumber=$this->PartNumber ";
-	// 	$d1= Database::GetInstance();
-	// 	$result = mysqli_query($d1->GetConnection(), $sql);
-			
-	// 		if($sql)
-	// 		{
-	// 			echo "updated successfully.";
-	// 			$this->readCart($this->id);
-	// 		} 
-	// 		else
-	// 		{
-	// 			echo "ERROR: Could not able to execute $sql. " ;
-	// 		}
-	// 	}
-	
-    // function CalculateTax($partNumber, $partQuantity)
-    // {
-    //     $sql="UPDATE `cart` SET totalPrice=$totalPrice+$this->partQuantity*$PartPrice*0.14 where PartNumber=$this->PartNumber";
-    //     $d1= Database::GetInstance();
-    //     $result = mysqli_query($d1->GetConnection(), $sql);
-            
-    //     if ($sql) {
-    //         echo "updated successfully.";
-    //         $this->readCart($this->id);
-    //     } else {
-    //         echo "ERROR: Could not able to execute $sql. " ;
-    //     }
-   // }
 	function deleteCart()
 	{
 	$sql="DELETE FROM cart where id=$this->id;";
