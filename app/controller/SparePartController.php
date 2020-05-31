@@ -4,12 +4,6 @@ require_once(__ROOT__ . "controller/Controller.php");
 
 class SparePartController extends Controller
 {
-	// public function import()
-	// {
-	// 	$partQuantity=$_REQUEST['quantity'];
-	// 	$this->model->getSparePart($PartNumber)-> Model_IncQty($partQuantity);
-	
-	// }
 	public function Con_addSparePart($CarID)
 	{
 		$PartNumber=$_REQUEST['PartNumber'];
@@ -100,22 +94,14 @@ class SparePartController extends Controller
 
 	public function delete($PartNumber)
 	{
-		// if(empty($_POST['PartNumber']) || empty($_POST['PartName'])|| empty($_POST['partCountry'])||empty($_POST['carName'])||empty($_POST['partPrice'])||empty($_POST['partQuantity'])||empty($_POST['image']))	
-	    // {
-		//  echo "<script>alert('There is no parts to delete');
-		//  </script>";
-	    // }
-	    // else
 		$this->model->getSparePart($PartNumber)->deleteSparePart($PartNumber);
 	}
 	public function import($PartNumber, $partQuantity)
 	{
-		// $partQuantity=$_['Qty'];
 		$this->model->getSparePart($PartNumber)->Model_IncQty($PartNumber, $partQuantity);
 	}
 	public function export($PartNumber, $partQuantity)
 	{
-		//$partQuantity=$_REQUEST['partQuantity'];
 		$this->model->getSparePart($PartNumber)->Model_decreseQty($PartNumber, $partQuantity);
 	}
 

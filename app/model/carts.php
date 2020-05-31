@@ -12,7 +12,6 @@ class Carts extends Model
 	{
        $d1= Database::GetInstance();
        $d1->GetConnection();
-	  //$this->fillArray();
 	   $this->fillArray2();
 	}
 	function gettotalPrice() 
@@ -23,23 +22,8 @@ class Carts extends Model
 	{
 		return $this->totalPriceWithTax;
 	}
-//sum of
-	/*function fillArray()
-	{
-		
-		$this->carts=array();
-		$result =$this->readCarts();
-		$sum=0;
-		while ($row = $result->fetch_assoc()) 
-		{
-			$sum+=$row["PartPrice"]*$row["partQuantity"];
-			echo $row["id"];
 
 
-			array_push($this->carts,new Cart($row["id"]) );
-		}
-		$this->totalPrice=$sum;
-	}*/
 	//tax 
 	function fillArray2()
 	{
@@ -49,12 +33,12 @@ class Carts extends Model
 		$sum=0;
 		while ($row = $result->fetch_assoc()) 
 		{
-			$sum+=$row["PartPrice"]*$row["partQuantity"];
-			$tax=$sum+($sum*0.14);
+			$temp+=$row["PartPrice"]*$row["partQuantity"];
+			$sum=$temp+($temp*0.14);
 			array_push($this->carts,new Cart($row["id"]) );
 		}
-		$this->totalPriceWithTax=$tax;
-		$this->totalPrice=$sum;
+		$this->totalPriceWithTax=$sum;
+
 	}
 
 	function getCarts()

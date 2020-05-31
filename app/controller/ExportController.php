@@ -6,9 +6,6 @@ class ExportController extends controller
 {
 	public function Con_insertExport($CompanyID, $CarID, $PartNumber, $PartName,$Quantity, $itemPrice, $TotalCost)
 	{
-		//session_start();
-		
-	
 		$CompanyID=$_REQUEST['companyID'];
 		$CarID = $_REQUEST['CarID'];
 		$PartNumber=$_REQUEST['PartNumber'];

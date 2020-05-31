@@ -4,7 +4,6 @@
         session_start(); 
     } 
 require_once(__ROOT__ . "controller/Controller.php");
-//"ID`, `FullName`, `username`, `email`, `password`, `Age`, `phoneNumber`, `Role`"
 class UserController extends controller
 {
 	//Manger
