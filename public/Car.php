@@ -16,19 +16,20 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 
  	switch($_GET['action'])
 	{
+		//'add' referes to the name of the action to redirect in this swithch case 
 		case 'add':
 			echo $view->addCar();
-		break;
+			break;
 		case 'addAction':
 			$controller->Con_addCar();
-			$view->output();
+			echo header("location:Car.php");
 			break;
-			case 'edit':
+		case 'edit':
 			echo $view->viewEditCar($_GET['id']);
-		break;
+			break;
 		case 'editAction':
 			$controller->editCar($_GET['id']);
-			$view->output();
+			echo header("location:Car.php");
 			break;
 		case'delete':
 			$controller->delete($_GET['id']);
