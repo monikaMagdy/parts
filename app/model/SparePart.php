@@ -6,14 +6,13 @@ class SparePart extends Model
 	private $PartNumber;
 	private $PartName;
 	private $partCountry;
-	private $carName;
 	private $partPrice;
 	private $partQuantity;
 	private $image;
 	private $CarID;
 	private $user_ID;
 	
-	function __construct($PartNumber,$PartName="",$partCountry="",$carName="",$partPrice="",$partQuantity="",$image="",$CarID="",$user_ID="")
+	function __construct($PartNumber,$PartName="",$partCountry="",$partPrice="",$partQuantity="",$image="",$CarID="",$user_ID="")
 	{
 		$this->PartNumber = $PartNumber;
         $d1= Database::GetInstance();
@@ -26,7 +25,6 @@ class SparePart extends Model
 	    {
 	        $this->PartName = $PartName;
 	        $this->partCountry = $partCountry;
-	        $this->carName = $carName;
 	        $this->partPrice = $partPrice;
 	        $this->partQuantity = $partQuantity;
 	        $this->image = $image;
@@ -61,14 +59,7 @@ class SparePart extends Model
 	{
 		return $this->partCountry = $partCountry;
 	}
-	function getcarName() 
-	{
-		return $this->carName;
-	}	
-	function setcarName($carName)
-	{
-		return $this->carName = $carName;
-	}
+
 	
 	function getpartPrice() 
 	{
@@ -123,7 +114,6 @@ class SparePart extends Model
 
 			$this->PartName = $row['PartName'];
 			$this->partCountry = $row['partCountry'];
-			$this->carName=$row['carName'];
 			$this->partPrice = $row['partPrice'];
 			$this->partQuantity = $row['partQuantity'];
 			$this->image = $row['image'];
@@ -135,7 +125,6 @@ class SparePart extends Model
 
 			$this->PartName = "";
 			$this->partCountry ="";
-			$this->carName = "";
 			$this->partPrice = "";
 			$this->partQuantity = "";
 			$this->image = "";
@@ -145,13 +134,13 @@ class SparePart extends Model
 		}	
 	}
 
-	function Model_editSparePart($PartNumber,$PartName,$partCountry,$carName,$partPrice,$partQuantity)
+	function Model_editSparePart($PartNumber,$PartName,$partCountry,$partPrice)
 	{
-		$edit = "UPDATE `sparepart` SET PartName='$PartName',partCountry='$partCountry',carName='$carName',partPrice='$partPrice',partQuantity='$partQuantity' where 
+		$edit = "UPDATE `sparepart` SET PartName='$PartName',partCountry='$partCountry',partPrice='$partPrice' where 
 	PartNumber=	'$PartNumber'" ;
-
-if($this->db->query($edit) === true)
-{
+ $d1= Database::GetInstance();
+ $result = mysqli_query($d1->GetConnection(), $edit);
+ if($edit){
 	echo "updated successfully.";
 	$this->readSparePart($this->PartNumber);
 } 
@@ -215,13 +204,12 @@ else
 		}
 	}
 	
-	function addSparePart($PartNumber,$PartName,$carName,$partCountry,$partPrice,$partQuantity,$image,$CarID,$user_ID)
+	function addSparePart($PartNumber,$PartName,$partCountry,$partPrice,$partQuantity,$image,$CarID,$user_ID)
 	{
 		$sql="INSERT INTO `sparepart`
 		(
 		PartNumber,
 		PartName,
-		carName,
 		partCountry,
 		partPrice,
 		partQuantity,
@@ -233,13 +221,12 @@ else
 	 	(
 	 	'$PartNumber',
 	 	'$PartName',
-		 '$carName',
 	 	'$partCountry',
 	 	'$partPrice',
 	 	'$partQuantity',
 		'$image',
-	    '$CarID',
-		'$user_ID'
+	    ".$_GET['id'].",
+		".$_SESSION['ID']."
 		 
 
 	 	)";
@@ -258,7 +245,6 @@ else
 			$sql="Select
 		sparepart.PartNumber,
 		sparepart.PartName,
-		sparepart.carName,
 		sparepart.partCountry,
 		sparepart.partPrice,
 		sparepart.partQuantity,

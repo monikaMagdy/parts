@@ -4,10 +4,10 @@
 include"View.php";
 
 class ViewSparePart extends View
-{	
-	public function output()
+{
+    public function output()
     {
-		$str='<!DOCTYPE html>
+        $str='<!DOCTYPE html>
 		<html lang="en">
 		
 		<head>
@@ -50,17 +50,21 @@ class ViewSparePart extends View
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>';
-	$str.="	<button type='submit' class='btn btn-warning btn-block' name='add' id='add'
-					 onclick=\"location.href='SparePart.php?action=add&id=".$_POST['CarID']."'\">Add New SparePArt </button>
-				  ";
-$str.='
+        // $str.="	<button type='submit' class='btn btn-warning btn-block' name='add' id='add'
+        // 				 onclick=\"location.href='SparePart.php?action=add&id=".$_POST['CarID']."'\">Add New SparePArt </button>
+        // 			  ";
+        foreach ($this->model->getSpareParts() as $SparePart) {
+            $str.="<button type='submit'class='btn btn-warning btn-block' name='Add' id='Add'
+					    onclick=\"location.href='SparePart.php?action=add&CarID=".$SparePart->getCarID()."&id=undefined'\">Click to add Spare part</button>";
+
+            $str.='
 		<div class="container">
 		 <div class="row mt-2 pb-3">';
-		  foreach ($this->model->getSpareParts() as $SparePart) 
-		  {
-		  	$str.='<div class="col-sm-6 col-md-4 col-lg-3 mb-2">
+            foreach ($this->model->getSpareParts() as $SparePart) {
+                $str.='<div class="col-sm-6 col-md-4 col-lg-3 mb-2">
 		  			<div class="card-deck">
-		  			 <div class="card p-2 border-seconadry mb-2">
+					   <div class="card p-2 border-seconadry mb-2">
+					 
 		  			 <img src="img/'.$SparePart->getimage() .' "class="card-img-top" hight="250"/><b1r><br><hr>
 		  			 <div class="card-body p-1">
 		  			 
@@ -72,7 +76,7 @@ $str.='
 						<h5 class="card-title text-center text-warning" name="hidden_price">PartPrice:'.$SparePart->getpartPrice() .' LE</h5>
 
 					   </div>';
-					   $str.="
+                $str.="
 					   <button type='submit'class='btn btn-warning btn-block' name='Edit' id='Edit'
 					    onclick=\"location.href='SparePart.php?action=edit&id=".$SparePart->getPartNumber()."'\">Edit</button>
 			
@@ -80,7 +84,7 @@ $str.='
 					 onclick=\"location.href='SparePart.php?action=delete&id=".$SparePart->getPartNumber()."'\">Delete </button>
 				   ";
 
-		  			$str.=' <form action="Transactions.php?action=Import&id='.$SparePart->getPartNumber().'" method="post">
+                $str.=' <form action="Transactions.php?action=Import&id='.$SparePart->getPartNumber().'" method="post">
 		  			 <div class="card-footer p-1">
 		  			 	
 						<input type="text"  name="Qty" value="1"><br><br>
@@ -96,19 +100,20 @@ $str.='
 					  
 		  			</div>
 		  		   </div>';
-		  }
-		$str.=' </div>
+            }
+            $str.=' </div>
 		</div>';
-	
-		
+    
+        
 
-		
-		return $str;
-    }  
+        
+            return $str;
+        }
+    }
 
-	function addSparePart()
-	{
-		$str='<!DOCTYPE html>
+        public function addSparePart()
+        {
+            $str='<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -229,11 +234,6 @@ $str.='
 			</div>
 		<br>
 		<div class="form-group">
-			<div><input type="text" class="form-control" name="carName" placeholder="Enter Car Name"/>
-			</div>
-			</div>
-		<br>
-		<div class="form-group">
 			<div>
 				<input type="text" class="form-control" name="partCountry"   placeholder="Enter part country"/>
 			</div>
@@ -264,34 +264,33 @@ $str.='
         	</div>
         </div>
 		</form>';
-		return $str;
-	}
+            return $str;
+        }
 
 
-	public function viewEditSparePart($id)
-	{
-		$str = "";
-		$str.="<table>";
-		$str.="<tr><th>Part Name</th><th>Car Name</th><th>Part Country</th><th>Part price</th></tr>";
-		
-			
-				$str.="<tr>";
-				$str.="<form 
+       public function viewEditSparePart($id)
+        {
+            $str = "";
+            $str.="<table>";
+            $str.="<tr><th>Part Name</th><th>Car Name</th><th>Part Country</th><th>Part price</th></tr>";
+        
+            
+            $str.="<tr>";
+            $str.="<form 
 				action='SparePart.php?action=editAction&id=".$this->model->getPartNumber() ."' method='post'>";
-				$str.="<td><input type='text' name='PartName' value='".$this->model->getPartName() ."'>  </td> ";
-				$str.="<td><input type='text' name='carName' value='".$this->model->getcarName() ."'></td> ";
-				$str.="<td><input type='text' name='partCountry' value='".$this->model->getpartCountry() ."'></td> ";
-				
-				$str.="<td><input type='text' name='partPrice' value='".$this->model->getpartPrice() ."'>  </td> ";
-				//$str.="<td><input type='text' name='partQuantity' value='".$SparePart->getpartQuantity() ."'></td> ";
-				
+            $str.="<td><input type='text' name='PartName' value='".$this->model->getPartName() ."'>  </td> ";
+            $str.="<td><input type='text' name='partCountry' value='".$this->model->getpartCountry() ."'></td> ";
+                
+            $str.="<td><input type='text' name='partPrice' value='".$this->model->getpartPrice() ."'>  </td> ";
+            //$str.="<td><input type='text' name='partQuantity' value='".$SparePart->getpartQuantity() ."'></td> ";
+                
 
-				$str.="<td><input type='submit' value='Change'/></td>";
-				$str.="</form>";
-				$str.="</tr>";
-			
-			
-		
-		return $str;
-	}
-}
+            $str.="<td><input type='submit' value='Change'/></td>";
+            $str.="</form>";
+            $str.="</tr>";
+            
+            
+        
+            return $str;
+        }
+    }

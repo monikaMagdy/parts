@@ -12,11 +12,11 @@ class Export extends Model
   private $CarID;
   private $PartNumber;
   private $PartName;    
-  private $Quantity;
+  private $partQuantity;
   private $itemPrice;
-  private $TotalCost;
+  private $TotalPrice;
 
- function __construct($ExportID,$companyID="",$compnayName="",$CarID="",$PartNumber="",$PartName="",$Quantity="",$itemPrice="",$TotalCost="")
+ function __construct($ExportID,$companyID="",$compnayName="",$CarID="",$PartNumber="",$PartName="",$partQuantity="",$itemPrice="",$TotalPrice="")
   {
     $this->ExportID = $ExportID;
     $d1= Database::GetInstance();
@@ -33,9 +33,9 @@ class Export extends Model
       $this->CarID = $CarID;
       $this->PartNumber=$PartNumber;
       $this->PartName=$PartName;
-      $this->Quantity=$Quantity;
+      $this->partQuantity=$partQuantity;
       $this->itemPrice = $itemPrice;
-      $this->TotalCost = $TotalCost;
+      $this->TotalPrice = $TotalPrice;
     }
   }
 
@@ -79,13 +79,13 @@ class Export extends Model
   {
     return  $this->PartName=$PartName;
   }
-  function getQuantity()
+  function getpartQuantity()
   {
-     $this->Quantity;
+     $this->partQuantity;
   }
-  function setQuantity($Quantity)
+  function setpartQuantity($partQuantity)
   {
-     $this->Quantity=$Quantity;
+     $this->partQuantity=$partQuantity;
   }
   function getitemPrice() 
   {
@@ -96,14 +96,14 @@ class Export extends Model
     return $this->itemPrice = $itemPrice;
   }
   
-  function getTotalCost()
+  function getTotalPrice()
   {
-    return $this->TotalCost;
+    return $this->TotalPrice;
   }
   
-  function setPhone($TotalCost) 
+  function setTotalPrice($TotalPrice) 
   {
-    return $this->TotalCost = $TotalCost;
+    return $this->TotalPrice = $TotalPrice;
   }
 
   function getExportID()
@@ -126,7 +126,7 @@ class Export extends Model
         $this->CarID = $row["CarID"];
         $this->PartNumber=$row["PartNumber"];
         $this->PartName=$row["PartName"];
-        $this->Quantity=$row["Quantity"];
+        $this->partQuantity=$row["partQuantity"];
         $this->itemPrice = $row["itemPrice"];
         $this->TotalCost = $row["TotalCost"];
     }
@@ -137,13 +137,13 @@ class Export extends Model
       $this->CarID="";
       $this->PartNumber="";
       $this->PartName="";
-      $this->Quantity="";
+      $this->partQuantity="";
       $this->itemPrice="";
       $this->TotalCost="";
     }
   }
 
-  function Model_editExport($companyID,$CarID,$PartNumber,$PartName,$Quantity,$itemPrice,$TotalCost)
+  function Model_editExport($companyID,$CarID,$PartNumber,$PartName,$partQuantity,$itemPrice,$TotalCost)
   {
     $editExport="UPDATE `export` SET `localCompanyID`='$companyID',`CarID`='$CarID',`PartNumber`='$PartNumber',`PartName`='$PartName',`Quantity`='$Quantity',`itemPrice`='$itemPrice',`TotalCost`='$TotalCost' WHERE ExportID=$this->ExportID; ";
     $d1= Database::GetInstance();

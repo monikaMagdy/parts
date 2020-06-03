@@ -71,13 +71,12 @@ function fillArray()
 		}
 	}
 
-	function addSparePart($PartNumber,$PartName,$carName,$partCountry,$partPrice,$partQuantity,$image,$CarID,$user_ID)
+	function addSparePart($PartNumber,$PartName,$partCountry,$partPrice,$partQuantity,$image,$CarID,$user_ID)
 	{
 		$sql="INSERT INTO `sparepart`
 		(
 		PartNumber,
 		PartName,
-		carName,
 		partCountry,
 		partPrice,
 		partQuantity,
@@ -89,7 +88,6 @@ function fillArray()
 	 	(
 	 		'$PartNumber',
 	 	'$PartName',
-		 '$carName',
 	 	'$partCountry',
 	 	'$partPrice',
 	 	'$partQuantity',

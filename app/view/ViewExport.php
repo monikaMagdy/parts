@@ -270,9 +270,9 @@ $str.="
       $str.="<td ><label name='CarID'>".$export->getCarID() ."</label></td> ";
       $str.="<td ><label name='PartNumber'>".$export->getPartNumber()."</label></td> ";
       $str.="<td ><label name='PartName'>".$export->getPartName()."</label></td> ";
-      $str.="<td ><label name='Quantity'>".$export->getQuantity()."</label></td> ";
+      $str.="<td ><label name='partQuantity'>".$export->getpartQuantity()."</label></td> ";
       $str.="<td ><label name='itemPrice'>".$export->getitemPrice()."</label></td> ";
-      $str.="<td ><label name='TotalCost'>".$export->getTotalCost()."</label></td> ";
+      $str.="<td ><label name='TotalPrice'>".$export->getTotalPrice()."</label></td> ";
      /* $str.="<td>
       <a href='exportIndex.php?action=delete&id=".$export->getExportID()."'>Delete</a>
       </td>

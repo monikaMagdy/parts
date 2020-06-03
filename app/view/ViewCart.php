@@ -73,35 +73,33 @@ class ViewCart extends View
            
             </tr>';
             
-     foreach ($this->model->getCarts() as $cart) 
-    {
-      $str.="<form action='exportIndex.php?action=export' method='post'>
-      <tr>";
+     foreach ($this->model->getCarts() as $cart) {
+     
       /*$str.="<td><select name='company'>";
       $company =$mysqli->query("SELECT * FROM company;");
       while($row ->fetech_assoc ())
       {
-        
+
         echo"<option name='companyName' value='".$row['CompanyName']."'></option>";
       }
   $str.="<td></td>";*/
-      $str.='</select></td>';
-      $str.="<td ><label name='PartNumber'>".$cart->getpartNumber()."</label></td> ";
-      $str.="<td ><label name='PartName'>".$cart->getPartName()."</label></td> ";
-      $str.="<td ><label name='Quantity'>".$cart->getpartQuantity()."</label></td> ";
-      $str.="<td ><label name='itemPrice'>".$cart->getPartPrice()."</label></td>";
-      $str.="
+         $str.='</select></td>';
+         $str.="<td ><label name='PartNumber'>".$cart->getpartNumber()."</label></td> ";
+         $str.="<td ><label name='PartName'>".$cart->getPartName()."</label></td> ";
+         $str.="<td ><label name='Quantity'>".$cart->getpartQuantity()."</label></td> ";
+         $str.="<td ><label name='itemPrice'>".$cart->getPartPrice()."</label></td>";
+         $str.="
       <td>
       <div class='portfolio-caption'>
               <div class='btn-group btn-group-lg'>
-                <button type='submit' class='btn btn-warning'
+                <button type='submit' class='btn btn-primary btn-xl
                  name='delete' id='delete' 
                  onclick=\"location.href='Cart.php?action=delete&cartID=".$cart->getid()."'\">
                 Delete</button>
               </div>
             </div>";
-      $str.="</tr>";
-    }
+         $str.="</tr>";
+     }
     
       $str.="
 
@@ -113,12 +111,9 @@ class ViewCart extends View
       </tr>
      
       </table>
+      <tr>
       <div class='portfolio-caption'>
-              <div class='btn-group btn-group-lg'>
-                <button type='submit' class='btn btn-warning'
-                 name='submit' id='submit' >
-                Export</button>
-              </div>
+              
             </div>
             </form>
      
@@ -126,25 +121,18 @@ class ViewCart extends View
             </div>
           </div>
         </div>
-      </div> ";
-    
-
-       $str.=" 
-       <div class='portfolio-caption'>
-              <div class='btn-group btn-group-lg'>
-                <button type='submit' class='btn btn-warning'
-                 name='submit' id='submit' >
-                Export</button>
-              </div>
-            </div>
-            </form>";
-      $str.="<form method='post' action='cart.php'>
+      </div> 
+      
       <div class='container'>
         <div class='row-2'>
           <div class='col-lg-3 mx-auto'>
        <div class='modal-body'>
-        <button id= 'back' class='btn btn-primary btn-xl text-uppercase'' name= 'back' type='submit'> back</button>
- </form>";
+       <div class='btn-group btn-group-lg'>
+       <button type='submit' class='btn btn-primary btn-xl name='submit' id='submit'  onclick=\"location.href='exportIndex.php?action=export'\" > Export</button>
+       <button id= 'back' class='btn btn-primary btn-xl text-uppercase' name= 'back' type='submit' onclick=\"location.href='Car.php'\"> back</button>
+       <button id= 'payment' class='btn btn-primary btn-xl text-uppercase' name= 'payment' type='submit' onclick=\"location.href='cart.php?action=deletecart'\"> payment</button>
+     </div>";
+
 
       return $str;
     }

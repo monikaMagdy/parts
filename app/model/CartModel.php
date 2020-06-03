@@ -142,17 +142,16 @@ function add_to_Cart($partNumber,$partQuantity)
 				echo "ERROR: Could not able to execute $sql. " ;
 			}
 }
-	function deleteCart()
-	{
-	$sql="DELETE FROM cart where id=$this->id;";
-	$d1= Database::GetInstance();
-	$result = mysqli_query($d1->GetConnection(), $sql);
-
-	if($sql){
-		echo "deleted successfully.";
-	} else{
-		echo "ERROR: Could not able to execute $sql. " ;
-	}
-}
+// function deleteCart(){
+// 	$sql="truncate FROM `cart` "; 
+// 	$d1= Database::GetInstance();
+// 	$result = mysqli_query($d1->GetConnection(), $sql);
+// 	if ($result){
+// 		echo "The customer has paid the checkout successfully.";
+// 	}
+// 	else {
+// 		echo "ERROR: Could not able to execute $sql. ";
+// 	}
+// }
  }
 ?>

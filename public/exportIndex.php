@@ -14,22 +14,22 @@ if (isset($_GET['action']) && !empty($_GET['action'])){
  	switch($_GET['action'])
 	{
 		case'export':
-			$controller->Con_insertExport($CompanyID,$companyName,$PartNumber,$PartName, $Quantity, $itemPrice, $totalPrice);
+			$controller->Con_insertExport();
 			break;
-		case 'edit':
-			echo $view->ViewExportEdit($_GET['id']);
-		case 'editAction':
-			$controller->Con_editExport($_GET['id']);
-			echo $view->output();
-			break;
+		// case 'edit':
+		// 	echo $view->ViewExportEdit($_GET['id']);
+		// case 'editAction':
+		// 	$controller->Con_editExport($_GET['id']);
+		// 	echo $view->output();
+		// 	break;
 		
-		case 'delete':
-			$controller->Con_deleteExport($_GET['id']);
-			echo $view->output();
-			break;
-		case'history':
-			echo $view->ViewHistory();
-		break;
+		// case 'delete':
+		// 	$controller->Con_deleteExport($_GET['id']);
+		// 	echo $view->output();
+		// 	break;
+		// case'history':
+		// 	echo $view->ViewHistory();
+		// break;
 		
 		}
 	}

@@ -6,6 +6,8 @@ class Exports extends Model
 {
 	private $Exports;
 	private $Parts;
+	private $TotalPrice;
+	private $LocalCompanyID;
 	function __construct() 
 	{
         $d1= Database::GetInstance();
@@ -23,7 +25,10 @@ class Exports extends Model
 		}
 	}
 
-
+	function getTotalPrice()
+	{
+	  return $this->TotalPrice;
+	}
 	function getExports() 
 	{
 		$this->fillArray();  
@@ -55,35 +60,49 @@ class Exports extends Model
 		}
 	}
 
-	function Model_insertExport($companyID,$companyName,$PartNumber,$PartName,$Quantity,$itemPrice,$TotalCost)
+	function Model_insertExport()
 	{
-		$company="SELECT LocalCompanyID , CompanyName FROM localcompany where LocalCompanyID=$companyID;";
+		$sql1="SELECT companyID,partNumber , PartName, PartPrice, partQuantity
+			 FROM `cart`";
 		$d1= Database::GetInstance();
-		$result1 = mysqli_query($d1->GetConnection(), $company);
+		$result1 = mysqli_query($d1->GetConnection(), $sql1);
 		$row1=mysqli_fetch_array($result1);
-		$sql = "INSERT INTO export 
+		$sum=0;
+		$PartNumber=0;
+		
+		while ($row1 = $result1->fetch_assoc()) 
+		{
+			$LocalCompanyID=$row1["companyID"];
+			$PartNumber=$row1["partNumber"];
+			$PartName='"'.$row1["PartName"].'"';
+			$partQuantity=$row1["partQuantity"];
+			$itemPrice=$row1["PartPrice"];
+			$sum+=$row1["PartPrice"]*$row1["partQuantity"];
+			$tax=$sum+($sum*0.14);
+		}
+
+	
+		$sql = "INSERT INTO `export` 
 		(
-		localCompanyID,
-		companyName,
+		LocalCompanyID,
 		PartNumber,
 		PartName,
-		Quantity,
+		partQuantity,
 		itemPrice,
-		TotalCost
+		TotalPrice
 		)
 		VALUES
 		(
-		'$companyID',
-		'$companyName',
-		'$PartNumber',
-		'$PartName',
-		'$Quantity',
-		'$itemPrice',
-		'$TotalCost'
+		$LocalCompanyID,
+		$PartNumber,
+		$PartName,
+		$partQuantity,
+		$itemPrice,
+		$tax
 		)";
 		 $d1= Database::GetInstance();
 		$result = mysqli_query($d1->GetConnection(), $sql);
-		if ($sql){
+		if ($result){
 			echo "<br>Record was successfully added<br>";
 		} 
 		else{

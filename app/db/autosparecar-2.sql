@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 27, 2020 at 01:01 AM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.1.32
+-- Host: localhost
+-- Generation Time: Jun 03, 2020 at 10:15 PM
+-- Server version: 10.3.15-MariaDB
+-- PHP Version: 7.1.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -42,11 +42,10 @@ CREATE TABLE `car` (
 
 INSERT INTO `car` (`CarID`, `CarName`, `CarModel`, `CarYear`, `imgName`) VALUES
 (1, 'Scania', 'Euro-Trucker', 2011, '01-thumbnail.jpg'),
-(2, 'Mercedes', '70121948', 2015, 'mercedes.jpg'),
+(2, 'IVECO', '70121948', 2010, 'mercedes.jpg'),
 (3, 'Ivicon', 'euro-cargo', 2014, '02-thumbnail-.jpg'),
-(4, 'volvo', 'v-b7r', 2015, 'volvo.jpg'),
-(5, 'Man', 'cope', 2020, '01-thumbnail-.jpg'),
-(18, 'Piguet', 'truck ergo cargo', 2020, '03-thumbnail+.jpg');
+(18, 'Piguet', 'truck ergo cargo', 2020, '03-thumbnail+.jpg'),
+(22, 'MAN', '92837', 2020, '03-thumbnail--.jpg');
 
 -- --------------------------------------------------------
 
@@ -56,14 +55,22 @@ INSERT INTO `car` (`CarID`, `CarName`, `CarModel`, `CarYear`, `imgName`) VALUES
 
 CREATE TABLE `cart` (
   `id` int(255) NOT NULL,
-  `companyID` int(11) NOT NULL,
+  `companyID` int(11) DEFAULT 26,
   `partNumber` int(255) NOT NULL,
   `PartName` varchar(255) NOT NULL,
   `PartPrice` int(255) NOT NULL,
   `partQuantity` int(255) NOT NULL,
-  `timStamp` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
-  `totalPrice` varchar(255) NOT NULL
+  `timStamp` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `companyID`, `partNumber`, `PartName`, `PartPrice`, `partQuantity`, `timStamp`) VALUES
+(45, 26, 66, 'filter', 55, 19999, '2020-06-03 16:52:04.807424'),
+(46, 26, 66, 'Filter', 55, 1, '2020-06-03 19:53:57.503550'),
+(47, 26, 66, 'Filter', 55, 1, '2020-06-03 19:55:31.941637');
 
 -- --------------------------------------------------------
 
@@ -72,12 +79,11 @@ CREATE TABLE `cart` (
 --
 
 CREATE TABLE `export` (
-  `ExportID` int(255) DEFAULT NULL,
+  `ExportID` int(255) NOT NULL,
   `LocalCompanyID` int(255) NOT NULL,
-  `CarID` int(255) NOT NULL,
   `PartNumber` int(255) NOT NULL,
   `PartName` varchar(255) NOT NULL,
-  `Quantity` int(255) NOT NULL,
+  `partQuantity` int(255) NOT NULL,
   `ItemPrice` int(255) NOT NULL,
   `TotalPrice` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -86,8 +92,12 @@ CREATE TABLE `export` (
 -- Dumping data for table `export`
 --
 
-INSERT INTO `export` (`ExportID`, `LocalCompanyID`, `CarID`, `PartNumber`, `PartName`, `Quantity`, `ItemPrice`, `TotalPrice`) VALUES
-(1, 26, 1, 2850040, '0', 20, 100, 2000);
+INSERT INTO `export` (`ExportID`, `LocalCompanyID`, `PartNumber`, `PartName`, `partQuantity`, `ItemPrice`, `TotalPrice`) VALUES
+(1, 26, 2850040, '0', 20, 100, 2000),
+(2, 26, 66, 'filter', 1, 55, 88344),
+(3, 26, 66, 'filter', 1, 55, 4264),
+(4, 26, 66, 'filter', 1, 55, 4264),
+(5, 26, 66, 'filter', 1, 55, 4264);
 
 -- --------------------------------------------------------
 
@@ -124,7 +134,6 @@ INSERT INTO `localcompany` (`LocalCompanyID`, `CompanyName`, `email`, `phoneNumb
 CREATE TABLE `sparepart` (
   `PartNumber` int(255) NOT NULL,
   `PartName` varchar(255) NOT NULL,
-  `carName` varchar(255) NOT NULL,
   `partCountry` varchar(255) NOT NULL,
   `partPrice` int(255) NOT NULL,
   `partQuantity` int(255) NOT NULL,
@@ -137,10 +146,12 @@ CREATE TABLE `sparepart` (
 -- Dumping data for table `sparepart`
 --
 
-INSERT INTO `sparepart` (`PartNumber`, `PartName`, `carName`, `partCountry`, `partPrice`, `partQuantity`, `image`, `CarID`, `user_ID`) VALUES
-(2850040, 'Piston', 'Scania', 'Turkey', 100, 100000, '5.jpg', 1, 24),
-(2995665, 'sebeka', 'scania', 'Italy', 100, 100000, '1.jpg', 1, 24),
-(4897481, 'tube oil pump', 'scania', 'Italy', 100, 10000, 'oil tube pump.jpg', 1, 24);
+INSERT INTO `sparepart` (`PartNumber`, `PartName`, `partCountry`, `partPrice`, `partQuantity`, `image`, `CarID`, `user_ID`) VALUES
+(66, 'Filter', 'cairo', 55, 515, '2.jpg', 1, 24),
+(669, 'filter', 'hh', 77, 77, '3.jpg', 1, 24),
+(777, 'gg', 'gg', 66, 66, '3.jpg', 60000, 24),
+(2850040, 'Piston', 'Turkey', 100, 100001, '5.jpg', 1, 24),
+(2995665, 'sebeka', 'Italy', 100, 100000, '1.jpg', 1, 24);
 
 -- --------------------------------------------------------
 
@@ -193,7 +204,7 @@ ALTER TABLE `cart`
 -- Indexes for table `export`
 --
 ALTER TABLE `export`
-  ADD KEY `CarID` (`CarID`),
+  ADD PRIMARY KEY (`ExportID`),
   ADD KEY `companyID` (`LocalCompanyID`),
   ADD KEY `PartNumber` (`PartNumber`);
 
@@ -225,7 +236,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `car`
 --
 ALTER TABLE `car`
-  MODIFY `CarID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `CarID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `export`
+--
+ALTER TABLE `export`
+  MODIFY `ExportID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `localcompany`
@@ -254,7 +277,6 @@ ALTER TABLE `cart`
 -- Constraints for table `export`
 --
 ALTER TABLE `export`
-  ADD CONSTRAINT `export_ibfk_1` FOREIGN KEY (`CarID`) REFERENCES `car` (`CarID`),
   ADD CONSTRAINT `export_ibfk_2` FOREIGN KEY (`LocalCompanyID`) REFERENCES `localcompany` (`LocalCompanyID`),
   ADD CONSTRAINT `export_ibfk_3` FOREIGN KEY (`PartNumber`) REFERENCES `sparepart` (`PartNumber`);
 
