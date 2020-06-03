@@ -25,6 +25,7 @@ $view = new ViewSparePart($controller, $model);
 		break;
 		case 'editAction':
 			$controller->editSparePart($_GET['id']);
+			echo header("location:Car.php");
 		break;
 		case'delete':
 			$controller->delete($_GET['id']);

@@ -108,37 +108,6 @@ function fillArray()
 			echo "ERROR: Could not able to execute $sql. " ;
 		}
 	}
-	function template($companyID,$CarID,$PartNumber,$PartName, $Quantity, $itemPrice, $TotalCost)
-	{
-		$sql = "INSERT INTO export 
-		(
-		localCompanyID,
-		CarID,
-		PartNumber,
-		PartName,
-		Quantity,
-		itemPrice,
-		TotalCost
-		)
-		VALUES
-		(
-		 '$companyID',
-		 '$CarID',
-		 '$PartNumber',
-		 '$PartName',
-		 '$Quantity',
-		  '$itemPrice',
-		   '$TotalCost'
-		)";
-	 	$d1= Database::GetInstance();
-        $result = mysqli_query($d1->GetConnection(), $sql);
-		if ($sql){
-			echo "Records inserted successfully.";
-			$this->fillArray();
-		} 
-		else{
-			echo "ERROR: Could not able to execute $sql. " ;
-		}
-	}
+	
 }
 ?>

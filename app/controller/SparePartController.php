@@ -50,46 +50,47 @@ class SparePartController extends Controller
 
 	public function editSparePart($PartNumber)
 	 {
-	$PartNumber=$_REQUEST['PartNumber'];
+	/*$PartNumber=$_REQUEST['PartNumber'];
 		if(!preg_match('#^[0-9]+$#', $PartNumber))
 		{
 			echo"<script>alert('you have to enter Numeric Value in Part Number');
 		 		</script>";
-		}
+		}*/
 		$PartName=$_REQUEST['PartName'];
-		if (!preg_match("/^[a-zA-Z ]*$/",$FullName)) 
+		/*if (!preg_match("/^[a-zA-Z ]*$/",$PartName)) 
 		{
  			echo "<script>alert('Full Name must be Only letters and white space allowed');
 		 		</script>";
-		}
-		$carName=$_REQUEST['carName'];
-		if (!preg_match("/^[a-zA-Z ]*$/",$carName)) 
-		{
- 			echo "<script>alert('car Name must be Only letters and white space allowed');
-		 		</script>";
-		}
+		}*/
+	
 		$partCountry=$_REQUEST['partCountry'];
-		if (!preg_match("/^[a-zA-Z ]*$/",$partCountry)) 
+		/*if (!preg_match("/^[a-zA-Z ]*$/",$partCountry)) 
 		{
  			echo "<script>alert(' Name must be Only letters and white space allowed');
 		 		</script>";
-		}
+		}*/
+		$carName=$_REQUEST['carName'];
+		/*if (!preg_match("/^[a-zA-Z ]*$/",$carName)) 
+		{
+ 			echo "<script>alert('car Name must be Only letters and white space allowed');
+		 		</script>";
+		}*/
 		$partPrice=$_REQUEST['partPrice'];
-		if(!preg_match('#^[0-9]+$#', $partPrice))
+		/*if(!preg_match('#^[0-9]+$#', $partPrice))
 		{
 			echo"<script>alert('you have to enter Numeric Value in Part Price');
 		 		</script>";
-		}
-		$partQuantity=$_REQUEST['partQuantity'];
-		$image=$_REQUEST['image'];
-		$image=$_REQUEST['CarID'];
-		if(!preg_match('#^[0-9]+$#', $partQuantity))
+		}*/
+		//$partQuantity=$_REQUEST['partQuantity'];
+		//$image=$_REQUEST['image'];
+		//$CarID=$_REQUEST['CarID'];
+		/*if(!preg_match('#^[0-9]+$#', $partQuantity))
 		{
 			echo"<script>alert('you have to enter Numeric Value in Part Quantity');
 		 		</script>";
-		}
-	    else
-		$this->model->getSparePart($PartNumber)->Model_editSparePart($PartNumber,$PartName,$partCountry,$carName,$partPrice,$partQuantity);
+		}*/
+	    //else
+		$this->model->Model_editSparePart($PartName,$partCountry,$carName,$partPrice);
 	}
 
 	public function delete($PartNumber)
