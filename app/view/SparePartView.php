@@ -50,9 +50,6 @@ class ViewSparePart extends View
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>';
-        // $str.="	<button type='submit' class='btn btn-warning btn-block' name='add' id='add'
-        // 				 onclick=\"location.href='SparePart.php?action=add&id=".$_POST['CarID']."'\">Add New SparePArt </button>
-        // 			  ";
         foreach ($this->model->getSpareParts() as $SparePart) {
             $str.="<button type='submit'class='btn btn-warning btn-block' name='Add' id='Add'
 					    onclick=\"location.href='SparePart.php?action=add&CarID=".$SparePart->getCarID()."&id=undefined'\">Click to add Spare part</button>";

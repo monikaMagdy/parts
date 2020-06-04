@@ -6,7 +6,7 @@ class ViewCart extends View
 {
  public function output()
  {
-   $str=' <!DOCTYPE html>
+     $str=' <!DOCTYPE html>
 
 <html lang="en">
 
@@ -45,7 +45,7 @@ class ViewCart extends View
         </div>
       </div>';
   
-      $str.='<table id="items">
+     $str.='<table id="items">
       <tr>
        
             <td>
@@ -101,7 +101,7 @@ class ViewCart extends View
          $str.="</tr>";
      }
     
-      $str.="
+     $str.="
 
       <tr>
       <td><label name='totalParts'>total Parts:</td> <td></td><td>".$this->model->gettotalPrice()."</td><td></td>
@@ -109,6 +109,12 @@ class ViewCart extends View
       <tr>
        <td><labe name='totalPrice'>Total Price: </td><td></td><td>".$this->model->gettotalPriceWithTax()."</td><td></td>
       </tr>
+      <tr>
+      <td><labe name='AddCompanyID'>Please enter Company ID: </td><td></td><td><form action='' method='post'>
+      <input type='text' id='id' name='id' value='1'>
+       <button type='submit'  class='btn btn-warning btn-block' name='id' id='id'>Add</button><br>
+       </form>'</td><td></td>
+     </tr>
      
       </table>
       <tr>
@@ -121,8 +127,9 @@ class ViewCart extends View
             </div>
           </div>
         </div>
-      </div> 
-      
+      </div> ";
+     foreach ($this->model->getCarts() as $cart) {
+         $str.="
       <div class='container'>
         <div class='row-2'>
           <div class='col-lg-3 mx-auto'>
@@ -130,11 +137,12 @@ class ViewCart extends View
        <div class='btn-group btn-group-lg'>
        <button type='submit' class='btn btn-primary btn-xl name='submit' id='submit'  onclick=\"location.href='exportIndex.php?action=export'\" > Export</button>
        <button id= 'back' class='btn btn-primary btn-xl text-uppercase' name= 'back' type='submit' onclick=\"location.href='Car.php'\"> back</button>
-       <button id= 'payment' class='btn btn-primary btn-xl text-uppercase' name= 'payment' type='submit' onclick=\"location.href='cart.php?action=deletecart'\"> payment</button>
+       <button id= 'payment' class='btn btn-primary btn-xl text-uppercase' name= 'payment' type='submit' onclick=\"location.href='cart.php?action=deletecart&partNumber=".$cart->getpartNumber()."&Qty=".$cart->getpartQuantity()."&cartID=".$cart->getid()."'\"> payment</button>
      </div>";
 
 
-      return $str;
-    }
+         return $str;
+     }
+ }
   }
   ?>
