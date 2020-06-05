@@ -36,6 +36,9 @@ if(isset($_POST["login"]))
 		$_SESSION["Role"]=$row["Role"];
 		header("Location:welcome.php");
 	}
+	else {
+		echo"<script>alert('please register first')'</script>";
+	}
 }
 }
 

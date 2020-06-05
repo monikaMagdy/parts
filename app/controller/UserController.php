@@ -42,10 +42,10 @@ class UserController extends controller
 			{
 				echo"<script>alert('$email is not valid')</script>";
 			}
-			else if(!filter_var("/^(02|0-9)[\d]{7}$/", $phoneNumber))
+			/*else if(!filter_var("/^(02|0-9)[\d]{7}$/", $phoneNumber))
 			{
 				echo"<script>alert('$phoneNumber phone must be 11 number')</script>";
-			}
+			}*/
 			else if(!preg_match("/^[a-zA-Z ]*$/",$Role))
 			{
 				echo"<script>alert('$Role is not valid')</script>";

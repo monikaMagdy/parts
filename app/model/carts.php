@@ -94,20 +94,6 @@ class Carts extends Model
 					echo "ERROR: Could not able to execute $sql. " ;
 				}
 	}
-<<<<<<< HEAD
 	
-=======
-	// function deleteCart(){
-	// 	$sql="DELETE FROM `cart`"; 
-	// 	$d1= Database::GetInstance();
-    //     $result = mysqli_query($d1->GetConnection(), $sql);
-	// 	if ($result){
-	// 		echo "The customer has paid the checkout successfully.";
-	// 	}
-	// 	else {
-	// 		echo "ERROR: Could not able to execute $sql. ";
-	// 	}
-	// }
->>>>>>> b5add2b240a57c5b8bb92f34292fc3fcfdcc6ef0
 
 }
