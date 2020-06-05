@@ -153,6 +153,33 @@ function add_to_Cart($partNumber,$partQuantity)
 // 		echo "ERROR: Could not able to execute $sql. ";
 // 	}
 // }
+function Model_decreseQty( $PartNumber, $partQuantity)
+{
+
+
+$edit="Update `sparepart` INNER JOIN `cart` ON sparepart.partNumber = cart.partNumber SET sparepart.partQuantity = sparePart.partQuantity - cart.partQuantity where sparepart.PartNumber =$PartNumber ";
+$d1= Database::GetInstance();
+$result = mysqli_query($d1->GetConnection(), $edit);
+
+	if($result)
+	{
+		echo "updated successfully.";
+		//$this->readSparePart($this->PartNumber);
+	} 
+	else
+	{
+		echo "ERROR: Could not able to execute $edit. " ;
+	}
+	$sql="DELETE FROM `cart`"; 
+	//$d1= Database::GetInstance();
+	$result1 = mysqli_query($d1->GetConnection(), $sql);
+	if ($result1){
+		echo "The customer has paid the checkout successfully.";
+	}
+	else {
+		echo "ERROR: Could not able to execute $sql. ";
+	}
+}
 function deleteCart($id){
 	$sql="DELETE FROM `cart` WHERE id=".$id; 
 	$d1= Database::GetInstance();
