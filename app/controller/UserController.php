@@ -9,6 +9,7 @@ class UserController extends controller
 {
 	public function Con_insertUser()
 	{
+
 		$FullName =filter_var($_REQUEST['FullName'], FILTER_SANITIZE_STRING);
 		$username = filter_var($_REQUEST['username'], FILTER_SANITIZE_STRING) ;
 		$email=filter_var($_REQUEST['email'], FILTER_SANITIZE_EMAIL );
@@ -16,6 +17,7 @@ class UserController extends controller
 		$Age = filter_var($_REQUEST['Age'],FILTER_VALIDATE_INT );
 		$phoneNumber = filter_var($_REQUEST['phoneNumber'],FILTER_VALIDATE_INT );
 		$Role=filter_var($_REQUEST['Role'], FILTER_SANITIZE_STRING );
+
 	}
 
 	public function Con_editUser() 
