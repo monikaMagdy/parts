@@ -142,6 +142,7 @@ function add_to_Cart($partNumber,$partQuantity)
 				echo "ERROR: Could not able to execute $sql. " ;
 			}
 }
+<<<<<<< HEAD
 // function deleteCart(){
 // 	$sql="truncate FROM `cart` "; 
 // 	$d1= Database::GetInstance();
@@ -158,11 +159,49 @@ function deleteCart($id){
 	$d1= Database::GetInstance();
 	$result = mysqli_query($d1->GetConnection(), $sql);
 	if ($result){
+=======
+function Model_decreseQty( $PartNumber, $partQuantity)
+{
+
+
+$edit="Update `sparepart` INNER JOIN `cart` ON sparepart.partNumber = cart.partNumber SET sparepart.partQuantity = sparePart.partQuantity - cart.partQuantity where sparepart.PartNumber =$PartNumber ";
+$d1= Database::GetInstance();
+$result = mysqli_query($d1->GetConnection(), $edit);
+	
+	if($result)
+	{
+		echo "updated successfully.";
+		//$this->readSparePart($this->PartNumber);
+	} 
+	else
+	{
+		echo "ERROR: Could not able to execute $edit. " ;
+	}
+	$sql="DELETE FROM `cart`"; 
+	//$d1= Database::GetInstance();
+	$result1 = mysqli_query($d1->GetConnection(), $sql);
+	if ($result1){
+>>>>>>> b5add2b240a57c5b8bb92f34292fc3fcfdcc6ef0
 		echo "The customer has paid the checkout successfully.";
 	}
 	else {
 		echo "ERROR: Could not able to execute $sql. ";
 	}
 }
+<<<<<<< HEAD
+=======
+function deleteCart()
+{
+$sql="DELETE FROM cart where id=$this->id";
+$d1= Database::GetInstance();
+$result = mysqli_query($d1->GetConnection(), $sql);
+if($sql){
+	echo "deleted successfully.";
+} else{
+	echo "ERROR: Could not able to execute $sql. " ;
+}
+}
+
+>>>>>>> b5add2b240a57c5b8bb92f34292fc3fcfdcc6ef0
  }
 ?>

@@ -22,8 +22,8 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 			echo $view->output();
 			break;
 		case 'deletecart':
-			$controller->Condeletecart();
-			//echo header("location:Car.php");
+			$controller->export($_GET['partNumber'],$_GET['Qty'],$_GET['cartID']);
+			echo header("location:Car.php");
 	}
 }
 else
