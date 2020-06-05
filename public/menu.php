@@ -39,11 +39,16 @@
 		  				echo'
 			<ul class="navbar-nav text-uppercase ml-auto">
 			  <li class="nav-item">
-
 				<a class="nav-link js-scroll-trigger" href="Car.php">Car</a>
 			  </li>
 			  <li class="nav-item">
+			  <a class="nav-link js-scroll-trigger" href="searchFrontend.php">Search</a>
+			</li>
+			  <li class="nav-item">
 				<a class="nav-link js-scroll-trigger" href="index.php">Employee </a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="cart.php">Cart </a>
 			  </li>
 			  <li class="nav-item">
 				<a class="nav-link js-scroll-trigger" href="exportIndex.php">Check Out</a>
@@ -54,6 +59,7 @@
 			  <li class="nav-item">
 				<a class="nav-link js-scroll-trigger" href="signout.php">Log Out</a>
 			  </li>	
+				
 			</ul>
 		  </div>
 		</div>

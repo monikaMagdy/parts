@@ -1,10 +1,16 @@
+<?php include"menu.php";?>
 <head>
 <style>
 </style>
+<!--connecting ajax -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
 type="text/javascript"></script>
+<!--connecting ajax -->
 <script>
-function getResult(){
+//function to get the result by ajax 
+function getResult()
+{
+  //perform ajax request
 	jQuery.ajax(
 	{
 		url:"searchbackend.php",
@@ -17,6 +23,7 @@ function getResult(){
 	});
 }
 </script>
+<!--template -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -37,7 +44,7 @@ function getResult(){
   <!-- Custom styles for this template -->
   <link href="css/agency.min.css" rel="stylesheet">
 </head>
- 
+ <!--img container called form js file  -->
 <body id="page-top">
 <section class="page-section" id="contact">
     <div class="container">
@@ -49,6 +56,7 @@ function getResult(){
       </div>
       <div class="row">
         <div class="col-lg-12">
+        <!--term button which is called in the searchbackend.php file by post method -->
 <input name="term" class="col-lg-12 text-center"  type="text" id="term" onKeyup="getResult()" placeholder="Search Term..."/>
 </div>
 </div>

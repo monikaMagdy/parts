@@ -19,7 +19,7 @@ $view = new ViewUser($controller, $model);
 				break;
 				case 'insert':
 				$controller->Con_insertUser();
-				echo $view->registerForm();
+				//echo $view->registerForm();
 				break;
 				case'show':
 				echo $view->show();

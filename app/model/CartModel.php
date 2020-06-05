@@ -153,5 +153,16 @@ function add_to_Cart($partNumber,$partQuantity)
 // 		echo "ERROR: Could not able to execute $sql. ";
 // 	}
 // }
+function deleteCart($id){
+	$sql="DELETE FROM `cart` WHERE id=".$id; 
+	$d1= Database::GetInstance();
+	$result = mysqli_query($d1->GetConnection(), $sql);
+	if ($result){
+		echo "The customer has paid the checkout successfully.";
+	}
+	else {
+		echo "ERROR: Could not able to execute $sql. ";
+	}
+}
  }
 ?>

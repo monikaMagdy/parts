@@ -14,7 +14,7 @@ class CartController extends Controller
 
 	public function delete($id)
 	{
-		$this->model->getcart($id)->deleteCart();
+		$this->model->getcart($id)->deleteCart($id);
 	}
 	public function Condeletecart()
 	{

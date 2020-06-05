@@ -144,7 +144,7 @@ class User extends Model
 
 	}
 
-	function Model_deleteUser()
+	function Model_deleteUser($ID)
 	{
 		$deleteUser="DELETE FROM user WHERE ID=$this->ID;";
 		$d1= Database::GetInstance();

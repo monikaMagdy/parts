@@ -23,7 +23,7 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 			$view->output();
 			break;
 	case'delete':
-		$controller->Con_deleteUser();
+		$controller->Con_deleteUser($ID);
 		break;
 	
 		header("location:welcome.php");	

@@ -337,8 +337,11 @@ $str='<!DOCTYPE html>
           <form id="contactForm" name="sentMessage" novalidate="novalidate">
             <div class="row">
               <div class="col-md-6">
-				<input type="text" class="form-control" required="required" name="FullName" placeholder="Enter your full name"/>
+				<input type="text" class="form-control" required="required" name="FullName" maxlength="10" placeholder="Enter your full name"/>
 			</div>
+			';
+			
+			$str.='
 		</div>
 		<br>
             <div class="row">
