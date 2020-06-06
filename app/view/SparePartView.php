@@ -1,5 +1,8 @@
 <?php
-
+if(!isset($_SESSION)) 
+{ 
+	session_start(); 
+} 
 
 include"View.php";
 
@@ -51,9 +54,12 @@ class ViewSparePart extends View
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>';
         foreach ($this->model->getSpareParts() as $SparePart) {
+			if($_SESSION["Role"]==='Manger' )
+					{
             $str.="<button type='submit'class='btn btn-warning btn-block' name='Add' id='Add'
 					    onclick=\"location.href='SparePart.php?action=add&CarID=".$SparePart->getCarID()."&id=undefined'\">Click to add Spare part</button>";
-
+					}
+					
             $str.='
 		<div class="container">
 		 <div class="row mt-2 pb-3">';
@@ -73,6 +79,8 @@ class ViewSparePart extends View
 						<h5 class="card-title text-center text-warning" name="hidden_price">PartPrice:'.$SparePart->getpartPrice() .' LE</h5>
 
 					   </div>';
+					   if($_SESSION["Role"]==='Manger' )
+					{
                 $str.="
 					   <button type='submit'class='btn btn-warning btn-block' name='Edit' id='Edit'
 					    onclick=\"location.href='SparePart.php?action=edit&id=".$SparePart->getPartNumber()."'\">Edit</button>
@@ -80,14 +88,15 @@ class ViewSparePart extends View
 					<button type='submit' class='btn btn-warning btn-block' name='Delete' id='Delete'
 					 onclick=\"location.href='SparePart.php?action=delete&id=".$SparePart->getPartNumber()."'\">Delete </button>
 				   ";
-
+					}
                 $str.=' <form action="Transactions.php?action=Import&id='.$SparePart->getPartNumber().'" method="post">
 		  			 <div class="card-footer p-1">
 		  			 	
 						<input type="text"  name="Qty" value="1"><br><br>
 						<button type="submit"  class="btn btn-warning btn-block" name="Import" id="Import" >Import</button><br>
-					</form>
-					<form action="Cart.php?action=cart&partNumber='.$SparePart->getPartNumber().'" method="post">
+					</form>';
+					
+					$str.='<form action="Cart.php?action=cart&partNumber='.$SparePart->getPartNumber().'" method="post">
 					 <input type="text" id="Qty" name="Qty" value="1"><br><br>
 						<button type="submit"  class="btn btn-warning btn-block" name="cart" id="cart"><i class ="fas fa-cart-plus"></i>&nbsp;&nbsp;Add to Cart</button><br>
 						</form>

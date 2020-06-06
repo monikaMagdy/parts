@@ -16,6 +16,7 @@ class UserController extends controller
 		$Age = filter_var($_REQUEST['Age'],FILTER_VALIDATE_INT );
 		$phoneNumber = filter_var($_REQUEST['phoneNumber'],FILTER_VALIDATE_INT );
 		$Role=filter_var($_REQUEST['Role'], FILTER_SANITIZE_STRING );
+		$this->model->Model_insertUser($FullName,$username,$email, $hashed_password, $Age, $phoneNumber,$Role);
 	}
 
 	public function Con_editUser() 

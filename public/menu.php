@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 	<html lang="en">
-	
+	<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+	</head>
 	<!-- Bootstrap core JavaScript -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -12,6 +15,16 @@
 	<script src="js/jqBootstrapValidation.js"></script>
 	<script src="js/contact_me.js"></script>
 	<script src="js/portfolio.js"></script>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
 
 <body id="page-top">
 	<!-- Navigation -->
@@ -39,16 +52,16 @@
 		  				echo'
 			<ul class="navbar-nav text-uppercase ml-auto">
 			  <li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="Car.php">Car</a>
+				<a class="nav-link js-scroll-trigger"  href="Car.php"><i class="fas fa-car"></i>&nbsp;&nbsp;</a>
 			  </li>
 			  <li class="nav-item">
-			  <a class="nav-link js-scroll-trigger" href="searchFrontend.php">Search</a>
+			  <a class="nav-link js-scroll-trigger" href="searchFrontend.php"><i class="fas fa-search"></i>&nbsp;&nbsp;</a>
 			</li>
 			  <li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="index.php">Employee </a>
+				<a class="nav-link js-scroll-trigger" href="index.php"><i class="fas fa-male"></i>&nbsp;&nbsp;</a>
 			  </li>
 			  <li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="cart.php">Cart </a>
+				<a class="nav-link js-scroll-trigger" href="cart.php"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;</a>
 			  </li>
 			  <li class="nav-item">
 				<a class="nav-link js-scroll-trigger" href="exportIndex.php">Check Out</a>

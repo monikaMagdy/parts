@@ -1,5 +1,8 @@
 <?php
-
+if(!isset($_SESSION)) 
+{ 
+	session_start(); 
+} 
 require_once(__ROOT__ . "view/View.php");
 
 class ViewUser extends View
@@ -43,28 +46,42 @@ class ViewUser extends View
           <h2 class="section-heading text-uppercase"> User</h2>
           <h3 class="section-subheading text-muted"> </h3>
         </div>
-      </div>';
-		$str.="<div class='col-lg-12 text-center'>
+	  </div>
+	  <div class="col-lg-12 text-center">';
+	  if($_SESSION["Role"]==='Manger' )
+					{
+		$str.="
 				<div class='portfolio-caption'>
            			<div class='btn-group btn-group-lg'>
            				<button type='submit' class='btn btn-warning' name='Add' id='Add' onclick=\"location.href='registerForm.php?action=add'\">Add User</button></br></br>
            			</div>
-           		</div>";
-		$str.="</br></br>
-				<div class='portfolio-caption'>
-           			<div class='btn-group btn-group-lg'>
-           				<button type='submit' class='btn btn-warning' name='Edit' id='Edit' onclick=\"location.href='index.php?action=edit'\">Edit User</button>
-           			</div>
-           		</div>";
-				$str.="<br><br>
-				<div class='portfolio-caption'>
-		           <div class='btn-group btn-group-lg'>
-        			   <button type='submit' class='btn btn-warning' name='Show' id='Show' onclick=\"location.href='registerForm.php?action=show'\">View Users</button>
-           			</div>
-           		</div>
-           </div>
-        </div>
-    </div>";
+				   </div>";
+				   $str.="</br></br>
+						<div class='portfolio-caption'>
+							   <div class='btn-group btn-group-lg'>
+								   <button type='submit' class='btn btn-warning' name='Edit' id='Edit' onclick=\"location.href='index.php?action=edit'\">Edit User</button>
+							   </div>
+						   </div>";
+				   $str.="<br><br>
+				   <div class='portfolio-caption'>
+					  <div class='btn-group btn-group-lg'>
+						  <button type='submit' class='btn btn-warning' name='Show' id='Show' onclick=\"location.href='registerForm.php?action=show'\">View Users</button>
+						  </div>
+					  </div>
+					  </div>
+					  </div>
+					  </div>";
+					}
+					else{
+						$str.="</br></br>
+						<div class='portfolio-caption'>
+							   <div class='btn-group btn-group-lg'>
+								   <button type='submit' class='btn btn-warning' name='Edit' id='Edit' onclick=\"location.href='index.php?action=edit'\">Edit User</button>
+							   </div>
+						   </div>";
+					}
+		
+			
 		
 		return $str;
 	}
