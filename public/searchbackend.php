@@ -12,15 +12,6 @@ $sql="SELECT
 		";
 		//$term is the name of the button in the frontend file 
 $term=$_POST['term'];
-//print the table of the search ,flixable with the size of the page 
-echo"<table width=100%>
-<tr><th>Part Number</th>
-<th>Part Name</th>
-<th>Part Price</th>
-<th>Part Country</th>
-<th>Part Quantity</th>
-<td>add to cart</td>
-</tr>";
 // if the button is not empty 
 if(!empty($term))
 {
@@ -30,7 +21,18 @@ or PartName LIKE '%" .$term. "%'
 or partCountry LIKE '%" .$term. "%'";
 
 }
-else 
+//print the table of the search ,flixable with the size of the page 
+echo"<table width=100%>
+<tr><th>Part Number</th>
+<th>Part Name</th>
+<th>Part Price</th>
+<th>Part Country</th>
+<th>Part Quantity</th>
+<td>add to cart</td>
+</tr>";
+//echo $sql;
+
+
 /// the result of the sql is connect and get the sql 
 if($result = mysqli_query($con,$sql))
 {
