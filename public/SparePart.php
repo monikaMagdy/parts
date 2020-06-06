@@ -1,5 +1,5 @@
 <?php
-
+//include"menu.php";
 define('__ROOT__', "../app/");
 require_once(__ROOT__ . "model/SparePart.php");
 require_once(__ROOT__ . "controller/SparePartController.php");
