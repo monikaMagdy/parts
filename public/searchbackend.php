@@ -1,10 +1,6 @@
 <?php
-
-//trigger exception in a "try" block
-try
-{
-	//data base connection
-	$con=mysqli_connect("localhost","root","","autosparecar");
+//data base connection
+$con=mysqli_connect("localhost","root","","autosparecar");
 //sql query to select the entities needed
 $sql="SELECT
 		sparepart.PartNumber,
@@ -23,7 +19,6 @@ echo"<table width=100%>
 <th>Part Price</th>
 <th>Part Country</th>
 <th>Part Quantity</th>
-<th>Car Name</th>
 <td>add to cart</td>
 </tr>";
 // if the button is not empty 
@@ -73,17 +68,11 @@ if($result = mysqli_query($con,$sql))
 //if re
 else
 {
-	if($result<0) {
-		throw new Exception("couldn't able to execute");
-	  }
-/*	echo"<tr>
+		echo"<tr>
 			<td colspan=4> ERROR:couldn't able to execute $sql.".mysqli_error($con)."</td>
-		</tr>";*/
+		</tr>";
 }
 echo"</table>";
 mysqli_close($con);
-}
-catch(Exception $e) {
-	echo 'Message: ' .$e->getMessage();
-  }
+
 ?>

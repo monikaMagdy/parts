@@ -5,9 +5,9 @@
 <!--connecting ajax -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
 type="text/javascript"></script>
-<!--connecting ajax -->
+<!---function to get the result by ajax--> 
 <script>
-//function to get the result by ajax 
+
 function getResult()
 {
   //perform ajax request
