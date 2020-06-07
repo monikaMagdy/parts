@@ -21,8 +21,7 @@ class Exports extends Model
 		$result = $this->readExport();
 		while ($row = $result->fetch_assoc())
 		{
-			array_push($this->Exports, new Export($row['ExportID']),  $row['PartNumber'] , $row['PartName']
-		,$row['partQuantity'], $row['TotalPrice']);
+			array_push($this->Exports, new Export($row['ExportID']));
 		}
 	}
 
@@ -43,6 +42,9 @@ class Exports extends Model
 			if ($id == $export->getExportID())
 			{
 				return $export;
+			}
+			else {
+				return false;
 			}
 		}
 	}

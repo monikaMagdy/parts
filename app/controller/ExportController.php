@@ -26,7 +26,8 @@ class ExportController extends controller
 		 </script>";
 	    }
 	    else
-		$this->model->getExport($idExport)->Model_editExport($companyID,$CarID,$PartNumber,$PartName,$Quantity,$itemPrice,$totalPrice);
+		$this->model->getExport($idExport)->
+		Model_editExport($companyID,$CarID,$PartNumber,$PartName,$partQuantity,$itemPrice,$totalPrice);
 	}
 
 	public function Con_deleteExport($IDExport)
