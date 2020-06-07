@@ -8,8 +8,8 @@ class Export extends Model
 {
   private $ExportID;
   private $companyID;
-  private $compnayName;
-  private $CarID;
+  //private $compnayName;
+  //private $CarID;
   private $PartNumber;
   private $PartName;    
   private $partQuantity;
@@ -47,7 +47,7 @@ class Export extends Model
   {
     return $this->companyID = $companyID;
   }
-  function getCompanyName()
+  /*function getCompanyName()
   {
     return $this->CompanyName;
   }
@@ -62,7 +62,7 @@ class Export extends Model
   function setCarID($CarID)
   {
      return $this->CarID =$CarID;
-  }
+  }*/
   function getPartNumber()
   {
     return $this->PartNumber;

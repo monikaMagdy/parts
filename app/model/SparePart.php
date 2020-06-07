@@ -204,7 +204,7 @@ else
 		}
 	}
 	
-	function addSparePart($PartNumber,$PartName,$partCountry,$partPrice,$partQuantity,$image,$CarID,$user_ID)
+	/*function addSparePart($PartNumber,$PartName,$partCountry,$partPrice,$partQuantity,$image,$CarID,$user_ID)
 	{
 		$sql="INSERT INTO `sparepart`
 		(
@@ -239,25 +239,7 @@ else
 		{
 			echo "ERROR: Could not able to execute $sql. " ;
 		}
-	}
-	function getPart()
-	{
-			$sql="Select
-		sparepart.PartNumber,
-		sparepart.PartName,
-		sparepart.partCountry,
-		sparepart.partPrice,
-		sparepart.partQuantity,
-		sparepart.image,
-		sparepart.CarID  FROM  sparepart inner join car on CarID=sparepart.CarID";
-		$d1= Database::GetInstance();
-        $result = mysqli_query($d1->GetConnection(), $sql);
-		 $term=$_POST["term"];
-if(!empty($term)){
-  $sql=$sql." WHERE FirstName LIKE "%$term%"
-  or LastName LIKE "%$term%"
-  or Course.Name LIKE "%$term%
-  "";
-}
-	}
+	}*/
+	
+	
 }

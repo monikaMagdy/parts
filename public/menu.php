@@ -64,12 +64,12 @@
 				<a class="nav-link js-scroll-trigger" href="cart.php"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;</a>
 			  </li>
 			  <li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="exportIndex.php">Check Out</a>
+				<a class="nav-link js-scroll-trigger" href="exportIndex.php">hidtory module</a>
 			  </li>
 			  <li class="nav-item">
 				<a class="nav-link js-scroll-trigger" href="Addcompany.php">Add Company</a>
 			  </li>
-			  <li class="nav-item">
+			  <li class="nav-item">	
 				<a class="nav-link js-scroll-trigger" href="signout.php">Log Out</a>
 			  </li>	
 				
@@ -79,33 +79,35 @@
 	  </nav>
 	   ';
 	}
-	else 
-	{
-		echo'
-			<ul class="navbar-nav text-uppercase ml-auto">
-			  <li class="nav-item">
+else {
+	echo'
+	<ul class="navbar-nav text-uppercase ml-auto">
+	  <li class="nav-item">
+		<a class="nav-link js-scroll-trigger"  href="Car.php"><i class="fas fa-car"></i>&nbsp;&nbsp;</a>
+	  </li>
+	  <li class="nav-item">
+	  <a class="nav-link js-scroll-trigger" href="searchFrontend.php"><i class="fas fa-search"></i>&nbsp;&nbsp;</a>
+	</li>
+	  <li class="nav-item">
+		<a class="nav-link js-scroll-trigger" href="index.php"><i class="fas fa-male"></i>&nbsp;&nbsp;</a>
+	  </li>
+	  <li class="nav-item">
+		<a class="nav-link js-scroll-trigger" href="cart.php"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;</a>
+	  </li>
+	  <li class="nav-item">	
+		<a class="nav-link js-scroll-trigger" href="signout.php">Log Out</a>
+	  </li>	
+		
+	</ul>
+  </div>
+</div>
+</nav>
+';
 
-				<a class="nav-link js-scroll-trigger" href="Car.php">Car</a>
-			  </li>
-			 
-			  <li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="Export.php">Check Out</a>
-			  </li>
-			  
-			  <li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="Addcompany.php">Add Company</a>
-			  </li>
 
- 			<li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="signout.php">Log Out</a>
-			  </li>	
-			  </ul>
-		  </div>
-		</div>
-	  </nav>
-	   ';
+}	
 	
-}
+
 	   ?>
 	  </body>
 

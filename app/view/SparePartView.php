@@ -56,7 +56,11 @@ class ViewSparePart extends View
         foreach ($this->model->getSpareParts() as $SparePart) {
 			if($_SESSION["Role"]==='Manger' )
 					{
-            $str.="<button type='submit'class='btn btn-warning btn-block' name='Add' id='Add'
+			$str.="<br>
+			<br>
+			<br>
+			
+			<button type='submit'class='btn btn-warning btn-block' name='Add' id='Add'
 					    onclick=\"location.href='SparePart.php?action=add&CarID=".$SparePart->getCarID()."&id=undefined'\">Click to add Spare part</button>";
 					}
 					

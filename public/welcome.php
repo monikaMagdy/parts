@@ -51,14 +51,14 @@
 		  <div class="row text-center">
 			<div class="col-md-6">
 			  <span class="fa-stack fa-5x">
-				<i class="fas fa-circle fa-stack-2x text-primary"></i>
+				<i class="fas fa-circle fa-stack-2x warning"></i>
 				<i class="fas fa-truck fa-stack-1x fa-inverse"></i>
 			  </span>
 			  <h4 class="service-heading">Export</h4>
 			</div>
 			<div class="col-md-6">
 			  <span class="fa-stack fa-5x">
-				<i class="fas fa-circle fa-stack-2x text-primary"></i>
+				<i class="fas fa-circle fa-stack-2x warning"></i>
 			   <i class="fas fa-truck-monster fa-stack-1x fa-inverse"></i>
 			  </span>
 			  <h4 class="service-heading">Import</h4>
