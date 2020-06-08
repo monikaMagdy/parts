@@ -3,7 +3,8 @@
     { 
         session_start(); 
     } 
-include"menu.php";
+
+	include"menu.php";
 define('__ROOT__', "../app/");
 require_once(__ROOT__ . "model/Companys.php");
 require_once(__ROOT__ . "controller/CompanyController.php");

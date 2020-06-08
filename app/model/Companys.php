@@ -37,9 +37,6 @@ class Companys extends Model
 			if ($LocalCompanyID == $Company->getLocalCompanyID()) {
 				return $Company;
 			}
-			else{
-				return false;
-			}
 		}
 		
 	}
