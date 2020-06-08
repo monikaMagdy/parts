@@ -21,8 +21,7 @@ class Exports extends Model
 		$result = $this->readExport();
 		while ($row = $result->fetch_assoc())
 		{
-			array_push($this->Exports, new Export($row['ExportID']),  $row['PartNumber'] , $row['PartName']
-		,$row['partQuantity'], $row['TotalPrice']);
+			array_push($this->Exports, new Export($row['ExportID']));
 		}
 	}
 
@@ -70,7 +69,7 @@ class Exports extends Model
 		$row1=mysqli_fetch_array($result1);
 		$sum=0;
 		$PartNumber=0;
-		
+
 		while ($row1 = $result1->fetch_assoc()) 
 		{
 			$LocalCompanyID=$row1["companyID"];
@@ -82,10 +81,10 @@ class Exports extends Model
 			$tax=$sum+($sum*0.14);
 		}
 
-	
-		$sql = "INSERT INTO `export` 
+
+		$sql = "INSERT INTO `export`  
 		(
-		LocalCompanyID,
+			LocalCompanyID,
 		PartNumber,
 		PartName,
 		partQuantity,
