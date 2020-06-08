@@ -121,8 +121,8 @@ class Export extends Model
     if ($result->num_rows == 1)
     {
         $row=mysqli_fetch_array($result);
-        $this->companyID=$row["localCompanyID"];
-        $this->companyName=$row['companyName'];
+        $this->companyID=$row["CompanyID"];
+       // $this->companyName=$row['companyName'];
         $this->CarID = $row["CarID"];
         $this->PartNumber=$row["PartNumber"];
         $this->PartName=$row["PartName"];

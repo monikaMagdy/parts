@@ -73,7 +73,7 @@ class ViewExport extends View
         {
           
           //$str.="<td >".$export->getExportID() ."</td> ";
-          $str.="<td >".$export->getCompanyID() ."  </td> ";
+          //$str.="<td >".$export->getCompanyID() ."  </td> ";
          // $str.="<td ><label name='CarID'>".$export->getCarID() ."</label></td> ";
           $str.="<td >".$export->getPartNumber()."</td> ";
           $str.="<td >".$export->getPartName()."</td> ";
