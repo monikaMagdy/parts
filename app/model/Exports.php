@@ -21,14 +21,15 @@ class Exports extends Model
 		$result = $this->readExport();
 		while ($row = $result->fetch_assoc())
 		{
-			array_push($this->Exports, new Export($row['ExportID']));
+			array_push($this->Exports, new Export($row['ExportID'],$row['LocalCompanyID'],
+			$row['PartNumber'],$row['PartName'],$row['partQuantity'],$row['ItemPrice'],$row['TotalPrice']));
 		}
 	}
 
-	function getTotalPrice()
+	/*function getTotalPrice()
 	{
 	  return $this->TotalPrice;
-	}
+	}*/
 	function getExports() 
 	{
 		$this->fillArray();  
@@ -107,6 +108,7 @@ class Exports extends Model
 		$result = mysqli_query($d1->GetConnection(), $sql);
 		if ($result){
 			echo "<br>Record was successfully added<br>";
+			$this->fillArray();
 		} 
 		else{
 			echo "ERROR: Could not able to execute $sql. " ;

@@ -8,15 +8,13 @@ class Export extends Model
 {
   private $ExportID;
   private $companyID;
-  //private $compnayName;
-  //private $CarID;
   private $PartNumber;
   private $PartName;    
   private $partQuantity;
   private $itemPrice;
   private $TotalPrice;
 
- function __construct($ExportID,$companyID="",$compnayName="",$PartNumber="",$PartName="",$partQuantity="",$itemPrice="",$TotalPrice="")
+ function __construct($ExportID,$companyID,$PartNumber,$PartName,$partQuantity,$itemPrice,$TotalPrice)
   {
     $this->ExportID = $ExportID;
     $d1= Database::GetInstance();
@@ -29,8 +27,6 @@ class Export extends Model
     else
     {
       $this->companyID=$companyID;
-      $this->companyName=$compnayName;
-     // $this->CarID = $CarID;
       $this->PartNumber=$PartNumber;
       $this->PartName=$PartName;
       $this->partQuantity=$partQuantity;
@@ -83,10 +79,7 @@ class Export extends Model
   {
      $this->partQuantity;
   }
-  function setpartQuantity($partQuantity)
-  {
-     $this->partQuantity=$partQuantity;
-  }
+  
   function getitemPrice() 
   {
     return $this->itemPrice;
@@ -118,12 +111,10 @@ class Export extends Model
     $d1= Database::GetInstance();
     $result = mysqli_query($d1->GetConnection(), $Export);
 
-    if ($result->num_rows == 1)
+    if ($result->num_rows == 0)
     {
         $row=mysqli_fetch_array($result);
         $this->companyID=$row["localCompanyID"];
-       $this->companyName=$row['companyName'];
-       // $this->CarID = $row["CarID"];
         $this->PartNumber=$row["PartNumber"];
         $this->PartName=$row["PartName"];
         $this->partQuantity=$row["partQuantity"];
@@ -133,8 +124,6 @@ class Export extends Model
     else 
     {
       $this->companyID="";
-      $this->companyName="";
-      //$this->CarID="";
       $this->PartNumber="";
       $this->PartName="";
       $this->partQuantity="";
@@ -145,7 +134,14 @@ class Export extends Model
 
   function Model_editExport($companyID,$PartNumber,$PartName,$partQuantity,$itemPrice,$TotalCost)
   {
-    $editExport="UPDATE `export` SET `localCompanyID`='$companyID',`PartNumber`='$PartNumber',`PartName`='$PartName',`Quantity`='$Quantity',`itemPrice`='$itemPrice',`TotalCost`='$TotalCost' WHERE ExportID=$this->ExportID; ";
+    $editExport="UPDATE `export` SET 
+    `localCompanyID`='$companyID',
+    `PartNumber`='$PartNumber',
+    `PartName`='$PartName',
+    `Quantity`='$Quantity',
+    `ItemPrice`='$itemPrice',
+    `TotalCost`='$TotalCost'
+     WHERE ExportID=$this->ExportID; ";
     $d1= Database::GetInstance();
     $result = mysqli_query($d1->GetConnection(), $editExport);
     if($editExport)

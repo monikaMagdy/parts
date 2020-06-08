@@ -46,35 +46,34 @@ class ViewExport extends View
           </div>
           
            <table id="items">
-            <tr >
-               
-                <td>
-                 companyID:
-                </td>
-                
-                <td>
-                  PartNumber :
-                </td>
-                <td>
-                  PartName :
-                </td>
-                <td>
-                  quantity:
-                </td>
-                <td>
-                 part price :
-                </td>
-                <td>
-                  TotalPrice:
-                </td>
-               
-                </tr>';
+            <tr>
+            <td>
+              export Id 
+              </td>
+             <td>
+                companyID:
+              </td>
+              <td>
+                PartNumber :
+              </td>
+              <td>
+                PartName :
+              </td>
+              <td>
+                quantity:
+              </td>
+              <td>
+                part price :
+              </td>
+              <td>
+                TotalPrice:
+              </td>
+            </tr>';
           foreach($this->model->getExports() as $export)
         {
           
-          //$str.="<td >".$export->getExportID() ."</td> ";
-          //$str.="<td >".$export->getCompanyID() ."  </td> ";
-         // $str.="<td ><label name='CarID'>".$export->getCarID() ."</label></td> ";
+          $str.="<td >".$export->getExportID() ."</td> ";
+          $str.="<td >".$export->getCompanyID() ."</td> ";
           $str.="<td >".$export->getPartNumber()."</td> ";
           $str.="<td >".$export->getPartName()."</td> ";
           $str.="<td >".$export->getpartQuantity()."</td> ";
@@ -85,23 +84,13 @@ class ViewExport extends View
           <a href='exportIndex.php?action=delete&id=".$export->getExportID()."'>Delete</a>
           </td>
           ";*/
+         
         }
-          $str.='
-          </table>
          
-         
-                </div>
-              
-          
-    
-          ';
-          $str.="<form method='post' action='exportIndex.php'>
-          <div class='container'>
-            <div class='row-2'>
-              <div class='col-lg-3 mx-auto'>
-           <div class='modal-body'>
-            <button id= 'back' class='btn btn-primary btn-xl text-uppercase'' name= 'back' type='submit'> back            </button>
-     </form>";
+        $str.='
+        </table>
+         </div>
+        ';
     
           return $str;
 	}
