@@ -43,9 +43,9 @@ class Exports extends Model
 			{
 				return $export;
 			}
-			else {
-				return false;
-			}
+			// else {
+			// 	return false;
+			// }
 		}
 	}
 
