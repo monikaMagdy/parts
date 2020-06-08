@@ -22,7 +22,8 @@ class Cars extends Model
 			array_push($this->Cars, new Car($row["CarID"]));
 		}
 	}
-	function getCars() {
+	function getCars() 
+	{
 		$this->fillArray();  
 		return $this->Cars;
 	}
