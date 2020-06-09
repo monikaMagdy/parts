@@ -128,14 +128,16 @@ class User extends Model
     }
   }
 
-  function Model_editUser($FullName,$username,$email,$password,$Age,$phoneNumber, $Role)
+  function Model_editUser($FullName,$username,$email,$Age,$phoneNumber, $Role)
 	{
-    $db=$db->GetInstance();
-		$editUser="UPDATE user SET FullName='$FullName', username='$username',email='$email',password='$password , Age='$Age', phoneNumber='$phoneNumber' WHERE ID=$this->ID; ";
-		if($this->db->query($editUser)===true)
+    
+    $editUser="UPDATE user SET FullName='$FullName', username='$username',email='$email' , Age='$Age', phoneNumber='$phoneNumber' WHERE ID=$this->ID";
+    $d1=Database::GetInstance();
+    $result = mysqli_query($d1->GetConnection(), $editUser);
+		if ($result)
 		{
 			echo"updated successfully.";
-			$this->readUser($this->ID);
+		//	$this->readUser($this->ID);
 		}
 		else
 		{

@@ -71,7 +71,7 @@ class Cars extends Model
 	 	'$imgName')";
 	 	$d1= Database::GetInstance();
         $result = mysqli_query($d1->GetConnection(), $sql);
-		if ($sql)
+		if ($result)
 		{
 			echo "Records inserted successfully.";
 			$this->fillArray();
