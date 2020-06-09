@@ -26,9 +26,9 @@
 	
 	  <!-- Custom styles for this template -->
 	  <link href="css/agency.min.css" rel="stylesheet">
-	  <?php include"menu.php";?>
-	</head>
 	
+	</head>
+	<?php include"menu.php";?>
 	
 <!-- Header -->
 	  <header class="masthead">

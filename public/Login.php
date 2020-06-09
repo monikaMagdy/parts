@@ -34,10 +34,13 @@ if(isset($_POST["login"]))
 		$_SESSION["ID"]=$row["ID"];
 		$_SESSION["username"]=$row["username"];
 		$_SESSION["Role"]=$row["Role"];
-		header("Location:welcome.php");
+		
+		echo"<script>alert('Welcome $username');
+		window.location.href='welcome.php'</script>";
+		
 	}
 	else {
-		echo"<script>alert('please register first')'</script>";
+		echo"<script>alert('please register first')</script>";
 	}
 }
 }

@@ -71,7 +71,8 @@ class CompanyView extends View
            <div class='btn-group btn-group-lg'>
            <button type='submit' class='btn btn-warning' name='Edit' id='Edit' onclick=\"location.href='Addcompany.php?action=edit&id=".$Company->getLocalCompanyID()."'\">Edit</button>
 
-        <button type='submit' class='btn btn-warning' name='Delete' id='Delete' onclick=\"location.href='Addcompany.php?action=delete&id=".$Company->getLocalCompanyID()."'\">Delete </button>
+        <button type='submit' class='btn btn-warning' name='Delete' id='Delete' 
+        onclick=\"location.href='Addcompany.php?action=delete&id=".$Company->getLocalCompanyID()."'\">Delete </button>
         </td>
         </div>
         </div>";
