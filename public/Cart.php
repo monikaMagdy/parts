@@ -15,6 +15,7 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 	{
 		case'cart':
 			 $controller->Con_addCart($_GET['partNumber'],$_POST['Qty']);
+			 echo $view->output();
 			
 		break;
 		case'getCompanyId':
