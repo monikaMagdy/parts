@@ -70,6 +70,23 @@ class Carts extends Model
 		}
 	}
 
+
+	function addCompanyId($CompanyId){
+		$sql="UPDATE `cart` SET `companyID`=$CompanyId";
+		$d1= Database::GetInstance();
+		$result = mysqli_query($d1->GetConnection(), $sql);
+			
+			if($result)
+			{
+				echo "updated successfully.";
+				//$this->readCart($this->id);
+			} 
+			else
+			{
+				echo "ERROR: Could not able to execute $sql. " ;
+			}
+	}
+	
 	function add_to_Cart($partNumber,$partQuantity)
 	{
 		$sql1= "SELECT PartPrice,PartName 

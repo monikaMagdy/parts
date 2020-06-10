@@ -104,7 +104,7 @@ class Cart extends Model
 		if ($result->num_rows == 1)
 		{
 			$row=mysqli_fetch_array($result);
-			$this->companyID = $row["partNumber"];
+			$this->companyID = $row["companyID"];
 			$this->partNumber = $row["partNumber"];
 			$this->PartName = $row["PartName"];
 			$this->PartPrice = $row["PartPrice"];
@@ -142,6 +142,7 @@ function add_to_Cart($partNumber,$partQuantity)
 				echo "ERROR: Could not able to execute $sql. " ;
 			}
 }
+
 function Model_decreseQty( $PartNumber, $partQuantity)
 {
 

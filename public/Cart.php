@@ -15,8 +15,14 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 	{
 		case'cart':
 			 $controller->Con_addCart($_GET['partNumber'],$_POST['Qty']);
-		echo $view->output();
+			
 		break;
+		case'getCompanyId':
+			$controller->Con_addCompanyId($_POST['CompanyId']);
+			echo header("location:Cart.php");
+		break;
+	   echo $view->output();
+	   break;
 		case 'delete':
 			$controller->delete($_GET['cartID']);
 			echo $view->output();
