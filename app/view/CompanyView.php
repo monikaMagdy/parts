@@ -71,8 +71,7 @@ class CompanyView extends View
            <div class='btn-group btn-group-lg'>
            <button type='submit' class='btn btn-warning' name='Edit' id='Edit' onclick=\"location.href='Addcompany.php?action=edit&id=".$Company->getLocalCompanyID()."'\">Edit</button>
 
-        <button type='submit' class='btn btn-warning' name='Delete' id='Delete' 
-        onclick=\"location.href='Addcompany.php?action=delete&id=".$Company->getLocalCompanyID()."'\">Delete </button>
+        <button type='submit' class='btn btn-warning' name='Delete' id='Delete' onclick=\"location.href='Addcompany.php?action=delete&id=".$Company->getLocalCompanyID()."'\">Delete </button>
         </td>
         </div>
         </div>";
@@ -143,30 +142,30 @@ public function View_addCompany()
           <form id="contactForm" name="sentMessage" novalidate="novalidate">
             <div class="row">
               <div class="col-md-6">
-    <input type="text"  class="form-control" name="CompanyName" required="required" placeholder="Enter Company Name"/><br>
+    <input type="text" pattern="[A-Za-z]{2,}" title="min 2 characters and no special or numiric characters" class="form-control" name="CompanyName" required="required" placeholder="Enter Company Name"/><br>
     </div>
     </div>
           <div class="row">
               <div class="col-md-6">
-    <input type="text" class="form-control" name="email" required="required" placeholder="Enter Email"/>
+    <input type="text" pattern="[a-zA-Z0-9!#$%&*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" title="valid mail is required" class="form-control" validate="required:true" name="email" placeholder="Enter email"/>
     <br>
     </div>
     </div>
     <div class="row">
     <div class="col-md-6">
-    <input type="text" class="form-control" name="phoneNumber" required="required" placeholder="Enter"/>
+    <input type="text" pattern="[0-9]{11}" title="numiric characters and 11 number" class="form-control" name="phoneNumber" required="required" placeholder="Enter phone number"/>
     <br>
     </div>
     </div>
     <div class="row">
     <div class="col-md-6">
-    <input type="text" class="form-control" name="RegisterSupplierNumber" required="required" placeholder="Enter year"/>
+    <input type="text" class="form-control" name="RegisterSupplierNumber" required="required" placeholder="Enter RegisterSupplierNumber"/>
     <br>
     </div>
     </div>
     <div class="row">
     <div class="col-md-6">
-    <input type="text" class="form-control" name="CommercialRecord" required="required" placeholder="Enter name"/>
+    <input type="text" class="form-control" name="CommercialRecord" required="required" placeholder="Enter CommercialRecordme"/>
     <br>
     </div>
     </div>

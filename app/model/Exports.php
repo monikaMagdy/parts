@@ -70,21 +70,20 @@ class Exports extends Model
 			 FROM `cart`";
 		$d1= Database::GetInstance();
 		$result1 = mysqli_query($d1->GetConnection(), $sql1);
-		$row1=mysqli_fetch_array($result1);
 		$sum=0;
-		$PartNumber=0;
-
-		while ($row1 = $result1->fetch_assoc()) 
-		{
-			$LocalCompanyID=$row1["companyID"];
-			$PartNumber=$row1["partNumber"];
-			$PartName='"'.$row1["PartName"].'"';
-			$partQuantity=$row1["partQuantity"];
-			$itemPrice=$row1["PartPrice"];
-			$sum+=$row1["PartPrice"]*$row1["partQuantity"];
-			$tax=$sum+($sum*0.14);
-		}
-
+		
+            while ($row1 = $result1->fetch_assoc()) {
+                $LocalCompanyID=$row1["companyID"];
+                $PartNumber=$row1["partNumber"];
+                $PartName='"'.$row1["PartName"].'"';
+                $partQuantity=$row1["partQuantity"];
+                $itemPrice=$row1["PartPrice"];
+                $sum+=$row1["PartPrice"]*$row1["partQuantity"];
+				$tax=$sum+($sum*0.14);
+			
+            }
+       
+	
 
 		$sql = "INSERT INTO `export`  
 		(
@@ -107,7 +106,7 @@ class Exports extends Model
 		 $d1= Database::GetInstance();
 		$result = mysqli_query($d1->GetConnection(), $sql);
 		if ($result){
-			echo "<br>Record was successfully added<br>";
+			echo header("location:Car.php");
 			$this->fillArray();
 		} 
 		else{

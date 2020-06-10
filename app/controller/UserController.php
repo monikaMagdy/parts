@@ -27,7 +27,7 @@ class UserController extends controller
 		$Age = filter_var($_REQUEST['Age'],FILTER_VALIDATE_INT );
 		$phoneNumber = filter_var($_REQUEST['phoneNumber'],FILTER_VALIDATE_INT );
 		$Role=filter_var($_REQUEST['Role'], FILTER_SANITIZE_STRING );
-		if (empty( $_REQUEST['FullName'])||empty($_REQUEST['username'])||empty($_REQUEST['email'])||/empty($_REQUEST['Age'])||empty($_REQUEST['phoneNumber'])||empty($_REQUEST['Role']))
+		if (empty( $_REQUEST['FullName'])||empty($_REQUEST['username'])||empty($_REQUEST['email'])||empty($_REQUEST['Age'])||empty($_REQUEST['phoneNumber'])||empty($_REQUEST['Role']))
 		{
 		echo "<script>alert('Please Fill The empty space');
 		 </script>";

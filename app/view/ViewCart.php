@@ -107,11 +107,11 @@ class ViewCart extends View
       <td><label name='totalParts'>total Parts:</td> <td></td><td>".$this->model->gettotalPrice()."</td><td></td>
       </tr>
       <tr>
-       <td><labe name='totalPrice'>Total Price: </td><td></td><td>".$this->model->gettotalPriceWithTax()."</td><td></td>
+       <td><label name='totalPrice'>Total Price: </td><td></td><td>".$this->model->gettotalPriceWithTax()."</td><td></td>
       </tr>
       <tr>
-      <td><labe name='AddCompanyID'>Please enter Company ID: </td><td></td><td><form action='' method='post'>
-      <input type='text' id='id' name='id' value='1'>
+      <td><label name='AddCompanyID'>Please enter Company ID: </td><td></td><td><form action='Cart.php?action=getCompanyId&CompanyId=' method='post'>
+      <input type='text' id='CompanyId' name='CompanyId' value='1'>
        <button type='submit'  class='btn btn-warning btn-block' name='id' id='id'>Add</button><br>
        </form>'</td><td></td>
      </tr>

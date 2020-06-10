@@ -11,6 +11,10 @@ class CartController extends Controller
 		$this->model->add_to_Cart($partNumber,$partQuantity);
 		
 	}
+	public function Con_addCompanyId($CompanyId){
+		
+        $this->model->addCompanyId($CompanyId);
+    }
 
 	public function delete($id)
 	{

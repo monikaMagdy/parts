@@ -21,12 +21,7 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 	case 'editaction':
 			$controller->Con_editUser();
 			$view->output();
-			break;
-	case'delete':
-		$controller->Con_deleteUser($ID);
-		break;
-	
-		header("location:welcome.php");	
+	break;
 		}	
 }
 else {
