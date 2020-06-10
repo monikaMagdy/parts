@@ -19,8 +19,13 @@ $view = new ViewUser($controller, $model);
 				break;
 				case 'insert':
 				$controller->Con_insertUser();
-				//echo $view->registerForm();
+				echo"<script>alert('Thank you for registering.');
+				window.location.href='index.php'</script>";
 				break;
+				case'delete':
+					$controller->Con_deleteUser($_GET['id']);
+					echo"<script>confirm('Press a button!');
+				window.location.href='registerForm.php?action=show'</script>";
 				case'show':
 				echo $view->show();
 				break;

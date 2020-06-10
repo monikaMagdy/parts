@@ -17,7 +17,15 @@ class CompanyController extends Controller
 		$CommercialRecord		=filter_var($_REQUEST['CommercialRecord'],FILTER_VALIDATE_INT );
 		if (strlen($phoneNumber) < 11 || strlen($phoneNumber) > 11)
 		{
-			echo"<script>alert('check phone number');</script>";
+			echo"<script>alert('check $phoneNumber');</script>";
+		}
+		else if(strlen($RegisterSupplierNumber) !=20)
+		{
+			echo"<script>alert('check $RegisterSupplierNumber');</script>";
+		}
+		else if (strlen($CommercialRecord)!=15)
+		{
+			echo"<script>alert('check $CommercialRecord');</script>";
 		}
 		else
 			$this->model->addcompany($CompanyName, $email, $phoneNumber, $RegisterSupplierNumber, $CommercialRecord);
