@@ -14,12 +14,7 @@ $view = new ViewSparePart($controller, $model);
   {
   	switch($_GET['action'])
  	{
- 		case 'add':
-			 echo $view->addSparePart();
-		 break;
- 		case 'addAction':
- 			$controller->Con_addSparePart($_GET["id"]);
- 			break;
+ 		
 		case 'edit':
 			echo $view->viewEditSparePart($_GET["id"]);
 		break;

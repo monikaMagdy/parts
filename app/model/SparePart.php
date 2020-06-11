@@ -107,7 +107,7 @@ class SparePart extends Model
 	function readSparePart($PartNumber)
 	{
 		$sql = "SELECT * FROM `sparepart` WHERE PartNumber=".$PartNumber;
-        $d1= Database::GetInstance();
+         $d1= Database::GetInstance();
         $result = mysqli_query($d1->GetConnection(), $sql);
 		if ($result->num_rows == 1){
 			$row=mysqli_fetch_array($result);
