@@ -45,7 +45,7 @@ class ViewExport extends View
             </div>
           </div>
           
-           <table id="items">
+           <table id="items" border=1 width=100%  >
             <tr>
             <td>
               export Id 
@@ -68,9 +68,13 @@ class ViewExport extends View
               <td>
                 TotalPrice:
               </td>
+              <td>
+              time Stamp
+              </td>
             </tr>';
           foreach($this->model->getExports() as $export)
         {
+          $date = new DateTime();
           
           $str.="<td >".$export->getExportID() ."</td> ";
           $str.="<td >".$export->getCompanyID() ."</td> ";
@@ -79,6 +83,7 @@ class ViewExport extends View
           $str.="<td >".$export->getpartQuantity()."</td> ";
           $str.="<td >".$export->getitemPrice()."</td> ";
           $str.="<td >".$export->getTotalPrice()."</td> ";
+          $str.="<td >".$date->format('d-m-Y H:i:s')."</td> ";
           $str.="<tr>";
          /* $str.="<td>
           <a href='exportIndex.php?action=delete&id=".$export->getExportID()."'>Delete</a>
