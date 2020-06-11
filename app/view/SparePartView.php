@@ -100,7 +100,7 @@ class ViewSparePart extends View
 						<button type="submit"  class="btn btn-warning btn-block" name="Import" id="Import" >Import</button><br>
 					</form>';
 					
-					$str.='<form action="Cart.php?action=cart&partNumber='.$SparePart->getPartNumber().'" method="post">
+					$str.='<form action="Cart.php?action=cart&partNumber='.$SparePart->getPartNumber().'&exported=" method="post">
 					 <input type="text" id="Qty" name="Qty" value="1"><br><br>
 						<button type="submit"  class="btn btn-warning btn-block" name="cart" id="cart"><i class ="fas fa-cart-plus"></i>&nbsp;&nbsp;Add to Cart</button><br>
 						</form>
