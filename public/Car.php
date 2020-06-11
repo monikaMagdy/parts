@@ -22,7 +22,8 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 			break;
 		case 'addAction':
 			$controller->Con_addCar();
-			echo header("location:Car.php");
+			//echo"<script>alert('Thank you For adding New Car , Now add New Part for this car !');
+				//	window.location.href='SparePart.php?action=add&CarID='".$_GET['id']."'&id=undefined';</script>";
 			break;
 		case 'edit':
 			echo $view->viewEditCar($_GET['id']);

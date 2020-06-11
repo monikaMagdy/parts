@@ -6,7 +6,6 @@ class CompanyController extends Controller
 {
 	public function Con_addCompany()
 	{
-<<<<<<< HEAD
 		$CompanyName			=filter_var($_REQUEST['CompanyName'], FILTER_SANITIZE_STRING);
 		
 		$email					=filter_var($_REQUEST['email'], FILTER_SANITIZE_EMAIL);
@@ -30,14 +29,7 @@ class CompanyController extends Controller
 		}
 		else
 			$this->model->addcompany($CompanyName, $email, $phoneNumber, $RegisterSupplierNumber, $CommercialRecord);
-=======
-		$CompanyName =filter_var($_REQUEST['CompanyName'], FILTER_SANITIZE_STRING);
-		$email = filter_var($_REQUEST['email'], FILTER_SANITIZE_STRING) ;
-		$phoneNumber=filter_var($_REQUEST['phoneNumber'], FILTER_SANITIZE_EMAIL );
-		$RegisterSupplierNumber = filter_var($_REQUEST['RegisterSupplierNumber'],FILTER_VALIDATE_INT );
-		$CommercialRecord = filter_var($_REQUEST['CommercialRecord'],FILTER_VALIDATE_INT );
-		$this->model->addcompany($CompanyName, $email, $phoneNumber, $RegisterSupplierNumber, $CommercialRecord);
->>>>>>> 686bdc222bd8ace6e6a326aad4a5c1d7aee573fa
+
 	}
 
 	public function Con_editCompany($LocalCompanyID)

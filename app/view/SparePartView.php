@@ -53,17 +53,14 @@ class ViewSparePart extends View
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>';
-        foreach ($this->model->getSpareParts() as $SparePart) {
-			if($_SESSION["Role"]==='Manger' )
-					{
+
 			$str.="<br>
 			<br>
 			<br>
 			
 			<button type='submit'class='btn btn-warning btn-block' name='Add' id='Add'
-					    onclick=\"location.href='SparePart.php?action=add&CarID=".$SparePart->getCarID()."&id=undefined'\">Click to add Spare part</button>";
-					}
-					
+					    onclick=\"location.href='SpareParts.php?action=add&CarID=".$_GET['CarID']."'\">Click to add Spare part</button>";
+				
             $str.='
 		<div class="container">
 		 <div class="row mt-2 pb-3">';
@@ -118,163 +115,103 @@ class ViewSparePart extends View
 
         
             return $str;
-        }
+        
     }
 
         public function addSparePart()
         {
-            $str='<!DOCTYPE html>
+            $str = "";
+     $str.='<!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-<title>Bootstrap Simple Registration Form</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-<style type="text/css">
-	body{
-		color: #fff;
-		background: #000000;
-		
-	}
-    .form-control{
-		height: 40px;
-		box-shadow: none;
-		color: #969fa4;
-	}
-	.form-control:focus{
-		border-color: #e9d900;
-	}
-    .form-control, .btn{        
-        border-radius: 3px;
-    }
-	.signup-form{
-		width: 400px;
-		margin: 0 auto;
-		padding: 30px 0;
-	}
-	.signup-form h2{
-		color: #e9d900;
-        margin: 0 0 15px;
-		position: relative;
-		text-align: center;
-    }
-	.signup-form h2:before, .signup-form h2:after{
-		content: "";
-		height: 2px;
-		width: 30%;
-		background: #e9d900;
-		position: absolute;
-		top: 50%;
-		z-index: 2;
-	}	
-	.signup-form h2:before{
-		left: 0;
-	}
-	.signup-form h2:after{
-		right: 0;
-	}
-    .signup-form .hint-text{
-		color: #999;
-		margin-bottom: 30px;
-		text-align: center;
-	}
-    .signup-form form{
-		color: #999;
-		border-radius: 3px;
-    	margin-bottom: 15px;
-        background: #f2f3f7;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        padding: 30px;
-    }
-	.signup-form .form-group{
-		margin-bottom: 20px;
-	}
-	.signup-form input[type="checkbox"]{
-		margin-top: 3px;
-	}
-	.signup-form .btn{        
-        font-size: 16px;
-        font-weight: bold;		
-		min-width: 140px;
-        outline: none !important;
-    }
-	.signup-form .row div:first-child{
-		padding-right: 10px;
-	}
-	.signup-form .row div:last-child{
-		padding-left: 10px;
-	}    	
-    .signup-form a{
-		color: #fff;
-		text-decoration: underline;
-	}
-    .signup-form a:hover{
-		text-decoration: none;
-	}
-	.signup-form form a{
-		color: #000000;
-		text-decoration: none;
-	}	
-	.signup-form form a:hover{
-		text-decoration: underline;
-	} 
-</style>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Auto spare parts</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="css/agency.min.css" rel="stylesheet">
+
 </head>
-<body>
-<div class="signup-form">
+  
+ 
+<body id="page-top">
+<br>
+<br>
+<br>
+<br>
+
+<section class="page-section" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">Add new Parts</h2>
+          <h3 class="section-subheading text-muted"> </h3>
+        </div>
+      </div>
+      
 
 <form action="SparePart.php?action=addAction&id='.$_GET['CarID'].'" method="post">
-
-	<h2>Add Spare Parts</h2>
-		<p class="hint-text">Spare Parts Infromation</p>
-
-		<div class="form-group">
-		<div><input type="text" class="form-control" name="PartNumber"  placeholder="Enter Part Number"/>
-		</div>
-		</div>
-		<br>
-		<div class="form-group">
-			<div><input type="text" class="form-control" name="PartName"  placeholder="Enter Part Name"/>
-			</div>
-			</div>
-		<br>
-		<div class="form-group">
+<div class="row">
+	<div class="col-lg-12">
+		<input type="text" class="form-control" name="PartNumber"  placeholder="Enter Part Number"/>
+	</div>
+</div>
+<br>
+<div class="row">
+	<div class="col-lg-12">
+		<input type="text" class="form-control" name="PartName"  placeholder="Enter Part Name"/>
+	</div>
+</div>
+<br>
+<div class="row">
+    <div class="col-lg-12">
+		<input type="text" class="form-control" name="partCountry"   placeholder="Enter part country"/>
+	</div>
+</div>
+<br>
+<div class="row">
+        <div class="col-lg-12">
+		<input type="text" class="form-control" name="partPrice" placeholder="Enter Price"/>
+	</div>
+</div>
+<br>
+<div class="row">
+        <div class="col-lg-12">
+		<input type="text" class="form-control" name="partQuantity" placeholder="Enter Quantity"/>
+	</div>
+</div>
+<br>
+<div class="form-group">
 			<div>
-				<input type="text" class="form-control" name="partCountry"   placeholder="Enter part country"/>
+				<input type="file" class="form-control" required="required" name="imgName"  id="imgName" placeholder="Imge Name"/>
 			</div>
 		</div>
 		<br>
-		<div class="form-group">
-			<div>
-				<input type="text" class="form-control" name="partPrice" placeholder="Enter Price"/>
-			</div>
-		</div>
-		<br>
-		<div class="form-group">
-			<div>
-				<input type="text" class="form-control" name="partQuantity" placeholder="Enter Quantity"/>
-			</div>
-		</div>
-		<br>
-		<div class="form-group">
-			<div>
-				<input type="text" class="form-control" name="image" placeholder="Enter Image Name"/>
-			</div>
-		</div>
-		<br>
-
-		<div class="form-group">
-			<div class="form-group">
-				<button type="submit" class="btn btn-warning" name="Add" id="Add">Add</button>
-        	</div>
-        </div>
-		</form>';
-            return $str;
+<br>
+<div class="portfolio-caption">
+           <div class="btn-group btn-group-lg">
+		<button type="submit" class="btn btn-warning" name="Add" id="Add">Add</button>
+	</div>
+</div>
+</form>
+</div>
+</setion>';
+    return $str;
         }
 
 

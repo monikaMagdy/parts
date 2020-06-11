@@ -23,9 +23,10 @@ $view = new ViewUser($controller, $model);
 				window.location.href='index.php'</script>";
 				break;
 				case'delete':
-					$controller->Con_deleteUser($_GET['id']);
-					echo"<script>alert('Are you sure, You want to delete this user?');
+					echo"<script>confirm('Are you sure, You want to delete this user?');
 					window.location.href='registerForm.php?action=show';</script>";
+					$controller->Con_deleteUser($_GET['id']);
+				
 				case'show':
 				echo $view->show();
 				break;

@@ -67,7 +67,7 @@
 				<a class="nav-link js-scroll-trigger" href="exportIndex.php">hidtory module</a>
 			  </li>
 			  <li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="Addcompany.php">Add Company</a>
+				<a class="nav-link js-scroll-trigger" href="Addcompany.php">Company</a>
 			  </li>
 			  <li class="nav-item">	
 				<a class="nav-link js-scroll-trigger" href="signout.php">Log Out</a>
