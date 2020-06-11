@@ -20,9 +20,9 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 		break;
 		case'getCompanyId':
 			$controller->Con_addCompanyId($_POST['CompanyId']);
-			echo header("location:Cart.php");
-		break;
-	   echo $view->output();
+			//echo header("location:Cart.php");
+		//break;
+	  // echo $view->output();
 	   break;
 		case 'delete':
 			$controller->delete($_GET['cartID']);

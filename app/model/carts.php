@@ -67,16 +67,28 @@ class Carts extends Model
 
     public function addCompanyId($CompanyId)
     {
+		$sql1="SELECT `LocalCompanyID` FROM `localcompany` where `LocalCompanyID`=$CompanyId";
+		$d1= Database::GetInstance();
+		$result1=mysqli_query($d1->GetConnection(), $sql1);
         $sql="UPDATE `cart` SET `companyID`=$CompanyId";
-        $d1= Database::GetInstance();
-        $result = mysqli_query($d1->GetConnection(), $sql);
+		$result = mysqli_query($d1->GetConnection(), $sql);
+		if($result!=$result1){
+			?>
+<script>alert('The Company Id you have entered does not exist') ;
+window.location.href= 'Cart.php';</script>
+			<?
+		}
+		else{
+			echo header("location:Cart.php");
+		}
+		
             
-        if ($result) {
-            echo "updated successfully.";
-        //$this->readCart($this->id);
-        } else {
-            echo "ERROR: Could not able to execute $sql. " ;
-        }
+        // if ($result) {
+        //     echo "updated successfully.";
+        // //$this->readCart($this->id);
+        // } else {
+        //     echo "ERROR: Could not able to execute $sql. " ;
+        // }
     }
     
     public function add_to_Cart($partNumber, $partQuantity)
