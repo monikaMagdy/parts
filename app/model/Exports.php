@@ -106,7 +106,7 @@ class Exports extends Model
 		 $d1= Database::GetInstance();
 		$result = mysqli_query($d1->GetConnection(), $sql);
 		if ($result){
-			echo header("location:Car.php");
+			echo header("location:Cart.php?exported=true");
 			$this->fillArray();
 		} 
 		else{
