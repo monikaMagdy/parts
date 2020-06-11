@@ -23,8 +23,8 @@ if (isset($_POST['reset']))
 
     $to = $email;
     $subject = "Password Change";
-    $msg = "Hello your password code is ". $code." and the page of reset password is http://localhost/parts-master/public/changepass.php";
-    $headers = "From: support@gmail.com";
+    $msg = "Hello your password code is ( ". $code." ) and the page of reset password is http://localhost/parts-master/public/changepass.php";
+    $headers = "From: Autospareparts-support@gmail.com";
     mail($to, $subject, $msg, $headers);
     header("Location: message.php?email=" . $email);
   }
