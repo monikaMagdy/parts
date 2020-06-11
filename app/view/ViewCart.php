@@ -31,7 +31,14 @@ class ViewCart extends View
 
   <!-- Custom styles for this template -->
   <link href="css/agency.min.css" rel="stylesheet">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+$(document).ready(function(){
+  $("submit").click(function(){
+    $("payment").toggle();
+  });
+});
+</script>
 </head>
 
 <body id="page-top">
