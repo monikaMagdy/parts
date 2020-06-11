@@ -129,7 +129,7 @@ $str='<!DOCTYPE html>
         $str.="<td><br><br>
 				<div class='portfolio-caption'>
            			<div class='btn-group btn-group-lg'>
-           				<button type='submit' class='btn btn-warning' name='delete' id='delete' onclick=\"location.href='registerForm.php?action=delete&id=".$User->getID()."'\">Delete User</button>
+           				<button type='submit' class='btn btn-warning' name='delete' id='delete' onclick=\"location.href='index.php?action=delete&id=".$User->getID()."\">Delete User</button>
            			</div>
            		</div></td>";
 
@@ -218,6 +218,7 @@ $str='<!DOCTYPE html>
 			</div>
 		</div>
 		</div>
+		<a href="../public/resetpass.php">Reset Password</a>
 		</form>
 		</div>';
 		return $str;
