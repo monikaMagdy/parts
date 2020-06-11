@@ -24,8 +24,7 @@ $view = new ViewUser($controller, $model);
 				break;
 				case'delete':
 					$controller->Con_deleteUser($_GET['id']);
-					echo"<script>confirm('Press a button!');
-				window.location.href='registerForm.php?action=show'</script>";
+				
 				case'show':
 				echo $view->show();
 				break;
