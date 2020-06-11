@@ -1,5 +1,5 @@
 <?php 
-
+require("mail-manager/mailer.php");
 session_start();
 $errors = [];
 $user_id = "";
@@ -20,13 +20,15 @@ if (isset($_POST['reset']))
     // store token in the password-reset database table against the user's email
     $sql = "INSERT INTO rpassword(email, code) VALUES ('$email', '$code')";
     $results = mysqli_query($db, $sql);
-
     $to = $email;
-    $subject = "Password Change";
     $msg = "Hello your password code is ( ". $code." ) and the page of reset password is http://localhost/parts-master/public/changepass.php";
-    $headers = "From: Autospareparts-support@gmail.com";
-    mail($to, $subject, $msg, $headers);
-    header("Location: message.php?email=" . $email);
+
+    if(sendCMail($to, $msg)){
+      header("Location: message.php?email=" . $email);
+    }else{
+      echo "ERROR";
+    }
+
   }
 }
 
