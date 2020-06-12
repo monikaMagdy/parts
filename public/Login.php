@@ -16,8 +16,9 @@ echo $view->loginForm();
 if(isset($_POST["login"]))	
 {
 	
-	$username=$_REQUEST["username"];
+	$username=filter_var($_REQUEST["username"], FILTER_SANITIZE_STRING);
 	$hashed_password = hash('sha512', $_REQUEST['password']);
+	filter_var($hashed_password, FILTER_SANITIZE_STRING);
 	if (empty($_REQUEST['username'])|| empty($_REQUEST['password']))
 	{
 		 echo "<script>alert('Please Fill The empty spaces');
