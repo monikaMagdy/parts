@@ -31,14 +31,7 @@ class ViewCart extends View
 
   <!-- Custom styles for this template -->
   <link href="css/agency.min.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-$(document).ready(function(){
-  $("submit").click(function(){
-    $("payment").toggle();
-  });
-});
-</script>
+  
 </head>
 
 <body id="page-top">
@@ -80,7 +73,8 @@ $(document).ready(function(){
            
             </tr>';
             
-     foreach ($this->model->getCarts() as $cart) {
+     foreach ($this->model->getCarts() as $cart) 
+     {
      
       /*$str.="<td><select name='company'>";
       $company =$mysqli->query("SELECT * FROM company;");
@@ -101,7 +95,7 @@ $(document).ready(function(){
               <div class='btn-group btn-group-lg'>
                 <button type='submit' class='btn btn-primary btn-xl
                  name='delete' id='delete' 
-                 onclick=\"location.href='Cart.php?action=delete&cartID=".$cart->getid()."'\">
+                 onclick='\"location.href='Cart.php?action=delete&cartID=".$cart->getid()."'\">
                 Delete</button>
               </div>
             </div>";
@@ -135,7 +129,8 @@ $(document).ready(function(){
           </div>
         </div>
       </div> ";
-     foreach ($this->model->getCarts() as $cart) {
+     foreach ($this->model->getCarts() as $cart) 
+     {
          $str.="
       <div class='container'>
         <div class='row-2'>
@@ -153,7 +148,7 @@ $(document).ready(function(){
          }
      
          return $str;
-     }
+      }
  }
   }
   ?>
