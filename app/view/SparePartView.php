@@ -120,8 +120,8 @@ class ViewSparePart extends View
 
         public function addSparePart()
         {
-            $str = "";
-     $str.='<!DOCTYPE html>
+           // $str = "";
+            $str.='<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -165,7 +165,7 @@ class ViewSparePart extends View
       </div>
       
 
-<form action="SparePart.php?action=addAction&id='.$_GET['CarID'].'" method="post">
+<form action="SpareParts.php?action=addAction&id='.$_GET['CarID'].'" method="post">
 <div class="row">
 	<div class="col-lg-12">
 		<input type="text" class="form-control" name="PartNumber"  placeholder="Enter Part Number"/>
@@ -198,7 +198,7 @@ class ViewSparePart extends View
 <br>
 <div class="form-group">
 			<div>
-				<input type="file" class="form-control" required="required" name="imgName"  id="imgName" placeholder="Imge Name"/>
+				<input type="file" class="form-control" required="required" name="image"  id="image" placeholder="Imge Name"/>
 			</div>
 		</div>
 		<br>
@@ -210,8 +210,9 @@ class ViewSparePart extends View
 </div>
 </form>
 </div>
-</setion>';
-    return $str;
+</section>';
+        
+            return $str;
         }
 
 

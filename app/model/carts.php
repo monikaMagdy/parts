@@ -122,5 +122,5 @@ window.location.href= 'Cart.php';</script>
         }
     }
 }
-	
+	?>
 

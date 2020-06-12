@@ -204,7 +204,7 @@ else
 		}
 	}
 	
-	/*function addSparePart($PartNumber,$PartName,$partCountry,$partPrice,$partQuantity,$image,$CarID,$user_ID)
+	function addSparePart($PartNumber,$PartName,$partCountry,$partPrice,$partQuantity,$image,$CarID,$user_ID)
 	{
 		$sql="INSERT INTO `sparepart`
 		(
@@ -239,7 +239,7 @@ else
 		{
 			echo "ERROR: Could not able to execute $sql. " ;
 		}
-	}*/
+	}
 	
 	
 }

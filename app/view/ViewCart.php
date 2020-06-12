@@ -146,12 +146,12 @@ $(document).ready(function(){
 
        <button type='submit' class='btn btn-primary btn-xl name='submit' id='submit'  onclick=\"location.href='exportIndex.php?action=export'\" > Export</button>
        <button id= 'back' class='btn btn-primary btn-xl text-uppercase' name= 'back' type='submit' onclick=\"location.href='Car.php'\"> back</button>";
-       if ($_GET['exported']==true) {
-           $str.="
+         if ($_GET['exported']==true) {
+             $str.="
        <button id= 'payment' class='btn btn-primary btn-xl text-uppercase' name= 'payment' type='submit' onclick=\"location.href='cart.php?action=deletecart&partNumber=".$cart->getpartNumber()."&Qty=".$cart->getpartQuantity()."&cartID=".$cart->getid()."'\"> payment</button>
      </div>";
-       }
-
+         }
+     
          return $str;
      }
  }
