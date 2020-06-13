@@ -22,7 +22,7 @@ or partCountry LIKE '%" .$term. "%'";
 
 }
 //print the table of the search ,flixable with the size of the page 
-echo"<table width=100%>
+echo"<table id='team' border=1 width=100%>
 <tr><th>Part Number</th>
 <th>Part Name</th>
 <th>Part Price</th>
@@ -45,7 +45,7 @@ if($result = mysqli_query($con,$sql))
 		{
 			//fill the array by the data we get from the database table 
 			echo"    
-			<table border=1 width=100%>
+			<table id='team'border=1 width=100%>
 			<tr>
 			<td>".$row['PartNumber']."</td>
 			<td>".$row['PartName']."</td>

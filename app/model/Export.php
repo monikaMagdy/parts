@@ -155,13 +155,14 @@ class Export extends Model
     }
   }
 
-  function Model_deleteExport()
+  function Model_deleteExport($ExportID)
   {       
     $deleteExport="DELETE FROM export WHERE  ExportID=$this->ExportID ;";
     $d1= Database::GetInstance();
     $result = mysqli_query($d1->GetConnection(), $deleteExport);
     if($deleteExport){
-       echo "deletet successfully.";
+       echo "<script>alert('deletet successfully.');
+       window.history.back();</script>";
     }
     else
     {
