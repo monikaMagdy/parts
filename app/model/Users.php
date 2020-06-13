@@ -101,4 +101,48 @@ function getUsers() {
 	}
 	}
 }
+/*
+    public function Model_insertUser($FullName, $username, $email, $password, $Age, $phoneNumber, $Role)
+    {
+        $sql1="SELECT `username` FROM `user` where";
+        $d1= Database::GetInstance();
+        $result1=mysqli_query($d1->GetConnection(), $sql1);
+        if ($username!=mysqli_num_rows($result1)) {
+            $sql = "INSERT INTO `user` 
+		(
+		FullName,
+		username,
+		email,
+		password,
+		Age,
+		phoneNumber,
+		Role
+		)
+		VALUES
+		(
+		 '$FullName',
+		 '$username',
+		 '$email',
+		 '$password',
+		 '$Age',
+		 '$phoneNumber',
+		 '$Role'
+		)";
+            $result = mysqli_query($d1->GetConnection(), $sql);
+            if ($result) {
+                echo "Records inserted successfully.";
+                $this->fillArray();
+            } else {
+                echo "ERROR: Could not able to execute $sql. " ;
+			}
+		
+			
+		
+		} 
+		else {
+            echo"<script>alert('This username already exists') ;
+			window.history.back();</script>";
+        }
+    }
+*/
 ?>

@@ -1,9 +1,11 @@
 <?php
+
+	
 define('__ROOT__', "../app/");
 require_once(__ROOT__ . "model/Users.php");
 require_once(__ROOT__ . "controller/UserController.php");
 require_once(__ROOT__ . "view/ViewUser.php");
-
+include"menu.php";
 $model = new Users();
 $controller = new UserController($model);
 $view = new ViewUser($controller, $model);
@@ -16,8 +18,9 @@ echo $view->loginForm();
 if(isset($_POST["login"]))	
 {
 	
-	$username=$_REQUEST["username"];
+	$username=filter_var($_REQUEST["username"], FILTER_SANITIZE_STRING);
 	$hashed_password = hash('sha512', $_REQUEST['password']);
+	filter_var($hashed_password, FILTER_SANITIZE_STRING);
 	if (empty($_REQUEST['username'])|| empty($_REQUEST['password']))
 	{
 		 echo "<script>alert('Please Fill The empty spaces');
@@ -31,15 +34,17 @@ if(isset($_POST["login"]))
 	if ($result->num_rows == 1)
 	{
 		$row = $dbh->fetchRow();
+		//session_start(); 
 		$_SESSION["ID"]=$row["ID"];
 		$_SESSION["username"]=$row["username"];
 		$_SESSION["Role"]=$row["Role"];
 		
 		echo"<script>alert('Welcome $username');
-		window.location.href='welcome.php'</script>";
+		window.location.href='index.php'</script>";
 		
 	}
-	else {
+	else 
+	{
 		echo"<script>alert('please register first')</script>";
 	}
 }

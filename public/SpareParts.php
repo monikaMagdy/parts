@@ -5,9 +5,11 @@ require_once(__ROOT__ . "model/SpareParts.php");
 require_once(__ROOT__ . "controller/SparePartController.php");
 require_once(__ROOT__ . "view/SparePartView.php");
 
+
 $model = new SpareParts($_GET["CarID"]);
 $controller = new SparePartController($model);
 $view = new ViewSparePart($controller, $model);
+
 
 if (isset($_GET['action']) && !empty($_GET['action']))
   {
@@ -18,7 +20,7 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 		 break;
  		case 'addAction':
              $controller->Con_addSparePart($_GET["id"]);
-             echo $view->output();
+			echo header('location:SpareParts.php?CarID='.$_GET["id"].'');
              break;
     }
 }

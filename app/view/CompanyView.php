@@ -51,7 +51,7 @@ class CompanyView extends View
       </div>
       <div class="row">
         <div class="col-lg-12">';
-    $str.="<table class='section-heading text-uppercase' id='items'>";
+    $str.="<table class='section-heading text-uppercase' id='items border=1 width=100%'>";
     $str.="<tr><th>Company Name</th>
           <th>Email</th>
           <th>Phone Number</th>
@@ -66,6 +66,8 @@ class CompanyView extends View
         $str.="<td>". $Company->getphoneNumber() ."</td> ";
          $str.="<td>". $Company->getRegisterSupplierNumber() ."</td> ";
            $str.="<td>". $Company->getCommercialRecord() ."</td> ";
+           if($_SESSION["Role"]==='Manger' )
+           {
         $str.="<td>
          <div class='portfolio-caption'>
            <div class='btn-group btn-group-lg'>
@@ -75,9 +77,13 @@ class CompanyView extends View
         </td>
         </div>
         </div>";
+           
         //$str.="</form>";
         $str.="</tr>";
+           }
     }
+    if($_SESSION["Role"]==='Manger' )
+    {
       $str.="</table>
       <br>
       <br>
@@ -89,7 +95,7 @@ class CompanyView extends View
       </div>
       </div>";
   
- 
+    }
 
     return $str;
   }
@@ -197,7 +203,48 @@ public function View_addCompany()
   public function View_editCompany($id)
   {
     $str = "";
-    $str.="<table>";
+    $str.='<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <meta name="description" content="">
+ <meta name="author" content="">
+
+ <title>Auto spare parts</title>
+
+ <!-- Bootstrap core CSS -->
+ <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+ <!-- Custom fonts for this template -->
+ <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+ <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet" type="text/css">
+ <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+ <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css">
+
+ <!-- Custom styles for this template -->
+ <link href="css/agency.min.css" rel="stylesheet">
+
+</head>
+ 
+
+<body id="page-top">
+<br>
+<br>
+<section class="page-section" id="contact">
+   <div class="container">
+     <div class="row">
+       <div class="col-lg-12 text-center">
+         <h2 class="section-heading text-uppercase"> Companys</h2>
+         <h3 class="section-subheading text-muted"> </h3>
+       </div>
+     </div>
+     <div class="row">
+       <div class="col-lg-12">';
+   $str.="<table class='section-heading text-uppercase' id='items' id='items'border=1 width=100%>";
     $str.="<tr><th>Company Name</th>
             <th>Email</th>
             <th>Phone Number</th>
@@ -215,9 +262,14 @@ public function View_addCompany()
         $str.="<td><input type='text' name='phoneNumber' value='". $Company->getphoneNumber() ."'></td> ";
          $str.="<td><input type='text' name='RegisterSupplierNumber' value='". $Company->getRegisterSupplierNumber() ."'></td> ";
            $str.="<td><input type='text' name='CommercialRecord' value='". $Company->getCommercialRecord() ."'></td> ";
-        $str.="<td><input type='submit' value='Change'/></td>";
+           $str.=" <div class='portfolio-caption'>
+           <div class='btn-group btn-group-lg'>
+           <td><input type='submit' value='Change'/></td>
+           </div>
+           </div>";
         $str.="</form>";
-        $str.="</tr>";
+        $str.="</tr>
+       ";
       }
       else 
        {
@@ -237,17 +289,24 @@ public function View_addCompany()
         $str.="<td>"
               . $Company->getCommercialRecord() .
               "</td> ";
-        $str.="<td>
+        $str.="
+        <td>
               <input type='submit' value='Change'/>
-              </td>";
+              </td>
+              </div>
+        </div>";
         $str.="<td>
               <a href='Addcompany.php?action=edit&id=".$Company->getLocalCompanyID()."'>Edit</a>
-              </td>";
+              </td>
+              </div>
+        </div>";
         $str.="</tr>";
       }
     }
     $str.="</table>";
-    $str.="<a href='Addcompany.php'>Back to Companys </a>";
+    $str.="<a href='Addcompany.php'>Back to Companys </a>
+    </div>
+    </div>";
     return $str;
   }
 } 

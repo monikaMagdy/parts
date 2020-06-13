@@ -79,7 +79,8 @@ class ViewSparePart extends View
 						<h5 class="card-title text-center text-secondary" name="quantity">PartQuantity:'.$SparePart->getpartQuantity() .'</h5>
 						<h5 class="card-title text-center text-warning" name="hidden_price">PartPrice:'.$SparePart->getpartPrice() .' LE</h5>
 
-					   </div>';
+					   </div>
+					   <div class="card-footer ">';
 					   if($_SESSION["Role"]==='Manger' )
 					{
                 $str.="
@@ -90,13 +91,15 @@ class ViewSparePart extends View
 					 onclick=\"location.href='SparePart.php?action=delete&id=".$SparePart->getPartNumber()."'\">Delete </button>
 				   ";
 					}
+					if($_SESSION["Role"]==='Manger' )
+					{
                 $str.=' <form action="Transactions.php?action=Import&id='.$SparePart->getPartNumber().'" method="post">
-		  			 <div class="card-footer p-1">
+		  			 
 		  			 	
 						<input type="text"  name="Qty" value="1"><br><br>
 						<button type="submit"  class="btn btn-warning btn-block" name="Import" id="Import" >Import</button><br>
 					</form>';
-					
+					}
 					$str.='<form action="Cart.php?action=cart&partNumber='.$SparePart->getPartNumber().'&exported=" method="post">
 					 <input type="text" id="Qty" name="Qty" value="1"><br><br>
 						<button type="submit"  class="btn btn-warning btn-block" name="cart" id="cart"><i class ="fas fa-cart-plus"></i>&nbsp;&nbsp;Add to Cart</button><br>
@@ -120,8 +123,8 @@ class ViewSparePart extends View
 
         public function addSparePart()
         {
-            $str = "";
-     $str.='<!DOCTYPE html>
+           // $str = "";
+            $str.='<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -165,7 +168,7 @@ class ViewSparePart extends View
       </div>
       
 
-<form action="SparePart.php?action=addAction&id='.$_GET['CarID'].'" method="post">
+<form action="SpareParts.php?action=addAction&id='.$_GET['CarID'].'" method="post">
 <div class="row">
 	<div class="col-lg-12">
 		<input type="text" class="form-control" name="PartNumber"  placeholder="Enter Part Number"/>
@@ -198,7 +201,7 @@ class ViewSparePart extends View
 <br>
 <div class="form-group">
 			<div>
-				<input type="file" class="form-control" required="required" name="imgName"  id="imgName" placeholder="Imge Name"/>
+				<input type="file" class="form-control" required="required" name="image"  id="image" placeholder="Imge Name"/>
 			</div>
 		</div>
 		<br>
@@ -210,8 +213,9 @@ class ViewSparePart extends View
 </div>
 </form>
 </div>
-</setion>';
-    return $str;
+</section>';
+        
+            return $str;
         }
 
 

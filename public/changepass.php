@@ -91,9 +91,7 @@ include('app_logic.php');
             </div>
         </div>
         </div>
-    
         </form>
         </div>
-
 </body>
 </html>

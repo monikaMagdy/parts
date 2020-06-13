@@ -32,7 +32,7 @@
 		background: #000;">
 	
 		<div class="container">
-		  <a class="navbar-brand js-scroll-trigger" href="welcome.php">Start Work</a>
+		  <a class="navbar-brand js-scroll-trigger" href="index.php">Start Work</a>
 		  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			Menu
 			<i class="fas fa-bars"></i>
@@ -41,45 +41,47 @@
 
 		  					
 		  <?php
-		   if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    } 
-   
-					if($_SESSION["Role"]==='Manger' )
-					{
+	if(!isset($_SESSION)) 
+	{ 
+		session_start(); 
+	} 
+	if(!empty($_SESSION))
+	{
+		 if($_SESSION["Role"]==='Manger' )
+		{
 
-		  				echo'
-			<ul class="navbar-nav text-uppercase ml-auto">
-			  <li class="nav-item">
-				<a class="nav-link js-scroll-trigger"  href="Car.php"><i class="fas fa-car"></i>&nbsp;&nbsp;</a>
-			  </li>
-			  <li class="nav-item">
-			  <a class="nav-link js-scroll-trigger" href="searchFrontend.php"><i class="fas fa-search"></i>&nbsp;&nbsp;</a>
-			</li>
-			  <li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="index.php"><i class="fas fa-male"></i>&nbsp;&nbsp;</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="cart.php"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="exportIndex.php">hidtory module</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="Addcompany.php">Company</a>
-			  </li>
-			  <li class="nav-item">	
-				<a class="nav-link js-scroll-trigger" href="signout.php">Log Out</a>
-			  </li>	
-				
-			</ul>
+echo'
+<ul class="navbar-nav text-uppercase ml-auto">
+  <li class="nav-item">
+	<a class="nav-link js-scroll-trigger"  href="Car.php"><i class="fas fa-car"></i>&nbsp;&nbsp;</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link js-scroll-trigger" href="searchFrontend.php"><i class="fas fa-search"></i>&nbsp;&nbsp;</a>
+</li>
+  <li class="nav-item">
+	<a class="nav-link js-scroll-trigger" href="user.php"><i class="fas fa-male"></i>&nbsp;&nbsp;</a>
+  </li>
+  <li class="nav-item">
+	<a class="nav-link js-scroll-trigger" href="cart.php"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;</a>
+  </li>
+  <li class="nav-item">
+	<a class="nav-link js-scroll-trigger" href="exportIndex.php">hidtory module</a>
+  </li>
+  <li class="nav-item">
+	<a class="nav-link js-scroll-trigger" href="Addcompany.php">Company</a>
+  </li>
+  <li class="nav-item">	
+	<a class="nav-link js-scroll-trigger" href="signout.php">Log Out</a>
+  </li>	
+	
+</ul>
 		  </div>
 		</div>
 	  </nav>
 	   ';
 	}
-else {
+else 
+{
 	echo'
 	<ul class="navbar-nav text-uppercase ml-auto">
 	  <li class="nav-item">
@@ -89,11 +91,14 @@ else {
 	  <a class="nav-link js-scroll-trigger" href="searchFrontend.php"><i class="fas fa-search"></i>&nbsp;&nbsp;</a>
 	</li>
 	  <li class="nav-item">
-		<a class="nav-link js-scroll-trigger" href="index.php"><i class="fas fa-male"></i>&nbsp;&nbsp;</a>
+		<a class="nav-link js-scroll-trigger" href="user.php"><i class="fas fa-male"></i>&nbsp;&nbsp;</a>
 	  </li>
 	  <li class="nav-item">
 		<a class="nav-link js-scroll-trigger" href="cart.php"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;</a>
 	  </li>
+	  <li class="nav-item">
+	  <a class="nav-link js-scroll-trigger" href="Addcompany.php">Company</a>
+	</li>
 	  <li class="nav-item">	
 		<a class="nav-link js-scroll-trigger" href="signout.php">Log Out</a>
 	  </li>	
@@ -103,7 +108,19 @@ else {
 </div>
 </nav>
 ';
-
+}
+}
+else 
+{
+	echo'<ul class="navbar-nav text-uppercase ml-auto"> 
+	  <li class="nav-item">	
+	<a class="nav-link js-scroll-trigger" href="login.php">Log in</a>
+  </li>	
+	
+</ul>
+</div>
+</div>
+</nav>';
 
 }	
 	

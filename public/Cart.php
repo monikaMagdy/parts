@@ -29,11 +29,38 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 			echo $view->output();
 			break;
 		case 'deletecart':
-			$controller->export($_GET['partNumber'],$_GET['Qty'],$_GET['cartID']);
-			echo header("location:Car.php");
+		//	echo header("location:Car.php");
+			if(!empty($_GET['confirm']) && $_GET['confirm']=="true")
+			{
+				$controller->export($_GET['partNumber'],$_GET['Qty'],$_GET['cartID']);
+				echo header("location:Car.php");
+
+			} else{
+				echo "<script>
+				var r = confirm('Are you sure, that the customer had already paid the checkout?');
+				if (r == true) {
+					window.location.href += '&confirm=true'
+
+				}
+				else{
+					window.location.href='Cart.php?exported=true'
+				}
+
+				</script>";
+			}
 	}
 }
-else
-	echo $view->output();
+else{
+    
+        $sql="SELECT * from `cart`";
+        $d1= Database::GetInstance();
+        $result = mysqli_query($d1->GetConnection(), $sql);
+        if (mysqli_num_rows($result)==0) {
+            echo"<script>alert('You have to fill your cart first') ;
+				window.history.back()</script>";
+        } else {
+            echo $view->output();
+        }
+    }
 
 ?>

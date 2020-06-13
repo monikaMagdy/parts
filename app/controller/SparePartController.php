@@ -6,59 +6,26 @@ class SparePartController extends Controller
 {
 	public function Con_addSparePart($CarID)
 	{
-		$PartNumber=$_REQUEST['PartNumber'];
-	
-		$PartName=$_REQUEST['PartName'];
-
-		$partCountry=$_REQUEST['partCountry'];
-
-		$partPrice=$_REQUEST['partPrice'];
-
-		$partQuantity=$_REQUEST['partQuantity'];
-		$image=$_REQUEST['image'];
-		$CarID=$_GET['id'];
-		$user_ID=$_SESSION['ID'];
+		$PartNumber=filter_var($_REQUEST['PartNumber'],FILTER_VALIDATE_INT );
+		$PartName=filter_var($_REQUEST['PartName'], FILTER_SANITIZE_STRING);
+		$partCountry=filter_var($_REQUEST['partCountry'],FILTER_SANITIZE_STRING );
+		$partPrice=	filter_var($_REQUEST['partPrice'],FILTER_VALIDATE_INT );
+		$partQuantity=filter_var($_REQUEST['partQuantity'],FILTER_VALIDATE_INT );
+		$image=	filter_var($_REQUEST['image'], FILTER_SANITIZE_STRING);
+		$user_ID=filter_var($_SESSION['ID'], FILTER_VALIDATE_INT);
 		
 		$this->model->addSparePart($PartNumber,$PartName,$partCountry,$partPrice,$partQuantity,$image,$CarID,$user_ID);
 	}
 
 	public function editSparePart($PartNumber)
 	 {
-	/*$PartNumber=$_REQUEST['PartNumber'];
-		if(!preg_match('#^[0-9]+$#', $PartNumber))
-		{
-			echo"<script>alert('you have to enter Numeric Value in Part Number');
-		 		</script>";
-		}*/
-		$PartName=$_REQUEST['PartName'];
-		/*if (!preg_match("/^[a-zA-Z ]*$/",$PartName)) 
-		{
- 			echo "<script>alert('Full Name must be Only letters and white space allowed');
-		 		</script>";
-		}*/
 	
-		$partCountry=$_REQUEST['partCountry'];
-		/*if (!preg_match("/^[a-zA-Z ]*$/",$partCountry)) 
-		{
- 			echo "<script>alert(' Name must be Only letters and white space allowed');
-		 		</script>";
-		}*/
+		$PartName	=filter_var($_REQUEST['PartName'], FILTER_SANITIZE_STRING);
+	
+		$partCountry=filter_var($_REQUEST['partCountry'], FILTER_SANITIZE_STRING);
 
-		$partPrice=$_REQUEST['partPrice'];
-		/*if(!preg_match('#^[0-9]+$#', $partPrice))
-		{
-			echo"<script>alert('you have to enter Numeric Value in Part Price');
-		 		</script>";
-		}*/
-		//$partQuantity=$_REQUEST['partQuantity'];
-		//$image=$_REQUEST['image'];
-		//$CarID=$_REQUEST['CarID'];
-		/*if(!preg_match('#^[0-9]+$#', $partQuantity))
-		{
-			echo"<script>alert('you have to enter Numeric Value in Part Quantity');
-		 		</script>";
-		}*/
-	    //else
+		$partPrice	=filter_var($_REQUEST['partPrice'],FILTER_VALIDATE_INT );
+		
 		$this->model->Model_editSparePart($PartNumber,$PartName,$partCountry,$partPrice);
 	}
 

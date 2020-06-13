@@ -73,7 +73,8 @@ function fillArray()
 
 	function addSparePart($PartNumber,$PartName,$partCountry,$partPrice,$partQuantity,$image,$CarID,$user_ID)
 	{
-		$sql="INSERT INTO `sparepart`
+	
+            $sql="INSERT INTO `sparepart`
 		(
 		PartNumber,
 		PartName,
@@ -95,15 +96,17 @@ function fillArray()
 	    '$CarID',
 		'".$_SESSION['ID']."'
 		 )";
-	 	$d1= Database::GetInstance();
-        $result = mysqli_query($d1->GetConnection(), $sql);
-		if ($sql){
+                $d1= Database::GetInstance();
+            $result = mysqli_query($d1->GetConnection(), $sql);
+        
+		if ($result){
 			echo "Records inserted successfully.";
 			$this->fillArray();
 		} 
 		else
 		{
-			echo "ERROR: Could not able to execute $sql. " ;
+			echo"<script>alert('This partnumber already exists') ;
+			window.history.back();</script>";
 		}
 	}
 	

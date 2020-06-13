@@ -45,17 +45,19 @@ body{
 			   <div class='row'>
 						 <div class='col-lg-12 text-center' >
 						   <h2 class='section-heading text-uppercase'>Export/Import</h2>
-						   <h3 class='section-subheading text-muted'>Auto Spare Parts.</h3>
-						    <div class='col-lg-12 text-center'>
+						   <h3 class='section-subheading text-muted'>Auto Spare Parts.</h3>";
+						   if($_SESSION["Role"]==='Manger' )
+    {
+		$str.="<div class='col-lg-12 text-center'>
 					 <div class='portfolio-caption'>
 					 <div class='btn-group btn-group-lg'>
 					 <button type='submit' class='btn btn-warning' name='Add' id='Add' onclick=\"location.href='Car.php?action=add'\">Add</button>
 					 <br>
 						   </div>
 						   </div> 
-						   <br>
-					 
-					  <div class='row'>
+						   <br>";
+	}
+	$str.="  <div class='row'>
        
 						";
                         
@@ -72,18 +74,22 @@ body{
 					  
 				    	 </a>
 					 <div class='portfolio-caption'>
-					 <div class='btn-group btn-group-lg'>
-				
-				<button type='submit' class='btn btn-warning' name='Edit' id='Edit' onclick=\"location.href='Car.php?action=edit&id=".$Car->getCarID()."'\">Edit</button>
-				<button type='submit' class='btn btn-warning' name='Delete' id='Delete' onclick=\"location.href='Car.php?action=delete&id=".$Car->getCarID()."'\">Delete Car</button>
+					 <div class='btn-group btn-group-lg'>";
+					 if($_SESSION["Role"]==='Manger' )
+					 {
+			$str.="<button type='submit' class='btn btn-warning' name='Edit' id='Edit' 
+			onclick=\"location.href='Car.php?action=edit&id=".$Car->getCarID()."'\">Edit</button>
 
+				<button type='submit' class='btn btn-warning' name='Delete' id='Delete'
+				 onclick=\"location.href='Car.php?action=delete&id=".$Car->getCarID()."'\">Delete Car</button>";
 
-			</div>
+					 }
+			 $str.="</div>
 				<br><br>
 					 <h3>" .$Car->getCarName()."</h3>
 					  <h4>" .$Car->getCarModel() ."</h4> 
 					  <h5>" .$Car->getCarYear() ."</h5> 
-	  <p class='text-muted'>  Press to check ".$Car->getCarName() ." parts </p> 
+	  	<p class='text-muted'>  Press to check ".$Car->getCarName() ." parts </p> 
 					  </div>
 					</div>
 					";

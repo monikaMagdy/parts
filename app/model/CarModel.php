@@ -112,18 +112,22 @@ class Car extends Model
 
 	function deleteCar($CarID)
 	{
-		$sqlCar="DELETE FROM car WHERE CarID=$this->CarID";
+
+		$sql1="SELECT `CarID` FROM `sparepart`";
 		$d1= Database::GetInstance();
-        $result = mysqli_query($d1->GetConnection(), $sqlCar);
-		if($sqlCar)
-		{
-			$sqlSP="DELETE FROM sparepart INNER JOIN car on sparepart.CarID=car.CarID";
-			echo "deleted successfully.";
-			echo"Deleted the spare parts of this car successfully.";
-		} 
+		$result1 = mysqli_query($d1->GetConnection(), $sql1);
+		$sqlCar="DELETE FROM car WHERE CarID=$this->CarID";
+		 $result = mysqli_query($d1->GetConnection(), $sqlCar);
+		 if($this->CarID==mysqli_num_rows($result1)){
+			echo"<script>alert('This car contains Spare parts, You can not delete it') ;
+			window.history.back()</script>";
+		 }
 		else
 		{
-			echo "ERROR: Could not able to execute $sqlCar. " ;
+			echo"<script>alert('deleted successfully') ;
+			window.history.back()</script>";
+			
+			//echo "ERROR: Could not able to execute $sqlCar. " ;
 		}
 	}
  }

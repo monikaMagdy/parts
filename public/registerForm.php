@@ -19,14 +19,30 @@ $view = new ViewUser($controller, $model);
 				break;
 				case 'insert':
 				$controller->Con_insertUser();
-				echo"<script>alert('Thank you for registering.');
-				window.location.href='index.php'</script>";
+				//echo"<script>alert('Thank you for registering.');
+				//window.location.href='index.php'</script>";
 				break;
 				case'delete':
-					echo"<script>confirm('Are you sure, You want to delete this user?');
-					window.location.href='registerForm.php?action=show';</script>";
-					$controller->Con_deleteUser($_GET['id']);
-				
+					if(!empty($_GET['confirm']) && $_GET['confirm']=="true")
+					{
+						$controller->Con_deleteUser($_GET["id"]);
+						echo header('location:registerForm.php?action=show');
+
+					} else{
+						echo "<script>
+						var r = confirm('Are you sure, You want to delete this user?');
+						if (r == true) {
+							window.location.href += '&confirm=true'
+
+						}
+						else{
+							window.history.back()
+						}
+
+						</script>";
+					}
+					
+				break;
 				case'show':
 				echo $view->show();
 				break;
