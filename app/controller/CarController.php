@@ -7,12 +7,10 @@ class CarController extends Controller
 	 function Con_addCar()
 	{
 
-		$CarName=$_REQUEST['CarName'];
-
-		$CarModel=$_REQUEST['CarModel'];
-
-		$imgName=$_REQUEST['imgName'];
-		$CarYear=$_REQUEST['CarYear'];
+		$CarName=	filter_var($_REQUEST['CarName'],FILTER_SANITIZE_STRING);
+		$CarModel=	filter_var($_REQUEST['CarModel'], FILTER_SANITIZE_STRING);
+		$imgName=	filter_var($_REQUEST['imgName'], FILTER_SANITIZE_STRING);
+		$CarYear=	filter_var($_REQUEST['CarYear'],FILTER_VALIDATE_INT);
 		
 		$this->model->addcar($CarName, $CarModel,$CarYear,$imgName);
 		
@@ -20,11 +18,9 @@ class CarController extends Controller
 
 	public function editCar($CarID)
 	 {
-	 	$CarName = $_REQUEST["CarName"];
-	 	
-		$CarModel = $_REQUEST["CarModel"];
-
-		$CarYear = $_REQUEST["CarYear"];
+	 	$CarName = 	filter_var($_REQUEST["CarName"], FILTER_SANITIZE_STRING);
+		 $CarModel= filter_var($_REQUEST["CarModel"], FILTER_SANITIZE_STRING);
+		 $CarYear = filter_var($_REQUEST["CarYear"],FILTER_VALIDATE_INT);
 	
 		$this->model->getCar($CarID)->Model_editCar($CarName,$CarModel,$CarYear);
 	}

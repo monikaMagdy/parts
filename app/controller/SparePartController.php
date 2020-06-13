@@ -6,7 +6,6 @@ class SparePartController extends Controller
 {
 	public function Con_addSparePart($CarID)
 	{
-		//echo "$CarID";
 		$PartNumber=filter_var($_REQUEST['PartNumber'],FILTER_VALIDATE_INT );
 		$PartName=filter_var($_REQUEST['PartName'], FILTER_SANITIZE_STRING);
 		$partCountry=filter_var($_REQUEST['partCountry'],FILTER_SANITIZE_STRING );

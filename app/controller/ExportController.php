@@ -12,20 +12,13 @@ class ExportController extends controller
 
 	public function Con_editExport($idExport) 
 	{
-		$CompanyID=$_REQUEST['companyID'];
-		//$CarID = $_REQUEST['CarID'];
-		$PartNumber=$_REQUEST['PartNumber'];
-		$PartName=$_REQUEST['PartName'];
-		$partQuantity = $_REQUEST['partQuantity'];
-		$itemPrice = $_REQUEST['itemPrice'];
-		$totalPrice = $_REQUEST['totalPrice'];
-
-		// if(empty($_REQUEST['companyID']) || empty($_REQUEST['CarID'])|| empty($_REQUEST['PartNumber'])||empty($_REQUEST['PartName'])||empty($_REQUEST['partQuantity'])||empty($_REQUEST['itemPrice'])||empty($_REQUEST['totalPrice']))	
-	    // {
-		//  echo "<script>alert('Please Fill The empty space');
-		//  </script>";
-	    // }
-	    // else
+		$CompanyID=		filter_var($_REQUEST['companyID'], ,FILTER_VALIDATE_INT);
+		$PartNumber=	filter_var($_REQUEST['PartNumber'], ,FILTER_VALIDATE_INT);
+		$PartName=		filter_var($_REQUEST['PartName'], FILTER_SANITIZE_STRING);
+		$partQuantity = filter_var($_REQUEST['partQuantity'], ,FILTER_VALIDATE_INT);
+		$itemPrice = 	filter_var($_REQUEST['itemPrice'], FILTER_VALIDATE_INT);
+		$totalPrice = 	filter_var($_REQUEST['totalPrice'], FILTER_VALIDATE_FLOAT);
+		$totalPrice = 	filter_var($_REQUEST['totalPrice'], FILTER_VALIDATE_FLOAT);
 		$this->model->getExport($idExport)->
 		Model_editExport($companyID,$PartNumber,$PartName,$partQuantity,$itemPrice,$totalPrice);
 	}
