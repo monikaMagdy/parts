@@ -1,9 +1,11 @@
 <?php
+
+	
 define('__ROOT__', "../app/");
 require_once(__ROOT__ . "model/Users.php");
 require_once(__ROOT__ . "controller/UserController.php");
 require_once(__ROOT__ . "view/ViewUser.php");
-
+include"menu.php";
 $model = new Users();
 $controller = new UserController($model);
 $view = new ViewUser($controller, $model);
@@ -32,6 +34,7 @@ if(isset($_POST["login"]))
 	if ($result->num_rows == 1)
 	{
 		$row = $dbh->fetchRow();
+		//session_start(); 
 		$_SESSION["ID"]=$row["ID"];
 		$_SESSION["username"]=$row["username"];
 		$_SESSION["Role"]=$row["Role"];
@@ -40,7 +43,8 @@ if(isset($_POST["login"]))
 		window.location.href='welcome.php'</script>";
 		
 	}
-	else {
+	else 
+	{
 		echo"<script>alert('please register first')</script>";
 	}
 }
