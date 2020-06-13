@@ -6,6 +6,7 @@ class SparePartController extends Controller
 {
 	public function Con_addSparePart($CarID)
 	{
+		//echo "$CarID";
 		$PartNumber=$_REQUEST['PartNumber'];
 	
 		$PartName=$_REQUEST['PartName'];
@@ -16,7 +17,7 @@ class SparePartController extends Controller
 
 		$partQuantity=$_REQUEST['partQuantity'];
 		$image=$_REQUEST['image'];
-		$CarID=$_GET['id'];
+
 		$user_ID=$_SESSION['ID'];
 		
 		$this->model->addSparePart($PartNumber,$PartName,$partCountry,$partPrice,$partQuantity,$image,$CarID,$user_ID);
