@@ -11,7 +11,7 @@ include "menu.php";
 //	setcookie("password",'',time()-(3600));
 //}
 echo"<script>alert('Are you Sure to Logout ?');
-window.location.href='welcome.php'</script>";
+window.location.href='index.php'</script>";
 session_destroy();
 
 

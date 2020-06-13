@@ -79,7 +79,8 @@ class ViewSparePart extends View
 						<h5 class="card-title text-center text-secondary" name="quantity">PartQuantity:'.$SparePart->getpartQuantity() .'</h5>
 						<h5 class="card-title text-center text-warning" name="hidden_price">PartPrice:'.$SparePart->getpartPrice() .' LE</h5>
 
-					   </div>';
+					   </div>
+					   <div class="card-footer ">';
 					   if($_SESSION["Role"]==='Manger' )
 					{
                 $str.="
@@ -90,13 +91,15 @@ class ViewSparePart extends View
 					 onclick=\"location.href='SparePart.php?action=delete&id=".$SparePart->getPartNumber()."'\">Delete </button>
 				   ";
 					}
+					if($_SESSION["Role"]==='Manger' )
+					{
                 $str.=' <form action="Transactions.php?action=Import&id='.$SparePart->getPartNumber().'" method="post">
-		  			 <div class="card-footer p-1">
+		  			 
 		  			 	
 						<input type="text"  name="Qty" value="1"><br><br>
 						<button type="submit"  class="btn btn-warning btn-block" name="Import" id="Import" >Import</button><br>
 					</form>';
-					
+					}
 					$str.='<form action="Cart.php?action=cart&partNumber='.$SparePart->getPartNumber().'&exported=" method="post">
 					 <input type="text" id="Qty" name="Qty" value="1"><br><br>
 						<button type="submit"  class="btn btn-warning btn-block" name="cart" id="cart"><i class ="fas fa-cart-plus"></i>&nbsp;&nbsp;Add to Cart</button><br>

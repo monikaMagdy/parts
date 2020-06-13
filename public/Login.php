@@ -40,7 +40,7 @@ if(isset($_POST["login"]))
 		$_SESSION["Role"]=$row["Role"];
 		
 		echo"<script>alert('Welcome $username');
-		window.location.href='welcome.php'</script>";
+		window.location.href='index.php'</script>";
 		
 	}
 	else 

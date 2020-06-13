@@ -59,7 +59,7 @@ echo'
   <a class="nav-link js-scroll-trigger" href="searchFrontend.php"><i class="fas fa-search"></i>&nbsp;&nbsp;</a>
 </li>
   <li class="nav-item">
-	<a class="nav-link js-scroll-trigger" href="index.php"><i class="fas fa-male"></i>&nbsp;&nbsp;</a>
+	<a class="nav-link js-scroll-trigger" href="user.php"><i class="fas fa-male"></i>&nbsp;&nbsp;</a>
   </li>
   <li class="nav-item">
 	<a class="nav-link js-scroll-trigger" href="cart.php"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;</a>
@@ -91,7 +91,7 @@ else
 	  <a class="nav-link js-scroll-trigger" href="searchFrontend.php"><i class="fas fa-search"></i>&nbsp;&nbsp;</a>
 	</li>
 	  <li class="nav-item">
-		<a class="nav-link js-scroll-trigger" href="index.php"><i class="fas fa-male"></i>&nbsp;&nbsp;</a>
+		<a class="nav-link js-scroll-trigger" href="user.php"><i class="fas fa-male"></i>&nbsp;&nbsp;</a>
 	  </li>
 	  <li class="nav-item">
 		<a class="nav-link js-scroll-trigger" href="cart.php"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;</a>

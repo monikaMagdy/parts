@@ -136,7 +136,7 @@ class User extends Model
     $result = mysqli_query($d1->GetConnection(), $editUser);
 		if ($result)
 		{
-			echo"updated successfully.";
+			echo"<script>alert('updated successfully.');</script>";
 		//	$this->readUser($this->ID);
 		}
 		else
@@ -152,7 +152,7 @@ class User extends Model
 		$d1= Database::GetInstance();
     $result = mysqli_query($d1->GetConnection(), $deleteUser);
     if($deleteUser){
-			 echo "deletet successfully.";
+			 echo "<script>alert('deletet successfully.');</script>";
 		}
 		else
 		{
