@@ -77,9 +77,10 @@ class CompanyView extends View
         </td>
         </div>
         </div>";
-           }
+           
         //$str.="</form>";
         $str.="</tr>";
+           }
     }
     if($_SESSION["Role"]==='Manger' )
     {
@@ -243,7 +244,7 @@ public function View_addCompany()
      </div>
      <div class="row">
        <div class="col-lg-12">';
-   $str.="<table class='section-heading text-uppercase' id='items'>";
+   $str.="<table class='section-heading text-uppercase' id='items' id='items'border=1 width=100%>";
     $str.="<tr><th>Company Name</th>
             <th>Email</th>
             <th>Phone Number</th>

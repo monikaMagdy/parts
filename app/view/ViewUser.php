@@ -33,7 +33,8 @@ class ViewUser extends View
   <link href="css/agency.min.css" rel="stylesheet">
 
 </head>
-  
+ <br>
+ <br> 
  
 <body id="page-top">
 <section class="page-section" id="contact">
@@ -43,7 +44,9 @@ class ViewUser extends View
           <h2 class="section-heading text-uppercase"> User</h2>
           <h3 class="section-subheading text-muted"> </h3>
         </div>
-      </div>';
+	  </div>';
+	  if($_SESSION["Role"]==='Manger' )
+	  {
 		$str.="<div class='col-lg-12 text-center'>
 				<div class='portfolio-caption'>
            			<div class='btn-group btn-group-lg'>
@@ -53,7 +56,7 @@ class ViewUser extends View
 		$str.="</br></br>
 				<div class='portfolio-caption'>
            			<div class='btn-group btn-group-lg'>
-           				<button type='submit' class='btn btn-warning' name='Edit' id='Edit' onclick=\"location.href='index.php?action=edit'\">Edit User</button>
+           				<button type='submit' class='btn btn-warning' name='Edit' id='Edit' onclick=\"location.href='user.php?action=edit'\">Edit User</button>
            			</div>
            		</div>";
 				$str.="<br><br>
@@ -65,7 +68,19 @@ class ViewUser extends View
            </div>
         </div>
     </div>";
-		
+	  }
+	  else 
+	  {
+		  	$str.="<div class='col-lg-12 text-center'>
+				<div class='portfolio-caption'>
+           			<div class='btn-group btn-group-lg'>
+           				<button type='submit' class='btn btn-warning' name='Edit' id='Edit' onclick=\"location.href='user.php?action=edit'\">Edit User</button>
+           			</div>
+				   </div>
+				   </div>
+        </div>
+    </div>";
+	  }
 		return $str;
 	}
 
@@ -142,7 +157,7 @@ $str='<!DOCTYPE html>
       <br>";
       $str.="<div class='portfolio-caption'>
            <div class='btn-group btn-group-lg'>
-           <button type='submit' class='btn btn-warning' name='Show' id='Show' onclick=\"location.href='index.php'\">back</button>	
+           <button type='submit' class='btn btn-warning' name='Show' id='Show' onclick=\"location.href='user.php'\">back</button>	
            <br>
            </div>
            </div>";
