@@ -25,7 +25,7 @@ $view = new ViewUser($controller, $model);
 				case'delete':
 					if(!empty($_GET['confirm']) && $_GET['confirm']=="true")
 					{
-						$controller->Con_deleteUser($_GET['id']);
+						$controller->Con_deleteUser($_GET["id"]);
 						echo header('location:registerForm.php?action=show');
 
 					} else{
