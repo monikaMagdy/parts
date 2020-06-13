@@ -160,6 +160,7 @@ else
 		$result3= mysqli_query($d1->GetConnection(), $sql3);
 		$sql="DELETE FROM `sparepart` WHERE PartNumber=$this->PartNumber";
 		 $result = mysqli_query($d1->GetConnection(), $sql);
+		 
 		if($result!=mysqli_num_rows($result3) && $result!=mysqli_num_rows($result1)){
 			echo"<script>alert('You have deleted this part successfully') ;
 			window.history.back()</script>";
@@ -200,7 +201,8 @@ else
         $d1= Database::GetInstance();
         $result = mysqli_query($d1->GetConnection(), $inc);
 		if($inc){
-			echo "updated successfully.";
+			echo"<script>alert('You have Imported new parts to your store successfully') ;
+			window.history.back()</script>";	
 			$this->readSparePart($this->PartNumber);
 		} 
 		else

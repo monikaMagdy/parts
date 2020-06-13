@@ -113,22 +113,46 @@ class Car extends Model
 	function deleteCar($CarID)
 	{
 
-		$sql1="SELECT `CarID` FROM `sparepart`";
+		$sql1="SELECT `CarID` FROM `sparepart` where CarID=$this->CarID";
 		$d1= Database::GetInstance();
 		$result1 = mysqli_query($d1->GetConnection(), $sql1);
 		$sqlCar="DELETE FROM car WHERE CarID=$this->CarID";
 		 $result = mysqli_query($d1->GetConnection(), $sqlCar);
-		 if($this->CarID==mysqli_num_rows($result1)){
-			echo"<script>alert('This car contains Spare parts, You can not delete it') ;
+		 if($result!=mysqli_num_rows($result1)){
+			echo"<script>alert('deleted successfully') ;
 			window.history.back()</script>";
+			
 		 }
 		else
 		{
-			echo"<script>alert('deleted successfully') ;
+			echo"<script>alert('This car contains Spare parts, You can not delete it') ;
 			window.history.back()</script>";
 			
 			//echo "ERROR: Could not able to execute $sqlCar. " ;
 		}
 	}
+	// function deleteCar($CarID)
+	// {
+
+	// 	$sql1="SELECT `CarID` FROM `sparepart` where CarID=$this->CarID";
+	// 	$d1= Database::GetInstance();
+	// 	$result1 = mysqli_query($d1->GetConnection(), $sql1);
+    //     if (mysqli_num_rows($result1)) {
+    //         $sqlCar="DELETE FROM car WHERE CarID=$this->CarID";
+    //         $result = mysqli_query($d1->GetConnection(), $sqlCar);
+    //         if (mysqli_affected_rows($d1->GetConnection())>0) {
+    //             echo"<script>alert('deleted successfully') ;
+	// 		window.history.back()</script>";
+	// 		}
+	// 		else
+	// 		{
+	// 			echo"<script>alert('This car contains Spare parts, You can not delete it') ;
+	// 			window.history.back()</script>";
+				
+	// 			//echo "ERROR: Could not able to execute $sqlCar. " ;
+	// 		}
+    //     }
+	
+	// }
  }
 ?>

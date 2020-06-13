@@ -30,27 +30,29 @@ if (isset($_GET['action']) && !empty($_GET['action'])) {
     echo header("location:Car.php");
     break;
     case'delete':
+        $controller->delete($_GET['id']);
             // $controller->delete($_GET['id']);
             // echo header("location:Car.php");
-            if (!empty($_GET['confirm']) && $_GET['confirm']=="true") {
-                $controller->delete($_GET['id']);
-				//echo header('location:Car.php');
-				echo "<script>window.history.back()</script>";
-            } else {
-                echo "<script>
-				var r = confirm('Are you sure, You want to delete this car?');
-				if (r == true) {
-					window.location.href += '&confirm=true'
+        //     if (!empty($_GET['confirm']) && $_GET['confirm']=="true") {
+        //         $controller->delete($_GET['id']);
+	// 			//echo header('location:Car.php');
+        //                 //	echo "<script>window.history.back()</script>";
+        //               //  echo "$result";
+        //     } else {
+        //         echo "<script>
+	// 			var r = confirm('Are you sure, You want to delete this car?');
+	// 			if (r == true) {
+	// 				window.location.href += '&confirm=true'
 
-				}
-				else{
-					window.history.back();
-				}
+	// 			}
+	// 			else{
+	// 				window.history.back();
+	// 			}
 
-				</script>";
+	// 			</script>";
             }
 
-}
+//}
 }
 else
 	echo $view->output();

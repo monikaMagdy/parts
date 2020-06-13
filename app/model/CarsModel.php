@@ -73,7 +73,8 @@ class Cars extends Model
         $result = mysqli_query($d1->GetConnection(), $sql);
 		if ($result)
 		{
-			echo "Records inserted successfully.";
+			echo"<script>alert('You have added a new car successfully') ;
+			window.location.href='Car.php'</script>";
 			$this->fillArray();
 		} 
 		else
