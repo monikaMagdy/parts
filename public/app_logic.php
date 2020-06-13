@@ -21,7 +21,7 @@ if (isset($_POST['reset']))
     $sql = "INSERT INTO rpassword(email, code) VALUES ('$email', '$code')";
     $results = mysqli_query($db, $sql);
     $to = $email;
-    $msg = "Hello your password code is ( ". $code." ) and the page of reset password is http://localhost/parts-master/public/changepass.php";
+    $msg = "Hello your password code is ( ". $code." ) and the page of reset password is http://localhost/partsnew/public/changepass.php";
 
     if(sendCMail($to, $msg)){
       header("Location: message.php?email=" . $email);

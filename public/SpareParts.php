@@ -20,7 +20,7 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 		 break;
  		case 'addAction':
              $controller->Con_addSparePart($_GET["id"]);
-			 echo header('location:SpareParts.php?CarID='.$_GET["id"].'');
+			echo header('location:SpareParts.php?CarID='.$_GET["id"].'');
              break;
     }
 }

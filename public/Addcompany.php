@@ -36,8 +36,24 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 			break;
 		
 		case 'delete':
-			$controller->Con_delete($_GET['id']);
-			echo $view->output();
+			if(!empty($_GET['confirm']) && $_GET['confirm']=="true")
+			{
+				$controller->Con_delete($_GET['id']);
+				echo header('location:Addcompany.php');
+
+			} else{
+				echo "<script>
+				var r = confirm('Are you sure, You want to delete this user?');
+				if (r == true) {
+					window.location.href += '&confirm=true'
+
+				}
+				else{
+					window.location.href='Addcompany.php'
+				}
+
+				</script>";
+			}
 		
 	}
 }

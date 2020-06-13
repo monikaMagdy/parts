@@ -19,8 +19,8 @@ $view = new ViewUser($controller, $model);
 				break;
 				case 'insert':
 				$controller->Con_insertUser();
-				echo"<script>alert('Thank you for registering.');
-				window.location.href='index.php'</script>";
+				//echo"<script>alert('Thank you for registering.');
+				//window.location.href='index.php'</script>";
 				break;
 				case'delete':
 					if(!empty($_GET['confirm']) && $_GET['confirm']=="true")
@@ -36,7 +36,7 @@ $view = new ViewUser($controller, $model);
 
 						}
 						else{
-							window.location.href='registerForm.php?action=show'
+							window.history.back()
 						}
 
 						</script>";

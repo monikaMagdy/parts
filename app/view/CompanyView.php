@@ -51,7 +51,7 @@ class CompanyView extends View
       </div>
       <div class="row">
         <div class="col-lg-12">';
-    $str.="<table class='section-heading text-uppercase' id='items'>";
+    $str.="<table class='section-heading text-uppercase' id='items border=1 width=100%'>";
     $str.="<tr><th>Company Name</th>
           <th>Email</th>
           <th>Phone Number</th>

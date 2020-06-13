@@ -11,32 +11,46 @@ $view = new ViewCar($controller, $model);
 /*/
 */
 
-if (isset($_GET['action']) && !empty($_GET['action']))
- {
+if (isset($_GET['action']) && !empty($_GET['action'])) {
+    switch ($_GET['action']) {
+        //'add' referes to the name of the action to redirect in this swithch case
+        case 'add':
+            echo $view->addCar();
+    break;
+    case 'addAction':
+            $controller->Con_addCar();
+    //echo"<script>alert('Thank you For adding New Car , Now add New Part for this car !');
+    //	window.location.href='SparePart.php?action=add&CarID='".$_GET['id']."'&id=undefined';</script>";
+    break;
+    case 'edit':
+            echo $view->viewEditCar($_GET['id']);
+    break;
+    case 'editAction':
+            $controller->editCar($_GET['id']);
+    echo header("location:Car.php");
+    break;
+    case'delete':
+            // $controller->delete($_GET['id']);
+            // echo header("location:Car.php");
+            if (!empty($_GET['confirm']) && $_GET['confirm']=="true") {
+                $controller->delete($_GET['id']);
+				//echo header('location:Car.php');
+				echo "<script>window.history.back()</script>";
+            } else {
+                echo "<script>
+				var r = confirm('Are you sure, You want to delete this car?');
+				if (r == true) {
+					window.location.href += '&confirm=true'
 
- 	switch($_GET['action'])
-	{
-		//'add' referes to the name of the action to redirect in this swithch case 
-		case 'add':
-			echo $view->addCar();
-			break;
-		case 'addAction':
-			$controller->Con_addCar();
-			//echo"<script>alert('Thank you For adding New Car , Now add New Part for this car !');
-				//	window.location.href='SparePart.php?action=add&CarID='".$_GET['id']."'&id=undefined';</script>";
-			break;
-		case 'edit':
-			echo $view->viewEditCar($_GET['id']);
-			break;
-		case 'editAction':
-			$controller->editCar($_GET['id']);
-			echo header("location:Car.php");
-			break;
-		case'delete':
-			$controller->delete($_GET['id']);
-			echo header("location:Car.php");
-	}
+				}
+				else{
+					window.history.back();
+				}
 
+				</script>";
+            }
+
+}
 }
 else
 	echo $view->output();

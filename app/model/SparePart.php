@@ -153,16 +153,21 @@ else
 
 	function deleteSparePart($PartNumber)
 	{
-		$sql="DELETE FROM sparepart WHERE PartNumber=$this->PartNumber";
-		
-        $d1= Database::GetInstance();
-        $result = mysqli_query($d1->GetConnection(), $sql);
-		if($sql){
-			echo"Deleted the spare parts of this car successfully.";
+		$sql1="SELECT `partNumber` FROM `cart` where partNumber=$this->PartNumber";
+		$d1= Database::GetInstance();
+		$result1 = mysqli_query($d1->GetConnection(), $sql1);
+		$sql3="SELECT `PartNumber` FROM `export` where PartNumber=$this->PartNumber";
+		$result3= mysqli_query($d1->GetConnection(), $sql3);
+		$sql="DELETE FROM `sparepart` WHERE PartNumber=$this->PartNumber";
+		 $result = mysqli_query($d1->GetConnection(), $sql);
+		if($result!=mysqli_num_rows($result3) && $result!=mysqli_num_rows($result1)){
+			echo"<script>alert('You have deleted this part successfully') ;
+			window.history.back()</script>";
 		} 
 		else
 		{
-			echo "ERROR: Could not able to execute $sql. " ;
+			echo"<script>alert('The part you want to delete may exist in cart or your exported part, you have to delete them first') ;
+			window.history.back();</script>";
 		}
 	}
 	
