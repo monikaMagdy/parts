@@ -293,38 +293,38 @@ $str='<!DOCTYPE html>
           <form id="contactForm" name="sentMessage" novalidate="novalidate">
             <div class="row">
               <div class="col-md-6">
-				<input type="text" class="form-control" required="required" name="FullName" placeholder="Enter your full name"/>
-			</div>
+			  <input type="text" pattern="[A-Za-z]{3,}" title="min 3 characters and no special or numiric characters" class="form-control" required="required" name="FullName" maxlength="10" placeholder="Enter your full name"/>
+			  </div>
 		</div>
 		<br>
             <div class="row">
               <div class="col-md-6">
-			<input type="text" class="form-control" name="username" required="required" placeholder="Enter username"/>
-			</div>
-			</div>
-		<br>
-		 <div class="row">
-              <div class="col-md-6">
-		<input type="text" class="form-control"required="required" name="email" placeholder="Enter email"/>
-			</div>
+			  <input type="text" class="form-control" name="username" required="required" placeholder="Enter your username"/>
+			  </div>
 			</div>
 		<br>
 		 <div class="row">
               <div class="col-md-6">
-		<input type="password" class="form-control" required="required" name="password" placeholder="Enter password"/>
-			</div>
-			</div>
-		<br>
-		 <div class="row">
-              <div class="col-md-6">
-		<input type="text"class="form-control" name="Age" required="required" placeholder="Enter age"/>
-			</div>
+			  <input type="text" pattern="[a-zA-Z0-9!#$%&*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" title="valid mail is required" class="form-control" validate="required:true" name="email" placeholder="Enter your email"/>
+			  </div>
 			</div>
 		<br>
 		 <div class="row">
               <div class="col-md-6">
-		<input type="text" class="form-control" name="phoneNumber" required="required" placeholder="Enter phone"/>
+			  <input type="password" class="form-control" required="required" name="password" placeholder="Enter your password"/>
+			  </div>
 			</div>
+		<br>
+		 <div class="row">
+              <div class="col-md-6">
+			  <input type="text" pattern="[0-9]{2}" title="numiric characters" class="form-control" name="Age" required="required" placeholder="Enter your age"/>
+			  </div>
+			</div>
+		<br>
+		 <div class="row">
+              <div class="col-md-6">
+			  <input type="text" class="form-control" pattern="[0-9]{11}" title="numiric characters and 11 number" name="phoneNumber" required="required" placeholder="Enter your phone"/>
+			  </div>
 			</div>
 		<br>
 		
