@@ -47,7 +47,7 @@
 	} 
 	if(!empty($_SESSION))
 	{
-		 if($_SESSION["Role"]==='Manger' )
+		 if($_SESSION["Role"]==='Manager' )
 		{
 
 echo'

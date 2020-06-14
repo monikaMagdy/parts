@@ -46,7 +46,7 @@ body{
 						 <div class='col-lg-12 text-center' >
 						   <h2 class='section-heading text-uppercase'>Export/Import</h2>
 						   <h3 class='section-subheading text-muted'>Auto Spare Parts.</h3>";
-						   if($_SESSION["Role"]==='Manger' )
+						   if($_SESSION["Role"]==='Manager' )
     {
 		$str.="<div class='col-lg-12 text-center'>
 					 <div class='portfolio-caption'>
@@ -75,7 +75,7 @@ body{
 				    	 </a>
 					 <div class='portfolio-caption'>
 					 <div class='btn-group btn-group-lg'>";
-					 if($_SESSION["Role"]==='Manger' )
+					 if($_SESSION["Role"]==='Manager' )
 					 {
 			$str.="<button type='submit' class='btn btn-warning' name='Edit' id='Edit' 
 			onclick=\"location.href='Car.php?action=edit&id=".$Car->getCarID()."'\">Edit</button>

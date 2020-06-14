@@ -81,7 +81,7 @@ class ViewSparePart extends View
 
 					   </div>
 					   <div class="card-footer ">';
-					   if($_SESSION["Role"]==='Manger' )
+					   if($_SESSION["Role"]==='Manager' )
 					{
                 $str.="
 					   <button type='submit'class='btn btn-warning btn-block' name='Edit' id='Edit'
@@ -91,7 +91,7 @@ class ViewSparePart extends View
 					 onclick=\"location.href='SparePart.php?action=delete&id=".$SparePart->getPartNumber()."'\">Delete </button>
 				   ";
 					}
-					if($_SESSION["Role"]==='Manger' )
+					if($_SESSION["Role"]==='Manager' )
 					{
                 $str.=' <form action="Transactions.php?action=Import&id='.$SparePart->getPartNumber().'" method="post">
 		  			 

@@ -45,7 +45,7 @@ class ViewUser extends View
           <h3 class="section-subheading text-muted"> </h3>
         </div>
 	  </div>';
-	  if($_SESSION["Role"]==='Manger' )
+	  if($_SESSION["Role"]==='Manager' )
 	  {
 		$str.="<div class='col-lg-12 text-center'>
 				<div class='portfolio-caption'>

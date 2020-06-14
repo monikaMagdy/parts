@@ -66,7 +66,7 @@ class CompanyView extends View
         $str.="<td>". $Company->getphoneNumber() ."</td> ";
          $str.="<td>". $Company->getRegisterSupplierNumber() ."</td> ";
            $str.="<td>". $Company->getCommercialRecord() ."</td> ";
-           if($_SESSION["Role"]==='Manger' )
+           if($_SESSION["Role"]==='Manager' )
            {
         $str.="<td>
          <div class='portfolio-caption'>
@@ -82,7 +82,7 @@ class CompanyView extends View
         $str.="</tr>";
            }
     }
-    if($_SESSION["Role"]==='Manger' )
+    if($_SESSION["Role"]==='Manager' )
     {
       $str.="</table>
       <br>
