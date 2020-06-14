@@ -58,6 +58,16 @@ function getUsers() {
 
 	function Model_insertUser($FullName,$username,$email, $password, $Age, $phoneNumber,$Role)
 	{
+		// $search="SELECT * FROM user where username=$username";
+		// $d2=Database::GetInstance();
+		// $result2=mysqli_query($d2->GetConnection(), $search);
+		// if (mysqli_num_rows($result2) > 0)
+		// {
+		// 	echo "<script>alert('this username is already taken , Change the Username.');
+		// 		window.history.back();
+		// 	</script>";
+		// }
+		// else{
 		$sql = "INSERT INTO `user` 
 		(
 		FullName,
@@ -80,15 +90,18 @@ function getUsers() {
 		)";
 	 	$d1= Database::GetInstance();
         $result = mysqli_query($d1->GetConnection(), $sql);
-		if ($sql){
-			echo "Records inserted successfully.";
-			$this->fillArray();
+		if ($result){
+			echo"<script>alert('You have added a new user successfully') ;
+			window.location.href='index.php'</script>";	
+					$this->fillArray();
 		} 
 		else{
-			echo "ERROR: Could not able to execute $sql. " ;
+			echo"<script>alert('This username already exists') ;
+			window.history.back();</script>";
 		}
 	}
-}
+	}
+
 /*
     public function Model_insertUser($FullName, $username, $email, $password, $Age, $phoneNumber, $Role)
     {
