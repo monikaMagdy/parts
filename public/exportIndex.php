@@ -13,7 +13,9 @@ if (isset($_GET['action']) && !empty($_GET['action'])){
 		case'export':
 			$controller->Con_insertExport();
 		break;
-
+		case'delete':
+			$controller->Con_deleteExport($_GET["id"]);
+		break;
 		}
 }
 else

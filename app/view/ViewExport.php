@@ -84,6 +84,15 @@ class ViewExport extends View
           $str.="<td >".$export->getitemPrice()."</td> ";
           $str.="<td >".$export->getTotalPrice()."</td> ";
           $str.="<td >".$date->format('d-m-Y H:i:s')."</td> ";
+          $str.="<td >
+           <div class='portfolio-caption'>
+          <div class='btn-group btn-group-lg'>
+            <button type='submit' class='btn btn-primary btn-xl
+             name='delete' id='delete' 
+             onclick=\"location.href='exportIndex.php?action=delete&id=".$export->getExportID()."'\">
+            Delete</button>
+          </div>
+        </div></td> ";
           $str.="<tr>";
          /* $str.="<td>
           <a href='exportIndex.php?action=delete&id=".$export->getExportID()."'>Delete</a>
