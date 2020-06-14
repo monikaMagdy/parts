@@ -171,31 +171,31 @@ class ViewSparePart extends View
 <form action="SpareParts.php?action=addAction&id='.$_GET['CarID'].'" method="post">
 <div class="row">
 	<div class="col-lg-12">
-		<input type="text" class="form-control" name="PartNumber"  placeholder="Enter Part Number"/>
+		<input type="text" class="form-control" pattern="[0-9]{20}" name="PartNumber"  placeholder="Enter Part Number"/>
 	</div>
 </div>
 <br>
 <div class="row">
 	<div class="col-lg-12">
-		<input type="text" class="form-control" name="PartName"  placeholder="Enter Part Name"/>
+		<input type="text" class="form-control" name="PartName"pattern="[A-Za-z]{3,20}"  placeholder="Enter Part Name"/>
 	</div>
 </div>
 <br>
 <div class="row">
     <div class="col-lg-12">
-		<input type="text" class="form-control" name="partCountry"   placeholder="Enter part country"/>
+		<input type="text" class="form-control" name="partCountry" pattern="[A-Za-z]{3,20}" placeholder="Enter part country"/>
 	</div>
 </div>
 <br>
 <div class="row">
         <div class="col-lg-12">
-		<input type="text" class="form-control" name="partPrice" placeholder="Enter Price"/>
+		<input type="text" class="form-control" name="partPrice" pattern="[0-9]{4}" placeholder="Enter Price"/>
 	</div>
 </div>
 <br>
 <div class="row">
         <div class="col-lg-12">
-		<input type="text" class="form-control" name="partQuantity" placeholder="Enter Quantity"/>
+		<input type="text" class="form-control" name="partQuantity" pattern="[0-9]{5}" placeholder="Enter Quantity"/>
 	</div>
 </div>
 <br>
@@ -278,10 +278,10 @@ class ViewSparePart extends View
             $str.="<tr>";
             $str.="<form 
 				action='SparePart.php?action=editAction&id=".$this->model->getPartNumber() ."' method='post'>";
-            $str.="<td><input type='text' name='PartName' value='".$this->model->getPartName() ."'>  </td> ";
-            $str.="<td><input type='text' name='partCountry' value='".$this->model->getpartCountry() ."'></td> ";
+            $str.="<td><input type='text' pattern='[A-Za-z]{3,20}'  name='PartName' value='".$this->model->getPartName() ."'>  </td> ";
+            $str.="<td><input type='text' pattern='[A-Za-z]{3,20}'  name='partCountry' value='".$this->model->getpartCountry() ."'></td> ";
                 
-            $str.="<td><input type='text' name='partPrice' value='".$this->model->getpartPrice() ."'>  </td> ";
+            $str.="<td><input type='text'  pattern='[0-9]{4}' name='partPrice' value='".$this->model->getpartPrice() ."'>  </td> ";
             //$str.="<td><input type='text' name='partQuantity' value='".$SparePart->getpartQuantity() ."'></td> ";
                 
 

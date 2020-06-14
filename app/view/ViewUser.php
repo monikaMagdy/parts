@@ -293,13 +293,13 @@ $str='<!DOCTYPE html>
           <form id="contactForm" name="sentMessage" novalidate="novalidate">
             <div class="row">
               <div class="col-md-6">
-			  <input type="text" pattern="[A-Za-z]{3,}" title="min 3 characters and no special or numiric characters" class="form-control" required="required" name="FullName" maxlength="10" placeholder="Enter your full name"/>
+			  <input type="text" pattern="[A-Za-z]{3,20}" title="min 3 characters and no special or numiric characters" class="form-control" required="required" name="FullName" maxlength="10" placeholder="Enter your full name"/>
 			  </div>
 		</div>
 		<br>
             <div class="row">
               <div class="col-md-6">
-			  <input type="text" class="form-control" name="username" required="required" placeholder="Enter your username"/>
+			  <input type="text" class="form-control" pattern="[a-zA-Z0-9]{5, 20}"name="username" required="required" placeholder="Enter your username"/>
 			  </div>
 			</div>
 		<br>

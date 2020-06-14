@@ -74,16 +74,13 @@ class ViewExport extends View
             </tr>';
           foreach($this->model->getExports() as $export)
         {
-          $date = new DateTime();
           
           $str.="<td >".$export->getExportID() ."</td> ";
           $str.="<td >".$export->getCompanyID() ."</td> ";
           $str.="<td >".$export->getPartNumber()."</td> ";
           $str.="<td >".$export->getPartName()."</td> ";
-          $str.="<td >".$export->getpartQuantity()."</td> ";
           $str.="<td >".$export->getitemPrice()."</td> ";
           $str.="<td >".$export->getTotalPrice()."</td> ";
-          $str.="<td >".$date->format('d-m-Y H:i:s')."</td> ";
           $str.="<td >
            <div class='portfolio-caption'>
           <div class='btn-group btn-group-lg'>
